@@ -35,7 +35,7 @@ if (-not $SkipTests) {
 }
 
 if (-not $SkipBuild) {
-    & "$PSScriptRoot\build_windows_installer.ps1"
+    & "$PSScriptRoot\build_installers.ps1"
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
@@ -57,7 +57,8 @@ Perccent Wallet $tag
 
 Standalone PERC wallet — send, receive, stake, and sync on the Chronoflux Principia chain.
 
-Windows: ``perccent-wallet-$tag-windows-x64-setup.exe``
+Windows: ``perccent-wallet-v$versionNoV-windows-x64-setup.exe``
+Android: ``perccent-wallet-v$versionNoV-android-setup.apk``
 Verify downloads with attached ``.sha256`` / ``.sha512`` checksum files (minimum SHA-256)
 "@
 $notes = if ($ReleaseNotes.Trim()) { $ReleaseNotes.Trim() } else { $defaultNotes }
