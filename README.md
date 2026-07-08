@@ -81,8 +81,11 @@ export PERC_CHAIN_GENESIS_REVISION=2
 export PERC_SEED_USERNAME=my_community_seed
 export PERC_TREASURY_ADMIN_USER=your_admin_user
 export PERC_DATA_DIR=./data
+export PERC_UPSTREAM_RENDEZVOUS_URL=https://evolve-perc-internet.onrender.com
 npm run start:internet
 ```
+
+`PERC_UPSTREAM_RENDEZVOUS_URL` (defaults to `rendezvousUrl` in `assets/config/perc_network.json`) lets a localhost seed merge remote peers into its local `/perc/rendezvous/peers` list while `PERC_PUBLIC_ENDPOINT` stays on your VM URL.
 
 Persist `PERC_DATA_DIR` on disk so the ledger survives restarts.
 
