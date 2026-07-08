@@ -1,6 +1,6 @@
-import '../models/locale_config.dart';
-import '../services/scenario_input_profile.dart';
-import '../services/scenario_lean_context.dart';
+import '../wallet_core/models/locale_config.dart';
+import '../wallet_core/services/scenario_input_profile.dart';
+import '../wallet_core/services/scenario_lean_context.dart';
 import 'discourse_strings.dart';
 import 'part_three_slim_strings.dart';
 import 'analysis_ui_strings.dart';

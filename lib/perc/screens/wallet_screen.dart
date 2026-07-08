@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../l10n/app_localizations.dart';
-import '../../services/app_performance.dart';
+import '../../wallet_core/services/app_performance.dart';
 import '../../l10n/wallet_message_localization.dart';
 import '../../platform/desktop_platform.dart';
 import '../../providers/locale_provider.dart';
@@ -22,7 +22,7 @@ import '../services/perc_block_timing.dart';
 import '../services/perc_chronoflux_time_confirmations.dart';
 import '../services/perc_send_receive_actions.dart';
 import '../widgets/blockchain_launch_balloon.dart';
-import '../../widgets/evolve_creator_attribution.dart';
+import '../../wallet_core/widgets/wallet_attribution.dart';
 import '../widgets/wallet_creator_credit.dart';
 import '../widgets/wallet_credential_error_banner.dart';
 import '../widgets/wallet_language_selector.dart';
@@ -735,7 +735,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 style: const TextStyle(fontSize: 12, color: Color(0xFF9BA3B8)),
               ),
               const SizedBox(height: 2),
-              EvolveCreatorAttribution(
+              WalletAttribution(
                 strings: strings,
                 textAlign: TextAlign.start,
                 style: const TextStyle(

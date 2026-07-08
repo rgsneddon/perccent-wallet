@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:perccent_wallet/perc/models/perc_amount.dart';
 import 'package:perccent_wallet/perc/models/perc_block.dart';
-import 'package:perccent_wallet/services/app_performance.dart';
+import 'package:perccent_wallet/wallet_core/services/app_performance.dart';
 import 'package:perccent_wallet/perc/perc_chain_constants.dart';
 import 'package:perccent_wallet/perc/services/perc_chain_tip.dart';
 import 'package:perccent_wallet/perc/services/perc_ledger.dart';

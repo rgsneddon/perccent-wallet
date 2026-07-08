@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:perccent_wallet/models/scenario_input.dart';
+import 'package:perccent_wallet/wallet_core/models/scenario_input.dart';
 import 'package:perccent_wallet/perc/models/perc_amount.dart';
 import 'package:perccent_wallet/perc/models/perc_faucet_credit_result.dart';
 import 'package:perccent_wallet/perc/models/perc_pending_inbound_transfer.dart';

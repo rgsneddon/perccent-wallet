@@ -1,5 +1,5 @@
-import '../models/locale_config.dart';
-import '../services/question_semantics.dart';
+import '../wallet_core/models/locale_config.dart';
+import '../wallet_core/services/question_semantics.dart';
 import 'app_localizations.dart';
 
 /// All calculation/output text in the user's selected language.

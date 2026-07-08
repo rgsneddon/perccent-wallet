@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart' show visibleForTesting;
 
-import '../../models/locale_config.dart';
-import '../../models/scenario_input.dart';
+import '../../wallet_core/models/locale_config.dart';
+import '../../wallet_core/models/scenario_input.dart';
 import '../models/perc_account.dart';
 import '../models/perc_amount.dart';
 import '../models/perc_block.dart';

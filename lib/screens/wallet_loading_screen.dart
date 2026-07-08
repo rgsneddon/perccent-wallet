@@ -11,7 +11,7 @@ import '../l10n/wallet_message_localization.dart';
 import '../perc/widgets/wallet_auth_panel.dart';
 import '../perc/widgets/wallet_credential_error_banner.dart';
 import '../providers/locale_provider.dart';
-import '../services/app_update_check.dart';
+import '../wallet_core/services/app_update_check.dart';
 import '../perc/widgets/wallet_language_selector.dart';
 import '../widgets/wallet_splash_poster.dart';
 import '../widgets/splash_version_status.dart';

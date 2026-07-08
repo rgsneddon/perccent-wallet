@@ -3,9 +3,9 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 
-import '../../models/analysis_mode.dart';
-import '../../models/locale_config.dart';
-import '../../models/scenario_input.dart';
+import '../../wallet_core/models/analysis_mode.dart';
+import '../../wallet_core/models/locale_config.dart';
+import '../../wallet_core/models/scenario_input.dart';
 import '../models/perc_evolution_step.dart';
 import '../models/perc_microblock_log_entry.dart';
 import '../models/perc_side_chain.dart';
@@ -17,7 +17,7 @@ import '../models/perc_faucet_credit_result.dart';
 import '../models/perc_pending_inbound_transfer.dart';
 import '../models/perc_transaction.dart';
 
-import '../../fcg/mishi/fcg_mishi_moderator_sync.dart';
+import '../services/perc_mishi_sync.dart';
 import '../../l10n/app_localizations.dart';
 import '../../l10n/wallet_message_localization.dart';
 import '../perc_chain_constants.dart';

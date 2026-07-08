@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:perccent_wallet/models/locale_config.dart';
-import 'package:perccent_wallet/models/scenario_input.dart';
+import 'package:perccent_wallet/wallet_core/models/locale_config.dart';
+import 'package:perccent_wallet/wallet_core/models/scenario_input.dart';
 import 'package:perccent_wallet/perc/services/perc_ledger.dart';
 import 'package:perccent_wallet/perc/services/perc_wallet_backup.dart';
 

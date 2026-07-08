@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
-import '../services/app_update_check.dart';
+import '../wallet_core/services/app_update_check.dart';
 
 /// Latest-version advisory shown on the splash / loading screen.
 class SplashVersionStatus extends StatelessWidget {

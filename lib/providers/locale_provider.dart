@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../models/locale_config.dart';
-import '../services/device_locale_resolver.dart';
-import '../services/locale_store.dart';
-import '../services/locale_store_factory.dart';
+import '../wallet_core/models/locale_config.dart';
+import '../wallet_core/services/device_locale_resolver.dart';
+import '../wallet_core/services/locale_store.dart';
+import '../wallet_core/services/locale_store_factory.dart';
 
 class LocaleProvider extends ChangeNotifier {
   LocaleProvider({

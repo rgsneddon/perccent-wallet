@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../fcg/services/fcg_governance_paper.dart';
+import '../../wallet_core/governance/governance_paper.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/locale_provider.dart';
-import '../../widgets/evolve_creator_attribution.dart';
+import '../../wallet_core/widgets/wallet_attribution.dart';
 import '../widgets/wallet_creator_credit.dart';
 
 /// Credit and governance context for parish-ward consensus use.
@@ -58,7 +58,7 @@ class CreditScreen extends StatelessWidget {
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () => launchUrl(
-                                        Uri.parse(FcgGovernancePaper.url),
+                                        Uri.parse(GovernancePaper.url),
                                         mode: LaunchMode.externalApplication,
                                       ),
                               ),
@@ -94,7 +94,7 @@ class CreditScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        EvolveCreatorAttribution(
+                        WalletAttribution(
                           strings: strings,
                           textAlign: TextAlign.start,
                           style: const TextStyle(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../l10n/app_localizations.dart';
-import '../../models/locale_config.dart';
+import '../../wallet_core/models/locale_config.dart';
 import '../../providers/locale_provider.dart';
 
 /// Language picker for the wallet login / registration screen.

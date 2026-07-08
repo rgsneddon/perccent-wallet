@@ -3,8 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'l10n/app_localizations.dart';
-import 'models/locale_config.dart';
-import 'models/locale_config_ui.dart';
+import 'wallet_core/models/locale_config.dart';
+import 'wallet_core/models/locale_config_ui.dart';
 import 'perc/providers/perc_wallet_provider.dart';
 import 'perc/services/perc_network_coordinator.dart';
 import 'platform/desktop_window_init.dart';

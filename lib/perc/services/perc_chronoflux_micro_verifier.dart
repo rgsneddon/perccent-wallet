@@ -2,24 +2,24 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 
-import '../../models/chronoflux_continuum_snapshot.dart';
-import '../../models/locale_config.dart';
-import '../../models/scenario_input.dart';
-import '../../services/evolve_engine.dart';
+import '../../wallet_core/models/chronoflux_continuum_snapshot.dart';
+import '../../wallet_core/models/locale_config.dart';
+import '../../wallet_core/models/scenario_input.dart';
+import '../../wallet_core/services/chronoflux_micro_engine.dart';
 
 /// Verifies each microblock against the Chronoflux continuum equation.
 class PercChronofluxMicroVerifier {
-  const PercChronofluxMicroVerifier({EvolveEngine? engine})
-      : _engine = engine ?? const EvolveEngine();
+  const PercChronofluxMicroVerifier({ChronofluxMicroEngine? engine})
+      : _engine = engine ?? const ChronofluxMicroEngine();
 
-  final EvolveEngine _engine;
+  final ChronofluxMicroEngine _engine;
 
   ChronofluxMicroVerifyResult verify(
     ScenarioInput input, {
     LocaleConfig locale = LocaleConfig.defaults,
   }) {
     final snapshot = _engine.continuumSnapshot(input, locale: locale);
-    final recheck = EvolveEngine.heuristicPercentChance(
+    final recheck = ChronofluxMicroEngine.heuristicPercentChance(
       regressivePct: snapshot.regressivePct,
       refinedScs: snapshot.refinedScs,
       shearScs: snapshot.shearScs,

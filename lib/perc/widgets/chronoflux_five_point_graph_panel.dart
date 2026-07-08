@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
-import '../../models/construct_meta.dart';
+import '../../wallet_core/models/construct_meta.dart';
 import '../models/chronoflux_construct_snapshot.dart';
 import '../providers/perc_wallet_provider.dart';
 import '../services/chronoflux_variable_history.dart';

@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:crypto/crypto.dart';
 
-import '../../fcg/data/fcg_uk_ward_moderator_registry.dart';
+import '../../wallet_core/data/ward_moderator_registry.dart';
 import '../perc_chain_constants.dart';
 import 'perc_beam_privacy.dart';
 import 'perc_switch_commitment.dart';
@@ -53,8 +53,8 @@ class PercAuth {
     if (!RegExp(r'^[a-z0-9_]+$').hasMatch(u)) {
       return 'Use lowercase letters, numbers, and underscores only';
     }
-    if (FcgUkWardModeratorRegistry.isModeratorAlias(u) &&
-        !FcgUkWardModeratorRegistry.contains(u)) {
+    if (WardModeratorRegistry.isModeratorAlias(u) &&
+        !WardModeratorRegistry.contains(u)) {
       return 'That ward moderator username is reserved — use your Moderator Pack mod_* or ONS code (e.g. s13002516)';
     }
     if (reservedUsernames.contains(u)) {

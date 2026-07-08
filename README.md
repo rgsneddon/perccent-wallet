@@ -93,7 +93,10 @@ cd perc_chain
 npm test                    # 76 unit tests
 curl -s https://YOUR-HOST/health
 curl -s https://YOUR-HOST/perc/status
+curl -s "https://YOUR-HOST/perc/rendezvous/peers?chainId=evolve-chronoflux-principia-chain-1"
 ```
+
+A freshly deployed seed may report `peers: 0` until wallets or other seeds register; public seeds on the same chain id appear in the peers list alongside one another.
 
 Point the wallet at your seed by editing `assets/config/perc_network.json` before building, or override rendezvous in your deployment pipeline.
 
@@ -115,6 +118,7 @@ cd perc_chain && npm test
 | Path | Purpose |
 |------|---------|
 | `lib/perc/` | Wallet core (ledger, network, UI screens) |
+| `lib/wallet_core/` | Shared types, Chronoflux micro-engine, locale — no Evolve app shell |
 | `lib/main.dart` | Standalone app entry |
 | `lib/screens/wallet_shell_screen.dart` | Wallet / Security / Credit tabs |
 | `perc_chain/` | Internet seed node (Node.js) |
