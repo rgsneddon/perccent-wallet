@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../wallet_core/models/locale_config.dart';
+import '../standalone/wallet_ports.dart';
 import '../wallet_core/services/device_locale_resolver.dart';
 import '../wallet_core/services/locale_store.dart';
 import '../wallet_core/services/locale_store_factory.dart';

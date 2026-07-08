@@ -3,9 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 
-import '../../wallet_core/models/analysis_mode.dart';
-import '../../wallet_core/models/locale_config.dart';
-import '../../wallet_core/models/scenario_input.dart';
+import '../../standalone/wallet_ports.dart';
 import '../models/perc_evolution_step.dart';
 import '../models/perc_microblock_log_entry.dart';
 import '../models/perc_side_chain.dart';
@@ -17,7 +15,6 @@ import '../models/perc_faucet_credit_result.dart';
 import '../models/perc_pending_inbound_transfer.dart';
 import '../models/perc_transaction.dart';
 
-import '../services/perc_mishi_sync.dart';
 import '../../l10n/app_localizations.dart';
 import '../../l10n/wallet_message_localization.dart';
 import '../perc_chain_constants.dart';
@@ -732,7 +729,7 @@ class PercWalletProvider extends ChangeNotifier {
       return;
     }
     if (!canSendFromSession) {
-      _setError('wallet_treasury_send_locked');
+      _setError(WalletErrorKeys.treasurySendLocked);
       notifyListeners();
       return;
     }
@@ -789,16 +786,16 @@ class PercWalletProvider extends ChangeNotifier {
         if (treasury != null &&
             treasury.address == normalizedAddress &&
             _ledger.isManualReceiveBlocked(PercChainConstants.treasuryUsername)) {
-          _setError('wallet_err_treasury_no_manual_funding');
+          _setError(WalletErrorKeys.treasuryNoManualFunding);
         } else {
-          _setError('wallet_err_recipient_not_found');
+          _setError(WalletErrorKeys.recipientNotFound);
         }
         notifyListeners();
         return;
       }
       final recipient = resolved.username;
       if (_ledger.isManualReceiveBlocked(recipient)) {
-        _setError('wallet_err_treasury_no_manual_funding');
+        _setError(WalletErrorKeys.treasuryNoManualFunding);
         notifyListeners();
         return;
       }

@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../wallet_core/governance/governance_paper.dart';
+import '../../standalone/wallet_ports.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/locale_provider.dart';
-import '../../wallet_core/widgets/wallet_attribution.dart';
 import '../widgets/wallet_creator_credit.dart';
 
 /// Credit and governance context for parish-ward consensus use.
@@ -51,7 +50,7 @@ class CreditScreen extends StatelessWidget {
                             children: [
                               TextSpan(text: strings.t('credit_governance_intro')),
                               TextSpan(
-                                text: strings.t('fcg_read_paper'),
+                                text: strings.t('credit_governance_paper'),
                                 style: const TextStyle(
                                   color: Color(0xFF6C63FF),
                                   decoration: TextDecoration.underline,

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-import '../../wallet_core/services/app_performance.dart';
+import '../../standalone/wallet_ports.dart';
 import '../models/perc_account.dart';
 import '../models/perc_peer_node.dart';
 import '../perc_chain_constants.dart';

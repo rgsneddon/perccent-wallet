@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:crypto/crypto.dart';
 
-import '../../wallet_core/data/ward_moderator_registry.dart';
+import '../../standalone/wallet_ports.dart';
 import '../perc_chain_constants.dart';
 import 'perc_beam_privacy.dart';
 import 'perc_switch_commitment.dart';

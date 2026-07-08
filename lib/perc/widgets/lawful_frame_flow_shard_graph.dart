@@ -4,7 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
-import '../../wallet_core/services/app_performance.dart';
+import '../../standalone/wallet_ports.dart';
 import '../models/perc_block.dart';
 import '../models/perc_microblock_log_entry.dart';
 import '../models/perc_pending_inbound_transfer.dart';

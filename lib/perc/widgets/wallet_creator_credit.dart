@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
-import '../../wallet_core/widgets/wallet_attribution.dart';
+import '../../standalone/wallet_ports.dart';
 
 /// Creator credit shown on all wallet surfaces.
 class WalletCreatorCredit extends StatelessWidget {

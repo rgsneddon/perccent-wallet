@@ -2,10 +2,7 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 
-import '../../wallet_core/models/chronoflux_continuum_snapshot.dart';
-import '../../wallet_core/models/locale_config.dart';
-import '../../wallet_core/models/scenario_input.dart';
-import '../../wallet_core/services/chronoflux_micro_engine.dart';
+import '../../standalone/wallet_ports.dart';
 
 /// Verifies each microblock against the Chronoflux continuum equation.
 class PercChronofluxMicroVerifier {

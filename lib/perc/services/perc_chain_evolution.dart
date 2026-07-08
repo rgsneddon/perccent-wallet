@@ -1,4 +1,4 @@
-import '../../wallet_core/models/scenario_input.dart';
+import '../../standalone/wallet_ports.dart';
 import '../models/perc_evolution_step.dart';
 import '../perc_app_version.dart';
 import '../perc_chain_constants.dart';

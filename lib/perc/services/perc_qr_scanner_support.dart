@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import '../../wallet_core/services/platform_detect_stub.dart'
-    if (dart.library.io) '../../wallet_core/services/platform_detect_io.dart' as platform;
+import '../../standalone/platform_detect.dart' as platform;
 
 /// Platforms where [mobile_scanner] exposes a live camera.
 bool get percQrScannerSupported {

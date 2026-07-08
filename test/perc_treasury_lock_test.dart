@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:perccent_wallet/wallet_core/models/scenario_input.dart';
+import 'package:perccent_wallet/standalone/wallet_error_keys.dart';
+import 'package:perccent_wallet/standalone/wallet_ports.dart';
 import 'package:perccent_wallet/perc/models/perc_amount.dart';
 import 'package:perccent_wallet/perc/models/perc_faucet_credit_result.dart';
 import 'package:perccent_wallet/perc/models/perc_pending_inbound_transfer.dart';
@@ -24,6 +25,14 @@ void _seedLedger(PercLedger ledger) {
 }
 
 void main() {
+  setUp(() {
+    PercWalletProvider.sessionTimeoutEnabled = false;
+  });
+
+  tearDown(() {
+    PercWalletProvider.sessionTimeoutEnabled = true;
+  });
+
   test('pool renewal allocation is 283 million PERC', () {
     expect(
       PercChainConstants.poolRenewalAllocation,
@@ -167,7 +176,7 @@ void main() {
         ledger.account(PercChainConstants.treasuryUsername)!.address;
     await wallet.send(toAddress: treasuryAddr, amountText: '0.00000001');
 
-    expect(wallet.errorMessage, 'wallet_err_treasury_no_manual_funding');
+    expect(wallet.errorMessage, WalletErrorKeys.treasuryNoManualFunding);
     expect(
       ledger.pendingInboundFor(PercChainConstants.treasuryUsername),
       isEmpty,
