@@ -1,0 +1,111 @@
+Perccent Wallet — Standalone Chronoflux Principia Chain Wallet
+Proprietary / Dual License
+
+Copyright (c) 2026 Evolve Chronoflux. All Rights Reserved.
+
+CHRONOFLUX ATTRIBUTION
+----------------------
+
+The Chronoflux Principia — realised by Roy D Herbert — is incorporated as a
+core mechanical part of the Perccent ledger, block evolution, and wallet
+settlement logic. The hydrodynamic constructs and continuum mechanics that
+drive Perccent microblock verification derive from and operate through that
+Principia.
+
+This software and associated documentation (the "Software"), including the
+Perccent wallet application, internet seed node (`perc_chain`), build outputs,
+and related materials, are proprietary intellectual property of the copyright
+holder unless otherwise stated below. Rights in the Chronoflux Principia remain
+with Roy D Herbert; rights in this Software implementation remain with the
+copyright holder named above.
+
+
+DUAL LICENSING MODEL
+--------------------
+
+The Software is offered under a dual licensing model:
+
+  1. PROPRIETARY LICENSE (this document)
+     Grants limited rights for personal, non-commercial use as described below.
+
+  2. COMMERCIAL LICENSE (separate written agreement)
+     Required for any commercial use, paid distribution, SaaS deployment,
+     redistribution, or creation of derivative products intended for sale
+     or external distribution.
+
+For commercial licensing enquiries, contact:
+
+  russell.gray.sneddon@gmail.com
+
+
+PERSONAL / NON-COMMERCIAL USE (Proprietary License Grant)
+-----------------------------------------------------------
+
+Subject to the restrictions below, the copyright holder grants you a
+revocable, non-exclusive, non-transferable license to:
+
+  - Install and run the Software for your own personal use;
+  - Use the Software for private, non-commercial research or evaluation;
+  - Deploy a self-hosted internet seed node for personal or community use on
+    the public Perccent network, provided you do not misrepresent your node as
+    the official Evolve seed;
+  - View the source code for personal reference and debugging on your own
+    machines.
+
+You may not exercise these rights on behalf of an organisation for
+commercial benefit without a Commercial License.
+
+
+RESTRICTIONS
+------------
+
+Without a separate Commercial License, you may NOT:
+
+  - Use the Software in any commercial product, service, or workflow;
+  - Redistribute, sublicense, rent, lease, or lend the Software or any
+    portion of it;
+  - Publish, sell, or make the Software available to third parties;
+  - Remove or alter copyright, trademark, license, or attribution notices;
+  - Use the names "Evolve", "Perccent", "Chronoflux", "Roy D Herbert", or the
+    copyright holder's name to endorse derivative works without written permission;
+  - Reverse engineer the Software except where such restriction is
+    prohibited by applicable law.
+
+
+THIRD-PARTY COMPONENTS
+----------------------
+
+The Software incorporates open-source components (for example Flutter and
+other dependencies). Those components remain licensed under their respective
+terms.
+
+
+COMMERCIAL LICENSE
+--------------------
+
+A Commercial License may grant additional rights. Terms are negotiated in a
+separate written agreement. No commercial rights are granted by default.
+
+
+TERMINATION
+-----------
+
+This license terminates automatically if you breach any term. Upon
+termination, you must cease all use and destroy copies of the Software in
+your possession or control.
+
+
+DISCLAIMER OF WARRANTY
+----------------------
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+
+GOVERNING LAW
+-------------
+
+This license is governed by the laws of England and Wales, without regard
+to conflict-of-law principles, unless a Commercial License specifies
+otherwise.

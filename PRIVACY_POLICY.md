@@ -1,0 +1,68 @@
+# Perccent Wallet — Privacy Policy
+
+**Effective date:** 8 July 2026  
+**Applies to:** the standalone Perccent Wallet application and optional self-hosted `perc_chain` internet seed node in this repository.
+
+## Summary
+
+Perccent Wallet is designed to minimise data collection. Your wallet keys, passwords, encrypted backups, and ledger state stay on your device unless you explicitly send transactions or sync with the public Perccent network. We do not operate a central account service for this standalone app.
+
+## What the wallet stores locally
+
+On your phone, desktop, or browser storage, the app may persist:
+
+- **Account credentials** — username, salted password hash, and session state (not your plaintext password after login).
+- **Ledger data** — balances, transaction history, scenario blocks, stash, and staking state for your Perccent accounts.
+- **Recovery material** — optional 12-word BIP-39 mnemonic and encrypted `.percbackup` files you create.
+- **Locale preferences** — language and region selection.
+- **Network cache** — last-known seed height, peer rendezvous hints, and sync checkpoints from `assets/config/perc_network.json` and live probes.
+
+This data is stored using platform-specific secure storage where available. You are responsible for backup passphrases and seed phrases.
+
+## What the wallet sends over the network
+
+When you use send/receive, staking, or seed sync, the wallet communicates with:
+
+- **Public internet seed nodes** (default rendezvous: `https://evolve-perc-internet.onrender.com`, configurable in `assets/config/perc_network.json`).
+- **Other Perccent peers** via the mesh rendezvous protocol for inbound transfer delivery and block propagation.
+- **Public IP lookup services** (e.g. `api.ipify.org`, `ifconfig.me`) to advertise your node's public endpoint when you run local peer features.
+- **Optional update checks** — the splash screen may request version metadata from configured update endpoints (no wallet secrets are sent).
+
+Transactions and ledger exports use pseudonymous Perccent addresses and hashed account identifiers. Scenario labels and usernames are stripped from public ledger exports per chain privacy rules.
+
+## Self-hosted seed nodes
+
+If you deploy `perc_chain` on your own VM (see `render.yaml`):
+
+- **You** are the data controller for logs, disk snapshots, and environment variables on that host.
+- The seed stores a **public ledger replica** for chain `evolve-chronoflux-principia-chain-1` and serves rendezvous for wallets that point to your URL.
+- Seed nodes do not receive your wallet password or mnemonic. They may see network traffic metadata (IP addresses, request timestamps) in server logs.
+- Deployed seeds join the **same public network** as existing seeds; they do not replace the official Evolve seed unless wallets are reconfigured to use only your URL.
+
+## What we do not collect
+
+The standalone wallet repository authors do **not**:
+
+- Operate analytics or advertising SDKs in this build.
+- Upload your mnemonic, backup passphrase, or plaintext password to Evolve servers.
+- Run the optional Evolve Mishi moderator bridge (disabled in this standalone build).
+
+## Third-party services
+
+Your use of Render, other cloud providers, Flutter dependencies, or public seed URLs is subject to those parties' policies. Review their terms when deploying or syncing.
+
+## Children's privacy
+
+The Software is not directed at children under 13. We do not knowingly collect personal information from children.
+
+## Changes
+
+Material changes to this policy will be noted in the repository changelog. Continued use after updates constitutes acceptance of the revised policy.
+
+## Contact
+
+Privacy questions: **russell.gray.sneddon@gmail.com**
+
+## Your rights
+
+Depending on your jurisdiction you may have rights to access, correct, or delete personal data. Because wallet state is primarily local and pseudonymous on-chain, exercise those rights by managing backups on your device and choosing which seed nodes you trust.

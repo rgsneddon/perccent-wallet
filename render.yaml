@@ -1,0 +1,36 @@
+# Render Blueprint — self-hosted Perccent internet seed node
+# Deploy alongside existing seeds on evolve-chronoflux-principia-chain-1.
+# https://render.com/deploy?repo=https://github.com/rgsneddon/perccent-wallet
+services:
+  - type: web
+    name: perccent-wallet-seed
+    runtime: node
+    rootDir: perc_chain
+    buildCommand: npm install
+    startCommand: npm run start:internet
+    healthCheckPath: /health
+    autoDeploy: true
+    plan: standard
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PERC_SEED_USERNAME
+        generateValue: true
+      - key: PERC_TREASURY_ADMIN_USER
+        sync: false
+      - key: PERC_CHAIN_GENESIS_REVISION
+        value: "2"
+      - key: PERC_DATA_DIR
+        value: /var/data
+      - key: PERC_PEER_ONLINE_MS
+        value: "420000"
+      - key: PERC_SEED_SCENARIO_MAX
+        value: "120"
+      - key: PERC_SEED_BLOCKS_MAX
+        value: "1000"
+      - key: PERC_ANNUAL_BOOTSTRAP_DAYS
+        value: "365"
+    disk:
+      name: perc-seed-data
+      mountPath: /var/data
+      sizeGB: 1
