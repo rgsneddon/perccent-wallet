@@ -13,6 +13,11 @@ import 'package:perccent_wallet/perc/providers/perc_wallet_provider.dart';
 void main() {
   setUp(() {
     PercLedgerHub.resetForTest();
+    PercWalletProvider.sessionTimeoutEnabled = false;
+  });
+
+  tearDown(() {
+    PercWalletProvider.sessionTimeoutEnabled = true;
   });
 
   test('ensureRemoteAccount allows send to QR-scanned cross-device address', () {
