@@ -8,7 +8,7 @@ import '../l10n/app_localizations.dart';
 import '../perc/providers/perc_wallet_provider.dart';
 import '../perc/widgets/registration_seed_setup_dialog.dart';
 import '../providers/locale_provider.dart';
-import 'evolve_loading_screen.dart';
+import 'wallet_loading_screen.dart';
 import 'wallet_shell_screen.dart';
 
 /// Splash, wallet boot, then sign-in before the standalone shell.
@@ -102,7 +102,7 @@ class _WalletBootstrapScreenState extends State<WalletBootstrapScreen> {
     }
 
     return RegistrationSeedSetupDialogHost(
-      child: EvolveLoadingScreen(
+      child: WalletLoadingScreen(
         walletReady: _walletReady,
         onAuthenticated: _enterApp,
         onEnterApp: _enterApp,

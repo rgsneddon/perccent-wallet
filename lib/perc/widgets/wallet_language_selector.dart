@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../models/locale_config.dart';
-import '../../providers/evolve_provider.dart';
 import '../../providers/locale_provider.dart';
 
 /// Language picker for the wallet login / registration screen.
@@ -15,7 +14,6 @@ class WalletLanguageSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localeProv = context.watch<LocaleProvider>();
-    final evolve = context.read<EvolveProvider>();
     final strings = AppLocalizations.of(localeProv.config);
     final config = localeProv.config;
 
@@ -44,7 +42,7 @@ class WalletLanguageSelector extends StatelessWidget {
               .toList(),
           onChanged: (code) {
             if (code == null) return;
-            localeProv.setLanguage(code, evolve: evolve);
+            localeProv.setLanguage(code);
           },
         ),
       ),

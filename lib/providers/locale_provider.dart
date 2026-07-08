@@ -7,7 +7,6 @@ import '../models/locale_config.dart';
 import '../services/device_locale_resolver.dart';
 import '../services/locale_store.dart';
 import '../services/locale_store_factory.dart';
-import 'evolve_provider.dart';
 
 class LocaleProvider extends ChangeNotifier {
   LocaleProvider({
@@ -19,10 +18,7 @@ class LocaleProvider extends ChangeNotifier {
 
   final LocaleStore _store;
 
-  /// When true, first launch (no saved locale) uses OS language/region prefs.
   final bool autoDetectFromDevice;
-
-  /// Test-only injection; production uses [PlatformDispatcher] via resolver.
   final Locale? _deviceLocaleOverride;
 
   LocaleConfig config = LocaleConfig.defaults;
@@ -45,22 +41,21 @@ class LocaleProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void apply(LocaleConfig next, {EvolveProvider? evolve}) {
+  void apply(LocaleConfig next) {
     if (config.regionId == next.regionId &&
         config.languageCode == next.languageCode) {
       return;
     }
     config = next;
-    evolve?.setLocale(config);
     notifyListeners();
     unawaited(_store.save(config));
   }
 
-  void setRegion(String regionId, {EvolveProvider? evolve}) {
-    apply(config.copyWith(regionId: regionId), evolve: evolve);
+  void setRegion(String regionId) {
+    apply(config.copyWith(regionId: regionId));
   }
 
-  void setLanguage(String languageCode, {EvolveProvider? evolve}) {
-    apply(config.copyWith(languageCode: languageCode), evolve: evolve);
+  void setLanguage(String languageCode) {
+    apply(config.copyWith(languageCode: languageCode));
   }
 }

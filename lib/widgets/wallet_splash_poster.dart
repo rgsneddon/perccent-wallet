@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Static splash background — no video decode or animation.
-class EvolveSplashPoster extends StatelessWidget {
-  const EvolveSplashPoster({
+class WalletSplashPoster extends StatelessWidget {
+  const WalletSplashPoster({
     super.key,
     this.assetPath = 'assets/banner/evolve.jpg',
   });
@@ -17,7 +17,7 @@ class EvolveSplashPoster extends StatelessWidget {
         fit: BoxFit.cover,
         alignment: Alignment.center,
         filterQuality: FilterQuality.low,
-        semanticLabel: 'Evolve splash',
+        semanticLabel: 'Perccent wallet splash',
         errorBuilder: (_, __, ___) => const ColoredBox(color: Color(0xFF0A0E18)),
       ),
     );

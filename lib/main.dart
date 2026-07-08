@@ -8,14 +8,12 @@ import 'models/locale_config_ui.dart';
 import 'perc/providers/perc_wallet_provider.dart';
 import 'perc/services/perc_network_coordinator.dart';
 import 'platform/desktop_window_init.dart';
-import 'providers/evolve_provider.dart';
 import 'providers/locale_provider.dart';
 import 'screens/wallet_bootstrap_screen.dart';
 import 'theme/app_theme.dart';
 import 'platform/desktop_platform.dart';
 import 'widgets/app_version_badge.dart';
 import 'widgets/desktop_window_shell.dart';
-import 'widgets/locale_sync.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,14 +21,12 @@ Future<void> main() async {
   PercNetworkCoordinator.disableLiveNodesForTests = false;
 
   final walletProvider = PercWalletProvider();
-  final evolveProvider = EvolveProvider();
   final localeProvider = LocaleProvider();
 
   await localeProvider.initialize();
 
   runApp(PerccentWalletApp(
     walletProvider: walletProvider,
-    evolveProvider: evolveProvider,
     localeProvider: localeProvider,
   ));
 }
@@ -39,12 +35,10 @@ class PerccentWalletApp extends StatelessWidget {
   const PerccentWalletApp({
     super.key,
     required this.walletProvider,
-    required this.evolveProvider,
     required this.localeProvider,
   });
 
   final PercWalletProvider walletProvider;
-  final EvolveProvider evolveProvider;
   final LocaleProvider localeProvider;
 
   @override
@@ -52,7 +46,6 @@ class PerccentWalletApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: localeProvider),
-        ChangeNotifierProvider.value(value: evolveProvider),
         ChangeNotifierProvider.value(value: walletProvider),
       ],
       child: Consumer<LocaleProvider>(
@@ -96,9 +89,7 @@ class PerccentWalletApp extends StatelessWidget {
                 ),
               );
             },
-            home: LocaleSync(
-              child: WalletBootstrapScreen(walletProvider: walletProvider),
-            ),
+            home: WalletBootstrapScreen(walletProvider: walletProvider),
           );
         },
       ),

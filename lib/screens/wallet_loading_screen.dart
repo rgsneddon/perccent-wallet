@@ -13,12 +13,12 @@ import '../perc/widgets/wallet_credential_error_banner.dart';
 import '../providers/locale_provider.dart';
 import '../services/app_update_check.dart';
 import '../perc/widgets/wallet_language_selector.dart';
-import '../widgets/evolve_splash_poster.dart';
+import '../widgets/wallet_splash_poster.dart';
 import '../widgets/splash_version_status.dart';
 
 /// Launch screen — static banner until the user signs in or enters.
-class EvolveLoadingScreen extends StatefulWidget {
-  const EvolveLoadingScreen({
+class WalletLoadingScreen extends StatefulWidget {
+  const WalletLoadingScreen({
     super.key,
     required this.walletReady,
     this.onAuthenticated,
@@ -39,10 +39,10 @@ class EvolveLoadingScreen extends StatefulWidget {
       'v${PercAppVersion.releaseOf(PercAppVersion.current)}';
 
   @override
-  State<EvolveLoadingScreen> createState() => _EvolveLoadingScreenState();
+  State<WalletLoadingScreen> createState() => _WalletLoadingScreenState();
 }
 
-class _EvolveLoadingScreenState extends State<EvolveLoadingScreen>
+class _WalletLoadingScreenState extends State<WalletLoadingScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _intro;
   bool _showAuth = false;
@@ -60,9 +60,9 @@ class _EvolveLoadingScreenState extends State<EvolveLoadingScreen>
     unawaited(_checkForUpdates());
     _intro = AnimationController(
       vsync: this,
-      duration: EvolveLoadingScreen.introDuration,
+      duration: WalletLoadingScreen.introDuration,
     );
-    if (EvolveLoadingScreen.introDuration == Duration.zero) {
+    if (WalletLoadingScreen.introDuration == Duration.zero) {
       _showAuth = true;
     } else {
       _intro.forward().whenComplete(() {
@@ -88,11 +88,11 @@ class _EvolveLoadingScreenState extends State<EvolveLoadingScreen>
   }
 
   @override
-  void didUpdateWidget(EvolveLoadingScreen oldWidget) {
+  void didUpdateWidget(WalletLoadingScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.walletReady &&
         (_intro.status == AnimationStatus.completed ||
-            EvolveLoadingScreen.introDuration == Duration.zero)) {
+            WalletLoadingScreen.introDuration == Duration.zero)) {
       _showAuth = true;
     }
   }
@@ -151,7 +151,7 @@ class _EvolveLoadingScreenState extends State<EvolveLoadingScreen>
       body: Stack(
         fit: StackFit.expand,
         children: [
-          const EvolveSplashPoster(),
+          const WalletSplashPoster(),
           const DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -215,7 +215,7 @@ class _EvolveLoadingScreenState extends State<EvolveLoadingScreen>
                               const WalletLanguageSelector(),
                               const SizedBox(height: 4),
                               Text(
-                                EvolveLoadingScreen.versionLabel,
+                                WalletLoadingScreen.versionLabel,
                                 style: TextStyle(
                                   fontSize: 11,
                                   letterSpacing: 2,
