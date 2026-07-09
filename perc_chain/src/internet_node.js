@@ -162,7 +162,14 @@ function servePublic(relPath, res) {
 
 async function registerSeed() {
   const endpoint = publicEndpoint();
-  if (!endpoint || endpoint.includes('127.0.0.1') || endpoint.includes('localhost')) return;
+  if (!endpoint) return;
+  const explicitPublic = Boolean((process.env.PERC_PUBLIC_ENDPOINT ?? '').trim());
+  const isLoopback =
+    endpoint.includes('127.0.0.1') ||
+    endpoint.includes('localhost') ||
+    endpoint.startsWith('http://[::1]');
+  // Self-hosted multi-seed dev: allow loopback when PERC_PUBLIC_ENDPOINT is set explicitly.
+  if (isLoopback && !explicitPublic) return;
   const status = store.status(SEED_USERNAME, endpoint);
   peers.set(SEED_USERNAME, {
     sessionUsername: SEED_USERNAME,
