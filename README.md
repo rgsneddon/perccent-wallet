@@ -103,6 +103,20 @@ A freshly deployed seed may report `peers: 0` until wallets or other seeds regis
 
 Point the wallet at your seed by editing `assets/config/perc_network.json` before building, or override rendezvous in your deployment pipeline.
 
+## Security / Safe use
+
+Perccent Wallet release installers are **checked regularly for safe use** before publish:
+
+- **Malware scan** — `perccent-wallet-v*-windows-x64-setup.exe` and `perccent-wallet-v*-android-setup.apk` under `build/downloads/v<version>/` are scanned with Windows Defender (when available) plus APK/PE integrity checks (expected package id `com.perccent.perccent_wallet`).
+- **Dependency audit** — `flutter pub audit` and `npm audit --audit-level=high` in `perc_chain/` run before each release; documented exceptions live in [SECURITY.md](SECURITY.md).
+- **Integrity** — SHA-256 and SHA-512 checksum sidecars ship with every release asset on [GitHub Releases](https://github.com/rgsneddon/perccent-wallet/releases). Verify the `.sha256` file **before installing**.
+
+**Limitation:** Scans and checksums improve confidence but **do not guarantee** absolute safety. Verify downloads from official URLs, compare checksums, and keep device antivirus enabled.
+
+Pipeline scripts: `scripts/scan_release_artifacts.ps1`, `scripts/audit_dependencies.ps1`, wired into `build_installers.ps1` and `publish_github_release.ps1`.
+
+---
+
 ## Tests
 
 ```bash

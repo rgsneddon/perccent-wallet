@@ -48,6 +48,12 @@ if (-not (Test-Path $installerDir)) {
     throw "Missing installer packages: $installerDir"
 }
 
+& "$PSScriptRoot\audit_dependencies.ps1"
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+& "$PSScriptRoot\scan_release_artifacts.ps1" -Version $versionNoV
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 Get-ChildItem $installerDir -File | ForEach-Object {
     Copy-Item $_.FullName (Join-Path $releaseDir $_.Name) -Force
 }
