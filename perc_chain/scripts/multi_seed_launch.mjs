@@ -117,9 +117,16 @@ async function runOnce(runLabel) {
     }
 
     const endpointsB = [...new Set(peersB.map((p) => p.endpoint).filter(Boolean))];
+    const aliasesB = [
+      ...new Set(peersB.map((p) => p.publicAlias).filter(Boolean)),
+    ];
     const chainOk = peersB.every(
       (p) => (p.evolutionaryChainId ?? CHAIN_ID) === CHAIN_ID,
     );
+    const aliasA = healthA.publicAlias;
+    const aliasB = healthB.publicAlias;
+    const hasUpstreamAlias = aliasesB.includes(aliasA);
+    const hasSelfAlias = aliasesB.includes(aliasB);
 
     const result = {
       run: runLabel,
@@ -130,16 +137,21 @@ async function runOnce(runLabel) {
       peerCountB: peersB.length,
       distinctEndpointsB: endpointsB,
       distinctEndpointCountB: endpointsB.length,
+      expectedAliases: { upstream: aliasA, self: aliasB },
+      peerAliasesB: aliasesB,
+      hasUpstreamAlias,
+      hasSelfAlias,
       chainIdMatch: chainOk,
       pass:
         healthA.ledgerReady &&
         healthB.ledgerReady &&
         peersB.length >= 2 &&
-        endpointsB.length >= 2 &&
+        hasUpstreamAlias &&
+        hasSelfAlias &&
         chainOk,
     };
     log(
-      `${runLabel}: peersB=${peersB.length} distinctEndpoints=${endpointsB.length} pass=${result.pass}`,
+      `${runLabel}: peersB=${peersB.length} aliases=${aliasesB.join(',')} upstream=${hasUpstreamAlias} self=${hasSelfAlias} pass=${result.pass}`,
     );
     return result;
   } finally {
@@ -162,11 +174,19 @@ try {
     run1: {
       peerCount: run1.peerCountB,
       distinctEndpoints: run1.distinctEndpointsB,
+      expectedAliases: run1.expectedAliases,
+      peerAliases: run1.peerAliasesB,
+      hasUpstreamAlias: run1.hasUpstreamAlias,
+      hasSelfAlias: run1.hasSelfAlias,
       peers: run1.peersB,
     },
     run2: {
       peerCount: run2.peerCountB,
       distinctEndpoints: run2.distinctEndpointsB,
+      expectedAliases: run2.expectedAliases,
+      peerAliases: run2.peerAliasesB,
+      hasUpstreamAlias: run2.hasUpstreamAlias,
+      hasSelfAlias: run2.hasSelfAlias,
       peers: run2.peersB,
     },
     pass: run1.pass && run2.pass,
@@ -184,7 +204,7 @@ try {
   );
 
   if (peersOut.pass) {
-    log('multi_seed_launch PASS (both runs, >=2 distinct peers on seed B)');
+    log('multi_seed_launch PASS (both runs, upstream + self aliases on seed B)');
     exitCode = 0;
   } else {
     log('multi_seed_launch FAIL — see multi_seed_peers.json');
