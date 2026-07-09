@@ -25,7 +25,19 @@ $releaseDir = Join-Path $Root 'build\windows\x64\runner\Release'
 $exePath = Join-Path $releaseDir 'perccent_wallet.exe'
 
 if (-not $SkipWindowsBuild) {
-    flutter build windows --release
+    $prevEap = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    flutter build windows --release 2>&1 | ForEach-Object {
+        if ($_ -is [System.Management.Automation.ErrorRecord]) {
+            $msg = $_.ToString()
+            if ($msg -match 'Nuget\.exe not found|Warning:|RemoteException') {
+                Write-Host $msg -ForegroundColor Yellow
+            } else {
+                Write-Error $_
+            }
+        } else { $_ }
+    }
+    $ErrorActionPreference = $prevEap
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 

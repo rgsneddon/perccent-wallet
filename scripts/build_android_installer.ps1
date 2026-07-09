@@ -24,7 +24,19 @@ if (-not $Version -or -not $Build) {
 $apkSrc = Join-Path $Root 'build\app\outputs\flutter-apk\app-release.apk'
 
 if (-not $SkipApkBuild) {
-    flutter build apk --release
+    $prevEap = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    flutter build apk --release 2>&1 | ForEach-Object {
+        if ($_ -is [System.Management.Automation.ErrorRecord]) {
+            $msg = $_.ToString()
+            if ($msg -match 'Warning:|Kotlin Gradle Plugin|Built-in Kotlin|plugin author|RemoteException') {
+                Write-Host $msg -ForegroundColor Yellow
+            } else {
+                Write-Error $_
+            }
+        } else { $_ }
+    }
+    $ErrorActionPreference = $prevEap
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
