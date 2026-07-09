@@ -14,9 +14,9 @@ Document any unmitigated **critical** or **high** findings here with rationale a
 
 ### Documented exceptions
 
-| Finding | Rationale |
-|---------|-----------|
-| `dart pub audit` subcommand unavailable on Dart SDK 3.12.x | Same policy as Evolve: `npm audit` on `perc_chain/` plus `flutter pub outdated` snapshot in audit logs. Documented here per dependency audit exceptions policy. |
+| Exception ID | Rationale |
+|--------------|-----------|
+| EX-dart_pub_audit_unavailable | Dart SDK 3.12.x lacks `dart pub audit`; `npm audit` on `perc_chain/` plus `flutter pub outdated` snapshot in audit logs (same policy as Evolve). |
 
 ## Reporting vulnerabilities
 

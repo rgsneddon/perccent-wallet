@@ -110,3 +110,62 @@ function Write-VersionChecksumManifest {
 
     return $entries
 }
+
+function Test-VersionPackageChecksums {
+    param(
+        [Parameter(Mandatory = $true)][string]$VersionDir,
+        [switch]$RequireSidecars
+    )
+
+    $errors = [System.Collections.Generic.List[string]]::new()
+    $packages = Get-ChildItem $VersionDir -File | Where-Object {
+        $_.Extension -notin '.sha256', '.sha512', '.json' -and
+        $_.Name -notlike 'CHECKSUMS*'
+    }
+
+    foreach ($pkg in $packages) {
+        $expected256 = Get-PackageFileHash -Path $pkg.FullName -Algorithm SHA256
+        $expected512 = Get-PackageFileHash -Path $pkg.FullName -Algorithm SHA512
+
+        $sidecar256 = "$($pkg.FullName).sha256"
+        $sidecar512 = "$($pkg.FullName).sha512"
+
+        if ($RequireSidecars -and -not (Test-Path $sidecar256)) {
+            $errors.Add("Missing sidecar: $sidecar256")
+            continue
+        }
+        if ($RequireSidecars -and -not (Test-Path $sidecar512)) {
+            $errors.Add("Missing sidecar: $sidecar512")
+            continue
+        }
+
+        if (Test-Path $sidecar256) {
+            $line = (Get-Content $sidecar256 -TotalCount 1).Trim()
+            if ($line -notmatch '^([a-f0-9]{64})\s+') {
+                $errors.Add("Invalid SHA-256 sidecar format: $sidecar256")
+            } elseif ($Matches[1] -ne $expected256) {
+                $errors.Add("SHA-256 mismatch for $($pkg.Name)")
+            }
+        }
+
+        if (Test-Path $sidecar512) {
+            $line = (Get-Content $sidecar512 -TotalCount 1).Trim()
+            if ($line -notmatch '^([a-f0-9]{128})\s+') {
+                $errors.Add("Invalid SHA-512 sidecar format: $sidecar512")
+            } elseif ($Matches[1] -ne $expected512) {
+                $errors.Add("SHA-512 mismatch for $($pkg.Name)")
+            }
+        }
+    }
+
+    $manifest256 = Join-Path $VersionDir 'CHECKSUMS.sha256'
+    if ($RequireSidecars -and -not (Test-Path $manifest256)) {
+        $errors.Add("Missing manifest: $manifest256")
+    }
+
+    if ($errors.Count -gt 0) {
+        throw ($errors -join [Environment]::NewLine)
+    }
+
+    return $true
+}

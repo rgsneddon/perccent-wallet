@@ -17,6 +17,9 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & "$PSScriptRoot\audit_dependencies.ps1"
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+& "$PSScriptRoot\verify_download_packages.ps1"
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 & "$PSScriptRoot\scan_release_artifacts.ps1"
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
