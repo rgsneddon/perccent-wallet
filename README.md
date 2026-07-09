@@ -113,7 +113,9 @@ Perccent Wallet release installers are **checked regularly for safe use** before
 
 **Limitation:** Scans and checksums improve confidence but **do not guarantee** absolute safety. Verify downloads from official URLs, compare checksums, and keep device antivirus enabled.
 
-Pipeline scripts: `scripts/scan_release_artifacts.ps1`, `scripts/audit_dependencies.ps1`, wired into `build_installers.ps1` and `publish_github_release.ps1`.
+**Regular command:** **run security audit** — `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_security_audit.ps1` (workspace wrapper: `..\run_security_audit.ps1` audits Evolve + Perccent).
+
+Pipeline scripts: `scripts/run_security_audit.ps1`, `scripts/scan_release_artifacts.ps1`, `scripts/audit_dependencies.ps1`, wired into `build_installers.ps1` and `publish_github_release.ps1`. Post-work manual QA: [MANUAL_TESTS.md](MANUAL_TESTS.md).
 
 ---
 
