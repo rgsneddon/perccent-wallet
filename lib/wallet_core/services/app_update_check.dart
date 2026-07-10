@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import '../../perc/perc_app_version.dart';
+import '../../standalone/my_perc_branding.dart';
 
 /// Result of comparing the installed app against published version feeds.
 class AppUpdateInfo {
@@ -48,20 +49,16 @@ class RemoteVersionFeed {
   }
 }
 
-/// Checks GitHub Pages and main-branch version.json for a newer published build.
+/// Checks perccent-wallet release feeds for a newer MY PERC build.
 class AppUpdateChecker {
   const AppUpdateChecker({http.Client? client}) : _client = client;
 
   final http.Client? _client;
 
-  static const pagesVersionUrl =
-      'https://rgsneddon.github.io/evolve/version.json';
-  static const sourceVersionUrl =
-      'https://raw.githubusercontent.com/rgsneddon/evolve/main/version.json';
-  static const downloadsBaseUrl =
-      'https://rgsneddon.github.io/evolve/downloads/';
-  static const releasesBaseUrl =
-      'https://github.com/rgsneddon/evolve/releases/download';
+  static String get pagesVersionUrl => MyPercBranding.pagesVersionUrl;
+  static String get sourceVersionUrl => MyPercBranding.sourceVersionUrl;
+  static String get downloadsBaseUrl => MyPercBranding.downloadsBaseUrl;
+  static String get releasesBaseUrl => MyPercBranding.releasesBaseUrl;
 
   @visibleForTesting
   static Future<String?> Function(Uri url)? fetchBodyOverride;
@@ -69,9 +66,6 @@ class AppUpdateChecker {
   Future<AppUpdateInfo> check({
     String current = PercAppVersion.current,
   }) async {
-    // gh-pages is the published release feed (installers + web). main/version.json
-    // may run ahead from the pre-push hook before a full publish — do not treat
-    // it as newer than Pages when both are reachable.
     RemoteVersionFeed? newest;
     var anySucceeded = false;
 
@@ -111,31 +105,32 @@ class AppUpdateChecker {
     return updateUrlsForRelease(release).first;
   }
 
-  /// Ordered download candidates — first reachable link wins in the UI.
+  /// Ordered download candidates — perccent-wallet installers only.
   static List<String> updateUrlsForRelease(String release) {
     if (kIsWeb) {
-      return const ['https://rgsneddon.github.io/evolve/'];
+      return [MyPercBranding.downloadsBaseUrl];
     }
     final tag = 'v$release';
+    final prefix = MyPercBranding.installerPrefix;
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return [
-          '$releasesBaseUrl/$tag/evolve-v$release-android-setup.apk',
-          '$downloadsBaseUrl$tag/evolve-v$release-android-setup.apk',
-          'https://github.com/rgsneddon/evolve/releases/tag/$tag',
-          '$downloadsBaseUrl$tag/',
+          '$releasesBaseUrl/$tag/$prefix-v$release-android-setup.apk',
+          '$releasesTagBaseUrl/$tag',
+          downloadsBaseUrl,
         ];
       case TargetPlatform.windows:
         return [
-          '$releasesBaseUrl/$tag/evolve-v$release-windows-x64-setup.exe',
-          '$downloadsBaseUrl$tag/evolve-v$release-windows-x64-setup.exe',
-          'https://github.com/rgsneddon/evolve/releases/tag/$tag',
-          '$downloadsBaseUrl$tag/',
+          '$releasesBaseUrl/$tag/$prefix-v$release-windows-x64-setup.exe',
+          '$releasesTagBaseUrl/$tag',
+          downloadsBaseUrl,
         ];
       default:
         return [downloadsBaseUrl];
     }
   }
+
+  static String get releasesTagBaseUrl => MyPercBranding.releasesTagBaseUrl;
 
   Future<RemoteVersionFeed?> _fetchFeed(Uri uri) async {
     try {

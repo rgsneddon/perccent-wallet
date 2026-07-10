@@ -310,11 +310,17 @@ class AppLocalizations {
 }
 
 final _en = {
-  'wallet_app_title': 'Perccent Wallet',
+  'wallet_app_title': 'MY PERC',
   'credit_governance_paper': 'FCG white paper',
-  'app_title': 'Evolve',
-  'app_subtitle': 'Social Science Chronoflux Framework',
-  'splash_tagline': 'Full Community Governance Suite',
+  'app_title': 'MY PERC',
+  'app_subtitle': 'Standalone Perccent wallet',
+  'splash_tagline': 'Your standalone Perccent wallet',
+  'my_perc_upgrade_advisory_prefix': 'Optional: upgrade to the ',
+  'my_perc_upgrade_evolve_link': 'Full Evolve Suite',
+  'my_perc_upgrade_advisory_mid':
+      ' for analysis and parish governance, or download the latest ',
+  'my_perc_upgrade_wallet_link': 'MY PERC installer',
+  'my_perc_upgrade_advisory_suffix': '.',
   'nav_analysis': 'Analysis',
   'nav_wallet': 'Wallet',
   'nav_security': 'Security',
@@ -355,12 +361,13 @@ final _en = {
   'registration_seed_confirm_saved_action': 'I have written down my seed',
   'registration_seed_skip_action': 'Register without 12 phrase seed',
   'credit_title': 'Credit & governance',
-  'credit_governance_intro': 'This app is best used alongside the ',
-  'credit_governance_link_label': 'Full Community Governance',
+  'credit_governance_intro':
+      'MY PERC handles send, receive, stake, and backup on the Perccent chain. For parish-ward debate, voting, and Chronoflux analysis, we recommend the ',
+  'credit_governance_link_label': 'Evolve Full Community Governance Suite',
   'credit_governance_link_suffix':
-      ' as a tool to debate and come to consensus conclusions within parish wards.',
+      ' — it runs percent-chance and social-cohesion scenarios, structures ward proposals, supports moderator ballots, and links analysis conclusions into governance votes.',
   'credit_parish_note':
-      'Use Evolve Chronoflux analysis to structure ward-level debate and reach shared conclusions — not as a substitute for democratic process, but as a quantitative companion to Full Community Governance.',
+      'The Full Evolve Suite is the companion app for quantitative ward debate and shared conclusions. MY PERC remains your portable PERC wallet; encrypted backups and seed recovery work across both apps so you can restore the same ledger in either product.',
   'credit_cohesion_goal':
       'Build release aims for 94% Social Cohesion within the British Isles.',
   'credit_peace_goal':
@@ -374,7 +381,7 @@ final _en = {
   'creator_attribution_roy': 'ROY D HERBERT',
   'creator_attribution_suffix': ', REWARD TOKEN FORKED / CLONED FROM ',
   'creator_attribution_beam': 'BEAMPRIVACY',
-  'wallet_title': 'Evolve Wallet',
+  'wallet_title': 'MY PERC',
   'wallet_opening_title': 'Opening wallet',
   'wallet_opening_message':
       'Your Perccent wallet is loading. Please wait…',
@@ -665,7 +672,7 @@ final _en = {
   'wallet_password': 'Password',
   'wallet_password_confirm': 'Confirm password',
   'wallet_create_password': 'Create password',
-  'wallet_login_title': 'Evolve Wallet sign-in',
+  'wallet_login_title': 'MY PERC sign-in',
   'wallet_login_note':
       'Sign in with the username you chose when you created your wallet.',
   'wallet_register_title': 'Create your wallet',
@@ -678,8 +685,8 @@ final _en = {
   'wallet_back_to_sign_in': 'Back to sign in',
   'wallet_app_gate_title': 'Create your wallet first',
   'wallet_app_gate_note':
-      'Evolve unlocks after you register and receive a Perccent address on this device.',
-  'splash_enter_app': 'Enter Evolve',
+      'MY PERC unlocks after you register and receive a Perccent address on this device.',
+  'splash_enter_app': 'Enter MY PERC',
   'splash_preparing_wallet': 'Preparing wallet…',
   'splash_wallet_loading': 'Wallet loading…',
   'splash_signed_in_as': 'Signed in as {user}',

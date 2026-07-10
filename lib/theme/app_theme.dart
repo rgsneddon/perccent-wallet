@@ -1,44 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../standalone/my_perc_branding.dart';
+
 class AppTheme {
   static ThemeData dark() {
-    const bg = Color(0xFF0D0F14);
-    const card = Color(0xFF151922);
-    const accent = Color(0xFF6C63FF);
-
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: bg,
+      scaffoldBackgroundColor: MyPercBranding.scaffoldBackground,
       colorScheme: const ColorScheme.dark(
-        primary: accent,
-        secondary: Color(0xFF00D9C0),
-        surface: card,
+        primary: MyPercBranding.primaryAccent,
+        secondary: MyPercBranding.secondaryAccent,
+        surface: MyPercBranding.surface,
+        onPrimary: Color(0xFF1A1208),
+        onSecondary: Color(0xFF0A1A18),
+        onSurface: MyPercBranding.textPrimary,
       ),
       cardTheme: CardThemeData(
-        color: card,
+        color: MyPercBranding.surface,
         elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: const BorderSide(color: MyPercBranding.borderSubtle),
+        ),
       ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: bg,
+        backgroundColor: MyPercBranding.scaffoldBackground,
+        foregroundColor: MyPercBranding.textPrimary,
         elevation: 0,
         centerTitle: false,
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: const Color(0xFF1A1F2B),
+        fillColor: MyPercBranding.surfaceElevated,
+        labelStyle: const TextStyle(color: MyPercBranding.textSecondary),
+        hintStyle: const TextStyle(color: MyPercBranding.textMuted),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.white.withOpacity(0.08)),
+          borderSide: const BorderSide(color: MyPercBranding.borderSubtle),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: MyPercBranding.primaryAccent),
         ),
       ),
       textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme).apply(
-        bodyColor: const Color(0xFFE8EAED),
-        displayColor: const Color(0xFFE8EAED),
+        bodyColor: MyPercBranding.textPrimary,
+        displayColor: MyPercBranding.textPrimary,
       ),
+      dividerColor: MyPercBranding.borderSubtle,
     );
   }
 }

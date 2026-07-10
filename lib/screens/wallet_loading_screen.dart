@@ -13,10 +13,12 @@ import '../perc/widgets/wallet_credential_error_banner.dart';
 import '../providers/locale_provider.dart';
 import '../wallet_core/services/app_update_check.dart';
 import '../perc/widgets/wallet_language_selector.dart';
+import '../standalone/my_perc_branding.dart';
+import '../widgets/my_perc_upgrade_advisory.dart';
 import '../widgets/wallet_splash_poster.dart';
 import '../widgets/splash_version_status.dart';
 
-/// Launch screen — static banner until the user signs in or enters.
+/// MY PERC launch screen — solid background until the user signs in.
 class WalletLoadingScreen extends StatefulWidget {
   const WalletLoadingScreen({
     super.key,
@@ -152,20 +154,6 @@ class _WalletLoadingScreenState extends State<WalletLoadingScreen>
         fit: StackFit.expand,
         children: [
           const WalletSplashPoster(),
-          const DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0x66080B12),
-                  Color(0xAA0A0E18),
-                  Color(0xEE0A0E18),
-                ],
-                stops: [0.0, 0.45, 1.0],
-              ),
-            ),
-          ),
           SafeArea(
             child: LayoutBuilder(
               builder: (context, constraints) {
@@ -180,35 +168,25 @@ class _WalletLoadingScreenState extends State<WalletLoadingScreen>
                           padding: const EdgeInsets.symmetric(horizontal: 24),
                           child: Column(
                             children: [
-                              ShaderMask(
-                                shaderCallback: (bounds) =>
-                                    const LinearGradient(
-                                  colors: [
-                                    Color(0xFF8B83FF),
-                                    Color(0xFF6C63FF),
-                                    Color(0xFF00D9C0),
-                                  ],
-                                ).createShader(bounds),
-                                child: const Text(
-                                  'EVOLVE',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 5,
-                                    color: Colors.white,
-                                  ),
+                              Text(
+                                MyPercBranding.productName,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: 3,
+                                  color: MyPercBranding.textPrimary,
                                 ),
                               ),
                               const SizedBox(height: 6),
                               Text(
                                 strings.t('splash_tagline'),
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 13,
-                                  fontWeight: FontWeight.w600,
-                                  letterSpacing: 1.2,
-                                  color: Colors.white.withValues(alpha: 0.82),
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 0.4,
+                                  color: MyPercBranding.textSecondary,
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -216,17 +194,20 @@ class _WalletLoadingScreenState extends State<WalletLoadingScreen>
                               const SizedBox(height: 4),
                               Text(
                                 WalletLoadingScreen.versionLabel,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 11,
                                   letterSpacing: 2,
-                                  color:
-                                      Colors.white.withValues(alpha: 0.55),
+                                  color: MyPercBranding.textMuted,
                                 ),
                               ),
                               SplashVersionStatus(
                                 info: _updateInfo,
                                 checking: _checkingUpdate,
                                 strings: strings,
+                              ),
+                              MyPercUpgradeAdvisory(
+                                strings: strings,
+                                latestRelease: _updateInfo?.latestRelease,
                               ),
                             ],
                           ),
@@ -288,9 +269,9 @@ class _WalletLoadingScreenState extends State<WalletLoadingScreen>
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: const Color(0xFF141824).withValues(alpha: 0.94),
+        color: MyPercBranding.surface.withValues(alpha: 0.96),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+        border: Border.all(color: MyPercBranding.borderSubtle),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),

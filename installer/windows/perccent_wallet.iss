@@ -8,8 +8,8 @@
   #define WalletBuild "2"
 #endif
 
-#define WalletAppName "Perccent Wallet"
-#define WalletPublisher "Perccent Wallet"
+#define WalletAppName "MY PERC"
+#define WalletPublisher "MY PERC"
 #define WalletExeName "perccent_wallet.exe"
 #define WalletReleaseDir "..\..\build\windows\x64\runner\Release"
 #define WalletOutputBase "perccent-wallet-v" + WalletVersion + "-windows-x64-setup"

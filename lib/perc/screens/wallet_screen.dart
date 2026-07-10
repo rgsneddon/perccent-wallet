@@ -13,8 +13,7 @@ import '../models/perc_transaction.dart';
 import '../perc_chain_constants.dart';
 import '../services/perc_currency.dart';
 import '../providers/perc_wallet_provider.dart';
-import '../services/perc_faucet.dart';
-import '../services/perc_faucet_cooldown.dart';
+
 import '../services/perc_inflation.dart';
 import '../services/perc_account_privacy.dart';
 import '../services/perc_beam_privacy.dart';
@@ -505,8 +504,7 @@ class _WalletScreenState extends State<WalletScreen> {
         const SizedBox(height: 12),
         _treasuryCard(wallet, strings),
         const SizedBox(height: 12),
-        _faucetCard(wallet, strings),
-        const SizedBox(height: 12),
+
         if (wallet.canReceiveFromSession)
           _addressCard(context, wallet, strings)
         else if (wallet.isTreasuryAccount && wallet.isTreasurySendLocked)
@@ -563,8 +561,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   const SizedBox(height: 12),
                   _treasuryCard(wallet, strings),
                   const SizedBox(height: 12),
-                  _faucetCard(wallet, strings),
-                  const SizedBox(height: 12),
+
                   if (wallet.canReceiveFromSession)
                     _addressCard(context, wallet, strings)
                   else if (wallet.isTreasuryAccount && wallet.isTreasurySendLocked)
@@ -1296,73 +1293,6 @@ class _WalletScreenState extends State<WalletScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _faucetCard(PercWalletProvider wallet, AppLocalizations strings) {
-    final reward = wallet.lastReward;
-    final cooldown = wallet.faucetCooldownRemaining;
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const Icon(Icons.water_drop_outlined, color: Color(0xFF00D9C0), size: 20),
-                const SizedBox(width: 8),
-                Text(
-                  strings.t('wallet_faucet_title'),
-                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Text(
-              strings.t('wallet_faucet_note'),
-              style: const TextStyle(fontSize: 12, color: Color(0xFF9BA3B8), height: 1.45),
-            ),
-            if (cooldown != null) ...[
-              const SizedBox(height: 10),
-              Text(
-                strings
-                    .t('wallet_faucet_cooldown')
-                    .replaceAll('{wait}', PercFaucetCooldown.formatWait(cooldown)),
-                style: const TextStyle(fontSize: 12, color: Color(0xFFFF8A65)),
-              ),
-            ],
-            if (reward != null) ...[
-              const SizedBox(height: 12),
-              _rewardRow(
-                strings.t('wallet_faucet_outcome'),
-                reward.outcomeFractionLabel,
-              ),
-              _rewardRow(
-                strings.t('wallet_faucet_total'),
-                '${reward.total.displayFixed8} PERC',
-              ),
-            ],
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _rewardRow(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(label, style: const TextStyle(fontSize: 12, color: Color(0xFFB8B5C8))),
-          ),
-          Text(
-            value,
-            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Color(0xFF00D9C0)),
-          ),
-        ],
       ),
     );
   }

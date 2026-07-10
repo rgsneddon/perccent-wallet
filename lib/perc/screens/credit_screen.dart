@@ -50,7 +50,7 @@ class CreditScreen extends StatelessWidget {
                             children: [
                               TextSpan(text: strings.t('credit_governance_intro')),
                               TextSpan(
-                                text: strings.t('credit_governance_paper'),
+                                text: strings.t('credit_governance_link_label'),
                                 style: const TextStyle(
                                   color: Color(0xFF6C63FF),
                                   decoration: TextDecoration.underline,
