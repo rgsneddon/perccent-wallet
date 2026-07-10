@@ -163,7 +163,7 @@ void main() {
   });
 
   test('live seed peer online window aligns with wallet (7 minutes)', () async {
-    if (skipLive) return;
+    if (skipLive || !await liveSeedSupportsAccountPrivacy()) return;
     final health = await getJson('/health');
     expect(health['service'], 'perc-internet-node');
     expect(
