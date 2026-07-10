@@ -28,13 +28,10 @@ if (-not $SkipApkBuild) {
     $ErrorActionPreference = 'Continue'
     flutter build apk --release 2>&1 | ForEach-Object {
         if ($_ -is [System.Management.Automation.ErrorRecord]) {
-            $msg = $_.ToString()
-            if ($msg -match 'Warning:|Kotlin Gradle Plugin|Built-in Kotlin|plugin author|RemoteException|Future versions|KGP|incompatible-kotlin|changelogs of these plugins') {
-                Write-Host $msg -ForegroundColor Yellow
-            } else {
-                Write-Error $_
-            }
-        } else { $_ }
+            Write-Host $_.ToString() -ForegroundColor Yellow
+        } else {
+            $_
+        }
     }
     $ErrorActionPreference = $prevEap
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
