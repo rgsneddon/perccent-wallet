@@ -33,9 +33,9 @@ void main() {
     expect(AppUpdateChecker.sourceVersionUrl, contains('perccent-wallet'));
     expect(AppUpdateChecker.downloadsBaseUrl, contains('perccent-wallet'));
 
-    final urls = AppUpdateChecker.updateUrlsForRelease('1.0.5');
+    final urls = AppUpdateChecker.updateUrlsForRelease('1.0.6');
     expect(urls, isNotEmpty);
-    expect(urls.first, contains('perccent-wallet-v1.0.5-windows-x64-setup.exe'));
+    expect(urls.first, contains('perccent-wallet-v1.0.6-windows-x64-setup.exe'));
     expect(urls.join('|'), isNot(contains('evolve-v')));
     expect(urls.join('|'), isNot(contains('rgsneddon.github.io/evolve/downloads')));
   });
