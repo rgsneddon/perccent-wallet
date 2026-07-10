@@ -29,7 +29,7 @@ if (-not $SkipApkBuild) {
     flutter build apk --release 2>&1 | ForEach-Object {
         if ($_ -is [System.Management.Automation.ErrorRecord]) {
             $msg = $_.ToString()
-            if ($msg -match 'Warning:|Kotlin Gradle Plugin|Built-in Kotlin|plugin author|RemoteException') {
+            if ($msg -match 'Warning:|Kotlin Gradle Plugin|Built-in Kotlin|plugin author|RemoteException|Future versions|KGP|incompatible-kotlin|changelogs of these plugins') {
                 Write-Host $msg -ForegroundColor Yellow
             } else {
                 Write-Error $_
