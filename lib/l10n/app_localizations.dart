@@ -389,7 +389,7 @@ final _en = {
       'The wallet could not open. Check your connection and try again.',
   'wallet_opening_retry': 'Try again',
   'wallet_details_section': 'Chain & network details',
-  'wallet_subtitle': 'Perccent chain · scenario-driven treasury',
+  'wallet_subtitle': 'Perccent chain · network treasury',
   'wallet_creator_credit':
       'CREATED BY RUSSELL G SNEDDON BASED ON THE CHRONOFLUX PRINCIPIA BY ROY D HERBERT, REWARD TOKEN FORKED / CLONED FROM BEAMPRIVACY',
   'wallet_privacy_title': 'Beam-confidential Perccent',
@@ -401,7 +401,7 @@ final _en = {
   'wallet_balance_label': 'Available balance',
   'wallet_staking_title': 'Cumulative staking',
   'wallet_staking_note':
-      'Confirmed held PERC earns 0.00000005 PERC per 1 PERC held each scenario block after 1 block confirmation. Treasury funds all holder rewards network-wide.',
+      'Confirmed held PERC earns 0.00000005 PERC per 1 PERC held each network block after 1 block confirmation. Treasury funds all holder rewards network-wide.',
   'wallet_staking_earned': 'Total staking earned: {amount} PERC',
   'wallet_burned_title': 'Burned PERC',
   'wallet_burned_note':
@@ -413,37 +413,37 @@ final _en = {
   'wallet_signed_in_as': 'Signed in as {user}',
   'wallet_logout': 'Sign out',
   'wallet_session_expired':
-      'Your wallet session ended after 7 minutes away from the seed connection — sign in again to run SCS analyses.',
+      'Your wallet session ended after 7 minutes away from the seed connection — sign in again to continue.',
   'wallet_treasury_title': 'Treasury emission',
   'wallet_treasury_note':
-      'Perccent chain advances on scenario analysis — not on Grok construal or field keystrokes. Treasury emission is dynamic: it scales with average block time and wallet load on top of the faucet-aligned baseline (up to 1 PERC per 7-minute window at 1.0× load). Infinite Chronoflux continuum supply.',
+      'Perccent treasury emission scales with network block pace and wallet activity (up to 1 PERC per 7-minute window at 1.0× load). Infinite Chronoflux continuum supply.',
   'wallet_treasury_dynamic_rate':
       'Current emission: {rate} PERC/min — load {load}× · block pace {block}×',
   'wallet_treasury_cycle': 'Treasury cycle #{cycle}',
   'wallet_treasury_minted': '{minted} PERC minted ({pct}% continuum)',
   'wallet_treasury_remaining': 'Treasury remaining: {amount} PERC',
-  'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
+  'wallet_treasury_pool': 'Treasury pool: {amount} PERC',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
   'wallet_treasury_inflation_ready':
       'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_inflation_critical':
-      'Treasury at 1 cent reserve — aligned emission accrues on next scenario',
+      'Treasury at 1 cent reserve — aligned emission accrues with next network activity',
   'wallet_treasury_send_locked':
-      'Manual sends from evolve_treasury are disabled. Emission and faucet payouts continue.',
+      'Manual sends from evolve_treasury are disabled. Network emission continues.',
   'wallet_err_treasury_no_manual_funding':
-      'evolve_treasury cannot receive manual transfers — treasury PERC is emitted only when a user runs a scenario.',
+      'evolve_treasury cannot receive manual transfers — treasury PERC is emitted through network activity.',
   'wallet_treasury_no_receive_address':
-      'Treasury has no manual receive address — PERC is emitted only when users run scenarios.',
+      'Treasury has no manual receive address — PERC is emitted through network activity.',
   'wallet_treasury_manual_send_note':
-      'Treasury is active — faucet-aligned emission (~0.14285714 PERC/min) and scenario payouts continue. Manual sends from evolve_treasury are disabled.',
+      'Treasury is active — network emission (~0.14285714 PERC/min) continues. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_offline_note':
       'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
   'wallet_block_height': 'Block height: {height}',
   'wallet_scenario_block_height':
-      'Your scenario block: {current} / {max}',
+      'Your network block: {current} / {max}',
   'wallet_scenario_block_capped':
-      'Scenario block cap reached ({max} scenario checks)',
+      'Network block cap reached ({max} checkpoints)',
   'wallet_seed_block_anchor': 'Seed anchor: block {block}',
   'wallet_faucet_title': 'Analysis faucet',
   'wallet_faucet_note':
@@ -573,14 +573,14 @@ final _en = {
   'wallet_explorer_title': 'the blockchain explorer',
   'wallet_explorer_subtitle': 'Graph-based Perccent chain dapp',
   'wallet_explorer_block_label': 'Current block',
-  'wallet_explorer_empty': 'No blocks yet — run a scenario to advance the chain.',
+  'wallet_explorer_empty': 'No blocks yet — sync your wallet to catch up with the network.',
   'wallet_explorer_emission_chart': 'Treasury emission per block',
   'wallet_explorer_cumulative_chart': 'Cumulative treasury minted',
   'wallet_chronoflux_graph_title': 'Chronoflux five-point variables',
   'wallet_chronoflux_graph_note':
       'Pentagon radar and five-point time series for ρt, ω, σ, Iτ, Jμ — times match Chronoflux input order across scenario draws.',
   'wallet_chronoflux_graph_empty':
-      'Run a percent chance or social cohesion analysis to populate Chronoflux variable graphs.',
+      'No Chronoflux variable history yet — network activity will populate these graphs.',
   'wallet_explorer_legend_emission': 'Treasury Perccent (PERC)',
   'wallet_explorer_legend_txs': 'Transactions',
   'wallet_explorer_history': 'BLOCK HISTORY',
@@ -631,7 +631,7 @@ final _en = {
   'wallet_explorer_microblock_log_ward_status':
       'Ward {ward} log: {count} / {bundle} entries',
   'wallet_explorer_microblock_log_empty':
-      'No microblocks yet — type in the analysis fields after blockchain launch.',
+      'No microblocks yet — network activity will appear here after blockchain launch.',
   'wallet_explorer_microblock_log_entry':
       '#{index} ward {ward} · μ{pos} · {time} · {label}{extra}',
   'wallet_explorer_microblock_log_truncated':
@@ -649,7 +649,7 @@ final _en = {
   'wallet_explorer_label_projector': 'Projector h(n)μν from frame',
   'wallet_cooldown_popup_title': 'Treasury draw on cooldown',
   'wallet_cooldown_popup_body':
-      'Your wallet already drew from treasury within the last 7 minutes. The Perccent chain advances on scenarios — your next eligible draw (and block) is in approximately {blockWait}. You can draw xx/100 PERC again after {wait}.',
+      'Your wallet already drew from treasury within the last 7 minutes. Your next eligible draw is in approximately {blockWait}. You can draw again after {wait}.',
   'wallet_cooldown_popup_ok': 'OK',
   'wallet_blockchain_awaiting_launch':
       'Connecting to the live Perccent seed — your wallet will be ready once sync completes.',
@@ -668,7 +668,7 @@ final _en = {
       'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_treasury_setup_title': 'Secure treasury account',
   'wallet_treasury_setup_note':
-      'Treasury holder receives all scenario-driven emissions. Create your password now (first use only).',
+      'Treasury holder receives all network-driven emissions. Create your password now (first use only).',
   'wallet_treasury_username': 'Treasury username',
   'wallet_password': 'Password',
   'wallet_password_confirm': 'Confirm password',
@@ -738,7 +738,7 @@ final _en = {
       'Others can scan this QR code or copy your PERC address to send Perccent (PERC) to you.',
   'wallet_receive_qr_hint': 'Scan to send PERC',
   'wallet_tx_treasury': 'Treasury emission',
-  'wallet_tx_reward': 'Analysis reward',
+  'wallet_tx_reward': 'Network reward',
   'wallet_tx_sent': 'Sent to {user}',
   'wallet_tx_received': 'Received from {user}',
   'wallet_tx_pending': 'Pending',
@@ -772,7 +772,7 @@ final _en = {
       'Sent {amount} {symbol} to {dest} (network fee {fee} {symbol}) — delivering on the network',
   'wallet_status_sent_queued':
       'Sent {amount} {symbol} to {dest} (network fee {fee} {symbol}) — queued until they sign in on the network within {delay}, otherwise returns to your wallet',
-  'wallet_status_treasury_empty': 'Treasury empty — run another scenario later',
+  'wallet_status_treasury_empty': 'Treasury empty — sync your wallet or try again later',
   'wallet_status_treasury_cap': 'Treasury cap reached',
   'wallet_status_faucet_credited': '+{amount} {symbol}',
   'wallet_faucet_label_scs': 'Social cohesion score analysis',
@@ -1257,13 +1257,13 @@ final _es = {
   'wallet_time_confirmations_title': 'Confirmaciones Chronoflux TIME',
   'wallet_supply_infinite': 'Suministro continuo infinito (∞ PERC)',
   'wallet_title': 'Monedero Evolve',
-  'wallet_subtitle': 'Cadena Perccent · tesorería por escenarios',
+  'wallet_subtitle': 'Cadena Perccent · tesorería de red',
   'wallet_creator_credit':
       'Creado por rgsneddon · con Grok · Roy D Herbert (Chronoflux Principia) · Valdok · CTO de Beam Alex Romanov — bifurcación Perccent con privacidad Beam',
   'wallet_balance_label': 'Saldo disponible',
   'wallet_staking_title': 'Staking acumulativo',
   'wallet_staking_note':
-      'El PERC confirmado en cartera gana 0,00000005 PERC por 1 PERC mantenido en cada bloque de escenario tras 1 confirmación. El tesoro financia todas las recompensas de la red.',
+      'El PERC confirmado en cartera gana 0,00000005 PERC por 1 PERC mantenido en cada bloque de red tras 1 confirmación. El tesoro financia todas las recompensas de la red.',
   'wallet_staking_earned': 'Staking total ganado: {amount} PERC',
   'wallet_burned_title': 'PERC quemado',
   'wallet_burned_note':
@@ -1275,33 +1275,33 @@ final _es = {
   'wallet_signed_in_as': 'Sesión: {user}',
   'wallet_logout': 'Cerrar sesión',
   'wallet_session_expired':
-      'Su sesión de cartera terminó tras 7 minutos sin conexión al nodo semilla — inicie sesión de nuevo para ejecutar análisis SCS.',
+      'Su sesión de cartera terminó tras 7 minutos sin conexión al nodo semilla — inicie sesión de nuevo para continuar.',
   'wallet_treasury_title': 'Emisión de tesorería',
   'wallet_treasury_note':
-      'La cadena Perccent avanza con análisis de escenarios — no con construcción Grok ni pulsaciones de campo. La emisión es dinámica: escala con el tiempo medio de bloque y la carga de carteras sobre la base del grifo (hasta 1 PERC / 7 min a 1.0×). Suministro continuo infinito Chronoflux.',
+      'La emisión de tesorería Perccent escala con el ritmo de bloques de red y la actividad de carteras (hasta 1 PERC / 7 min a 1.0×). Suministro continuo infinito Chronoflux.',
   'wallet_treasury_dynamic_rate':
       'Emisión actual: {rate} PERC/min — carga {load}× · ritmo de bloque {block}×',
   'wallet_treasury_cycle': 'Ciclo de tesorería #{cycle}',
   'wallet_treasury_minted': '{minted} PERC acuñados ({pct}% continuo)',
   'wallet_treasury_remaining': 'Tesorería restante: {amount} PERC',
-  'wallet_treasury_pool': 'Fondo de tesorería (grifo): {amount} PERC',
+  'wallet_treasury_pool': 'Fondo de tesorería: {amount} PERC',
   'wallet_treasury_inflation_epoch': 'Última época de inflación: {time}',
   'wallet_treasury_inflation_next': 'Tiempo hasta la próxima inflación: {wait}',
   'wallet_treasury_inflation_ready':
       'Inflación de tesorería lista — la próxima emisión se acumula con la actividad de red',
   'wallet_treasury_inflation_critical':
-      'Tesorería en reserva de 1 cent — la emisión alineada se acumula en el próximo escenario',
+      'Tesorería en reserva de 1 cent — la emisión alineada se acumula con la próxima actividad de red',
   'wallet_treasury_send_locked':
-      'Los envíos manuales desde evolve_treasury están deshabilitados. La emisión y el grifo continúan.',
+      'Los envíos manuales desde evolve_treasury están deshabilitados. La emisión de red continúa.',
   'wallet_treasury_manual_send_note':
-      'La tesorería está activa — emisión alineada con el grifo (~0,14285714 PERC/min) y pagos continúan. Los envíos manuales desde evolve_treasury están deshabilitados.',
+      'La tesorería está activa — emisión de red (~0,14285714 PERC/min) continúa. Los envíos manuales desde evolve_treasury están deshabilitados.',
   'wallet_treasury_offline_note':
       'La tesorería espera el lanzamiento de la cadena. Sincronice su monedero tras el lanzamiento para unirse a las recompensas de red.',
   'wallet_block_height': 'Altura de bloque: {height}',
   'wallet_scenario_block_height':
-      'Tu bloque de escenario: {current} / {max}',
+      'Tu bloque de red: {current} / {max}',
   'wallet_scenario_block_capped':
-      'Límite de bloques de escenario alcanzado ({max} análisis)',
+      'Límite de bloques de red alcanzado ({max} puntos de control)',
   'wallet_seed_block_anchor': 'Ancla semilla: bloque {block}',
   'wallet_faucet_title': 'Grifo de análisis',
   'wallet_faucet_note':
@@ -1313,14 +1313,14 @@ final _es = {
   'wallet_explorer_title': 'the blockchain explorer',
   'wallet_explorer_subtitle': 'Dapp gráfica de la cadena Perccent',
   'wallet_explorer_block_label': 'Bloque actual',
-  'wallet_explorer_empty': 'Sin bloques — ejecute un escenario para avanzar la cadena.',
+  'wallet_explorer_empty': 'Sin bloques — sincronice su monedero para unirse a la red.',
   'wallet_explorer_emission_chart': 'Emisión de tesorería por bloque',
   'wallet_explorer_cumulative_chart': 'Acuñación acumulada de tesorería',
   'wallet_chronoflux_graph_title': 'Cinco variables Chronoflux',
   'wallet_chronoflux_graph_note':
       'Radar pentagonal y series de cinco puntos para ρt, ω, σ, Iτ, Jμ — tiempos alineados al orden de entrada Chronoflux.',
   'wallet_chronoflux_graph_empty':
-      'Ejecute un análisis de probabilidad o cohesión social para poblar los gráficos.',
+      'Aún no hay historial Chronoflux — la actividad de red llenará estos gráficos.',
   'wallet_explorer_legend_emission': 'Perccent tesorería (PERC)',
   'wallet_explorer_legend_txs': 'Transacciones',
   'wallet_explorer_history': 'HISTORIAL DE BLOQUES',
@@ -1359,7 +1359,7 @@ final _es = {
   'wallet_explorer_microblock_log_ward_status':
       'Registro ward {ward}: {count} / {bundle} entradas',
   'wallet_explorer_microblock_log_empty':
-      'Sin microbloques aún — escriba en los campos de análisis tras el lanzamiento de la cadena.',
+      'Sin microbloques aún — la actividad de red aparecerá aquí tras el lanzamiento de la cadena.',
   'wallet_explorer_microblock_log_entry':
       '#{index} ward {ward} · μ{pos} · {time} · {label}{extra}',
   'wallet_explorer_microblock_log_truncated':
@@ -1376,7 +1376,7 @@ final _es = {
   'wallet_explorer_label_projector': 'Proyector h(n)μν del marco',
   'wallet_cooldown_popup_title': 'Retiro de tesorería en espera',
   'wallet_cooldown_popup_body':
-      'Su monedero ya retiró de la tesorería en los últimos 7 minutos. La cadena avanza con escenarios — su próximo retiro (y bloque) es en aproximadamente {blockWait}. Puede retirar xx/100 PERC de nuevo tras {wait}.',
+      'Su monedero ya retiró de la tesorería en los últimos 7 minutos. Su próximo retiro elegible es en aproximadamente {blockWait}. Puede retirar de nuevo tras {wait}.',
   'wallet_cooldown_popup_ok': 'OK',
   'wallet_blockchain_awaiting_launch':
       'Conectando al nodo semilla Perccent — su monedero estará listo al completar la sincronización.',
@@ -1466,12 +1466,12 @@ final _es = {
       'Otros pueden escanear este código QR o copiar su dirección PERC para enviarle Perccent (PERC).',
   'wallet_receive_qr_hint': 'Escanear para enviar PERC',
   'wallet_tx_treasury': 'Emisión de tesorería',
-  'wallet_tx_reward': 'Recompensa de análisis',
+  'wallet_tx_reward': 'Recompensa de red',
   'wallet_tx_sent': 'Enviado a {user}',
   'wallet_tx_received': 'Recibido de {user}',
   'wallet_tx_pending': 'Pendiente',
   'wallet_tx_pending_hint':
-      'Ejecute un escenario en la sección Análisis para confirmar esta transferencia y acreditar su saldo.',
+      'Confirmando la transferencia en la red.',
   'grok_construe_label': 'CONSTRUIR CON GROK',
   'grok_bar_hint':
       'Requiere X Premium. Escriba la pregunta y pulse COMENZAR CONSTRUCCIÓN GROK — Grok rellena ω/σ/Iτ/Jμ desde el discurso público y datos (sin repetir la pregunta).',

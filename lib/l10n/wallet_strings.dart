@@ -34,7 +34,7 @@ const walletStringsEs = <String, String>{
       'Enviado {amount} {symbol} a {dest} (comisión de red {fee} {symbol}) — en cola hasta que inicien sesión en la red en {delay}; si no, vuelve a su monedero',
   'wallet_status_signed_in': 'Sesión iniciada como {user}',
   'wallet_status_treasury_cap': 'Límite de tesorería alcanzado',
-  'wallet_status_treasury_empty': 'Tesorería vacía — ejecute otro escenario más tarde',
+  'wallet_status_treasury_empty': 'Tesorería vacía — sincronice su monedero o inténtelo más tarde',
   'wallet_status_treasury_secured':
       'Tesorería asegurada — en espera del inicio de sesión de tesorería semilla para lanzar la cadena',
   'wallet_sync_button': 'Sincronizar monedero',
@@ -87,12 +87,12 @@ const walletStringsFr = <String, String>{
   'wallet_camera_permission_title': 'Autoriser l\'accès à la caméra',
   'wallet_choose_username': 'Choisir un nom d\'utilisateur',
   'wallet_chronoflux_graph_empty':
-      'Lancez une analyse de probabilité % ou de cohésion sociale pour remplir les graphiques de variables Chronoflux.',
+      'Pas encore d\'historique Chronoflux — l\'activité réseau remplira ces graphiques.',
   'wallet_chronoflux_graph_note':
       'Radar pentagonal et séries temporelles à cinq points pour ρt, ω, σ, Iτ, Jμ — les temps suivent l\'ordre des entrées Chronoflux selon les tirages de scénario.',
   'wallet_chronoflux_graph_title': 'Variables Chronoflux à cinq points',
   'wallet_cooldown_popup_body':
-      'Votre portefeuille a déjà puisé à la trésorerie dans les 7 dernières minutes. La chaîne Perccent avance sur les scénarios — votre prochain tirage (et bloc) éligible est dans environ {blockWait}. Vous pourrez de nouveau tirer xx/100 PERC après {wait}.',
+      'Votre portefeuille a déjà puisé à la trésorerie dans les 7 dernières minutes. Prochain tirage éligible dans environ {blockWait}. Nouveau tirage possible après {wait}.',
   'wallet_cooldown_popup_ok': 'OK',
   'wallet_cooldown_popup_title': 'Tirage trésorerie en attente',
   'wallet_copy_address': 'Copier l\'adresse',
@@ -151,7 +151,7 @@ const walletStringsFr = <String, String>{
       'Le même vecteur ne peut pas définir le cadre et fournir la dérive spatiale. La dérive est projetée lorsque le projecteur est construit à partir de la direction qu\'il teste.',
   'wallet_explorer_degenerate_title': 'Ansatz dégénéré à un vecteur — représentation frame-flow non admissible',
   'wallet_explorer_emission_chart': 'Émission trésorerie par bloc',
-  'wallet_explorer_empty': 'Pas encore de blocs — lancez un scénario pour faire avancer la chaîne.',
+  'wallet_explorer_empty': 'Pas encore de blocs — synchronisez votre portefeuille pour rejoindre le réseau.',
   'wallet_explorer_frame_flow_center':
       'Scission frame-flow licite — le cadre définit la tranche ; la dérive reste dans la tranche',
   'wallet_explorer_frame_flow_status':
@@ -173,7 +173,7 @@ const walletStringsFr = <String, String>{
   'wallet_explorer_microblock_height': 'Microblocs d\'usage équitable enregistrés : {count}',
   'wallet_explorer_microblock_log_count': 'Entrées du journal : {count}',
   'wallet_explorer_microblock_log_empty':
-      'Pas encore de microblocs — saisissez dans les champs d\'analyse après le lancement de la blockchain.',
+      'Pas encore de microblocs — l\'activité réseau apparaîtra ici après le lancement de la blockchain.',
   'wallet_explorer_microblock_log_entry': '#{index} ward {ward} · μ{pos} · {time} · {label}{extra}',
   'wallet_explorer_microblock_log_note':
       'Chaque microbloc enregistre une interaction équitable — frappes et modifications des champs du formulaire d\'analyse.',
@@ -242,8 +242,8 @@ const walletStringsFr = <String, String>{
   'wallet_register_note':
       'Choisissez un nom d\'utilisateur et un mot de passe — votre adresse Perccent est générée sur cet appareil.',
   'wallet_register_title': 'Créer votre portefeuille',
-  'wallet_scenario_block_capped': 'Plafond de bloc scénario atteint ({max} vérifications)',
-  'wallet_scenario_block_height': 'Votre bloc scénario : {current} / {max}',
+  'wallet_scenario_block_capped': 'Plafond de bloc réseau atteint ({max} points de contrôle)',
+  'wallet_scenario_block_height': 'Votre bloc réseau : {current} / {max}',
   'wallet_seed_block_anchor': 'Ancre seed : bloc {block}',
   'wallet_send': 'Envoyer',
   'wallet_send_address_pick': 'Ou choisir une adresse connue',
@@ -268,7 +268,7 @@ const walletStringsFr = <String, String>{
   'wallet_send_to': 'Vers adresse PERC',
   'wallet_send_to_hint': 'Collez ou scannez l\'adresse PERC du destinataire',
   'wallet_session_expired':
-      'Votre session portefeuille a expiré après 7 minutes sans connexion seed — reconnectez-vous pour lancer des analyses SCS.',
+      'Votre session portefeuille a expiré après 7 minutes sans connexion seed — reconnectez-vous pour continuer.',
   'wallet_sidechain_height': 'Hauteur microbloc side chain',
   'wallet_sidechain_id': 'ID side chain',
   'wallet_sidechain_last_seal': 'Dernier bloc de scellement',
@@ -280,7 +280,7 @@ const walletStringsFr = <String, String>{
   'wallet_signed_in_as': 'Connecté en tant que {user}',
   'wallet_staking_earned': 'Staking cumulé gagné : {amount} PERC',
   'wallet_staking_note':
-      'Le PERC confirmé détenu rapporte 0,00000005 PERC par 1 PERC détenu à chaque bloc de scénario après 1 confirmation. Le trésor finance toutes les récompenses du réseau.',
+      'Le PERC confirmé détenu rapporte 0,00000005 PERC par 1 PERC détenu à chaque bloc réseau après 1 confirmation. Le trésor finance toutes les récompenses du réseau.',
   'wallet_staking_title': 'Staking cumulatif',
   'wallet_status_account_created': 'Compte créé',
   'wallet_status_faucet_credited': '+{amount} {symbol}',
@@ -290,10 +290,10 @@ const walletStringsFr = <String, String>{
       'Envoyé {amount} {symbol} à {dest} (frais réseau {fee} {symbol}) — en file jusqu\'à connexion sur le réseau sous {delay}, sinon retour vers votre portefeuille',
   'wallet_status_signed_in': 'Connecté en tant que {user}',
   'wallet_status_treasury_cap': 'Plafond de trésorerie atteint',
-  'wallet_status_treasury_empty': 'Trésorerie vide — relancez un scénario plus tard',
+  'wallet_status_treasury_empty': 'Trésorerie vide — synchronisez votre portefeuille ou réessayez plus tard',
   'wallet_status_treasury_secured':
       'Trésorerie sécurisée — en attente de la connexion trésorerie seed pour lancer la chaîne',
-  'wallet_subtitle': 'Chaîne Perccent · trésorerie pilotée par scénarios',
+  'wallet_subtitle': 'Chaîne Perccent · trésorerie réseau',
   'wallet_supply_infinite': 'Offre continuum infinie (∞ PERC)',
   'wallet_sync_button': 'Synchroniser le portefeuille',
   'wallet_sync_partial':
@@ -309,25 +309,25 @@ const walletStringsFr = <String, String>{
   'wallet_transactions_title': 'TRANSACTIONS RÉCENTES',
   'wallet_treasury_cycle': 'Cycle trésorerie n°{cycle}',
   'wallet_treasury_inflation_critical':
-      'Trésorerie à 1 cent de réserve — renouvellement du pool au prochain scénario',
+      'Trésorerie à 1 cent de réserve — émission alignée avec la prochaine activité réseau',
   'wallet_treasury_inflation_epoch': 'Dernière époque d\'inflation : {time}',
   'wallet_treasury_inflation_next': 'Temps avant prochaine inflation : {wait}',
   'wallet_treasury_inflation_ready':
       'Inflation de trésorerie prête — la prochaine émission s\'accumule avec l\'activité du réseau',
   'wallet_treasury_manual_send_note':
-      'Trésorerie active — émission 0,00000001 PERC/min et versements robinet scénario continuent. Envois manuels depuis evolve_treasury désactivés.',
+      'Trésorerie active — émission 0,00000001 PERC/min continue. Envois manuels depuis evolve_treasury désactivés.',
   'wallet_treasury_minted': '{minted} PERC émis ({pct}% continuum)',
   'wallet_treasury_note':
-      'La chaîne Perccent avance sur l\'analyse de scénarios — pas sur le construal Grok ni les frappes de champs. La trésorerie gagne 0,00000001 PERC par minute écoulée — offre continuum Chronoflux infinie. Le portefeuille trésorerie reste hors ligne jusqu\'à ce qu\'un utilisateur lance une analyse.',
+      'L\'émission de trésorerie Perccent suit le rythme des blocs réseau et l\'activité des portefeuilles. La trésorerie gagne 0,00000001 PERC par minute écoulée — offre continuum Chronoflux infinie.',
   'wallet_treasury_offline_note':
       'La trésorerie attend le lancement de la blockchain. Synchronisez votre portefeuille après le lancement pour rejoindre les récompenses du réseau.',
-  'wallet_treasury_pool': 'Pool trésorerie (robinet) : {amount} PERC',
+  'wallet_treasury_pool': 'Pool trésorerie : {amount} PERC',
   'wallet_treasury_remaining': 'Trésorerie restante : {amount} PERC',
   'wallet_treasury_send_locked':
-      'Envois manuels depuis evolve_treasury désactivés. Émission et versements robinet continuent.',
+      'Envois manuels depuis evolve_treasury désactivés. Émission réseau continue.',
   'wallet_treasury_setup_link': 'Détenteur trésorerie ? Sécuriser le compte trésorerie',
   'wallet_treasury_setup_note':
-      'Le détenteur de la trésorerie reçoit toutes les émissions pilotées par scénarios. Créez votre mot de passe maintenant (première utilisation uniquement).',
+      'Le détenteur de la trésorerie reçoit toutes les émissions réseau. Créez votre mot de passe maintenant (première utilisation uniquement).',
   'wallet_treasury_setup_title': 'Sécuriser le compte trésorerie',
   'wallet_treasury_title': 'Émission trésorerie',
   'wallet_treasury_username': 'Nom d\'utilisateur trésorerie',
@@ -337,9 +337,9 @@ const walletStringsFr = <String, String>{
   'wallet_tx_received': 'Reçu de {user}',
   'wallet_tx_pending': 'En attente',
   'wallet_tx_pending_hint':
-      'Exécutez un scénario dans la section Analyse pour confirmer ce transfert et créditer votre solde.',
+      'Confirmation du transfert sur le réseau.',
   'wallet_tx_revert': 'Transfert retourné',
-  'wallet_tx_reward': 'Récompense d\'analyse',
+  'wallet_tx_reward': 'Récompense réseau',
   'wallet_tx_sent': 'Envoyé à {user}',
   'wallet_tx_staking': 'Récompense de staking',
   'wallet_tx_treasury': 'Émission trésorerie',
@@ -456,12 +456,12 @@ const walletStringsDe = <String, String>{
   'wallet_camera_permission_title': 'Erlauben Sie den Kamerazugriff',
   'wallet_choose_username': 'Wählen Sie einen Benutzernamen',
   'wallet_chronoflux_graph_empty':
-      'Führen Sie eine prozentuale Chance oder eine Analyse des sozialen Zusammenhalts durch, um Chronoflux-Variablendiagramme zu füllen.',
+      'Noch keine Chronoflux-Historie — Netzwerkaktivität füllt diese Diagramme.',
   'wallet_chronoflux_graph_note':
       'Pentagon-Radar und Fünf-Punkte-Zeitreihen für ρt, ω, σ, Iτ, Jμ – Zeiten stimmen mit der Chronoflux-Eingabereihenfolge über alle Szenario-Zeichnungen hinweg überein.',
   'wallet_chronoflux_graph_title': 'Chronoflux Fünf-Punkte-Variablen',
   'wallet_cooldown_popup_body':
-      'Ihr Wallet wurde in den letzten 7 Minuten bereits aus der Kasse abgebucht. Die Perccent-Kette schreitet in den Szenarien voran – Ihr nächster berechtigter Zug (und Block) liegt bei etwa {blockWait}. Sie können nach {wait} erneut xx/100 PERC zeichnen.',
+      'Ihr Wallet wurde in den letzten 7 Minuten bereits aus der Kasse abgebucht. Nächster berechtigter Zug in etwa {blockWait}. Erneuter Zug nach {wait}.',
   'wallet_cooldown_popup_ok': 'OK',
   'wallet_cooldown_popup_title': 'Schatzabnahme während der Abklingzeit',
   'wallet_copy_address': 'Adresse kopieren',
@@ -521,7 +521,7 @@ const walletStringsDe = <String, String>{
   'wallet_explorer_degenerate_title': 'Entarteter Ein-Vektor-Ansatz – keine zulässige Frame-Flow-Darstellung',
   'wallet_explorer_emission_chart': 'Treasury-Emission pro Block',
   'wallet_explorer_empty':
-      'Noch keine Blöcke – führen Sie ein Szenario aus, um die Kette voranzutreiben.',
+      'Noch keine Blöcke – synchronisieren Sie Ihr Wallet mit dem Netzwerk.',
   'wallet_explorer_frame_flow_center':
       'Rechtmäßige Frame-Flow-Aufteilung – Frame definiert den Slice; Drift bleibt innerhalb der Scheibe',
   'wallet_explorer_frame_flow_status':
@@ -543,7 +543,7 @@ const walletStringsDe = <String, String>{
   'wallet_explorer_microblock_height': 'Protokollierte Fair-Use-Mikroblöcke: {count}',
   'wallet_explorer_microblock_log_count': 'Protokolleinträge: {count}',
   'wallet_explorer_microblock_log_empty':
-      'Noch keine Mikroblöcke – geben Sie die Analysefelder nach dem Start der Blockchain ein.',
+      'Noch keine Mikroblöcke – Netzwerkaktivität erscheint hier nach dem Blockchain-Start.',
   'wallet_explorer_microblock_log_entry': '#{index} Station {ward} · μ{pos} · {time} · {label}{extra}',
   'wallet_explorer_microblock_log_note':
       'Jeder Mikroblock zeichnet eine faire App-Interaktion auf – Tastenanschläge und Feldänderungen im Analyseformular.',
@@ -613,8 +613,8 @@ const walletStringsDe = <String, String>{
   'wallet_register_note':
       'Wählen Sie einen Benutzernamen und ein Passwort – Ihre Perccent-Adresse wird daraus auf diesem Gerät generiert.',
   'wallet_register_title': 'Erstellen Sie Ihr Portemonnaie',
-  'wallet_scenario_block_capped': 'Szenarioblockobergrenze erreicht ({max} Szenarioprüfungen)',
-  'wallet_scenario_block_height': 'Ihr Szenarioblock: {current} / {max}',
+  'wallet_scenario_block_capped': 'Netzwerkblock-Obergrenze erreicht ({max} Kontrollpunkte)',
+  'wallet_scenario_block_height': 'Ihr Netzwerkblock: {current} / {max}',
   'wallet_seed_block_anchor': 'Seed-Anker: Block {block}',
   'wallet_send': 'Schicken',
   'wallet_send_address_pick': 'Oder wählen Sie eine bekannte Adresse',
@@ -639,7 +639,7 @@ const walletStringsDe = <String, String>{
   'wallet_send_to': 'An die Adresse PERC',
   'wallet_send_to_hint': 'Fügen Sie die Empfängeradresse PERC ein oder scannen Sie sie',
   'wallet_session_expired':
-      'Ihre Wallet-Sitzung wurde 7 Minuten nach der Seed-Verbindung beendet. Melden Sie sich erneut an, um SCS-Analysen durchzuführen.',
+      'Ihre Wallet-Sitzung wurde 7 Minuten nach der Seed-Verbindung beendet. Melden Sie sich erneut an, um fortzufahren.',
   'wallet_sidechain_height': 'Höhe des Seitenketten-Mikroblocks',
   'wallet_sidechain_id': 'Seitenketten-ID',
   'wallet_sidechain_last_seal': 'Letzter Siegelblock',
@@ -651,7 +651,7 @@ const walletStringsDe = <String, String>{
   'wallet_signed_in_as': 'Angemeldet als {user}',
   'wallet_staking_earned': 'Insgesamt verdienter Einsatz: {amount} PERC',
   'wallet_staking_note':
-      'Bestätigter gehaltener PERC verdient 0,00000005 PERC pro 1 gehaltenem PERC je Szenario-Block nach 1 Blockbestätigung. Die Schatzkammer finanziert alle Netzwerk-Belohnungen.',
+      'Bestätigter gehaltener PERC verdient 0,00000005 PERC pro 1 gehaltenem PERC je Netzwerkblock nach 1 Blockbestätigung. Die Schatzkammer finanziert alle Netzwerk-Belohnungen.',
   'wallet_staking_title': 'Kumulativer Einsatz',
   'wallet_status_account_created': 'Konto erstellt',
   'wallet_status_faucet_credited': '+{amount} {symbol}',
@@ -661,10 +661,10 @@ const walletStringsDe = <String, String>{
       '{amount} {symbol} an {dest} gesendet (Netzwerkgebühr {fee} {symbol}) — in Warteschlange bis Anmeldung im Netzwerk innerhalb von {delay}, sonst Rückgabe an Ihre Wallet',
   'wallet_status_signed_in': 'Angemeldet als {user}',
   'wallet_status_treasury_cap': 'Treasury-Obergrenze erreicht',
-  'wallet_status_treasury_empty': 'Treasury leer — führen Sie später ein weiteres Szenario aus',
+  'wallet_status_treasury_empty': 'Treasury leer — synchronisieren Sie Ihr Wallet oder versuchen Sie es später erneut',
   'wallet_status_treasury_secured':
       'Treasury gesichert — warte auf Seed-Treasury-Anmeldung zum Start der Chain',
-  'wallet_subtitle': 'Perccent-Kette · szenariogesteuertes Treasury',
+  'wallet_subtitle': 'Perccent-Kette · Netzwerk-Treasury',
   'wallet_supply_infinite': 'Unendliches Kontinuumsangebot (∞ PERC)',
   'wallet_sync_button': 'Wallet synchronisieren',
   'wallet_sync_partial': 'Teilweise Synchronisierung – lokale Höhe {local}, Netzwerkhöhe {network}',
@@ -679,25 +679,25 @@ const walletStringsDe = <String, String>{
   'wallet_transactions_title': 'LETZTE TRANSAKTIONEN',
   'wallet_treasury_cycle': 'Treasury-Zyklus #{cycle}',
   'wallet_treasury_inflation_critical':
-      'Finanzministerium mit 1-Cent-Reserve – Pool-Erneuerung im nächsten Szenario',
+      'Treasury mit 1-Cent-Reserve — Emission sammelt sich mit nächster Netzwerkaktivität',
   'wallet_treasury_inflation_epoch': 'Letzte Inflationsepoche: {time}',
   'wallet_treasury_inflation_next': 'Zeit bis zur nächsten Inflation: {wait}',
   'wallet_treasury_inflation_ready':
       'Treasury-Inflation bereit — nächste Emission sammelt sich mit Netzwerkaktivität',
   'wallet_treasury_manual_send_note':
-      'Das Finanzministerium ist aktiv – 0.00000001 PERC/min Emission und Szenario-Faucet-Auszahlungen werden fortgesetzt. Manuelle Versendungen von evolve_treasury sind deaktiviert.',
+      'Das Finanzministerium ist aktiv – Netzwerk-Emission (~0.00000001 PERC/min) wird fortgesetzt. Manuelle Versendungen von evolve_treasury sind deaktiviert.',
   'wallet_treasury_minted': '{minted} PERC geprägt ({pct}% Kontinuum)',
   'wallet_treasury_note':
-      'Perccent Kettenfortschritte bei der Szenarioanalyse – nicht bei Grok Konstruktions- oder Feldtastenanschlägen. Das Finanzministerium verdient 0.00000001 PERC pro verstrichener Minute – unendliche Chronoflux Kontinuumsversorgung. Die Treasury-Wallet bleibt offline, bis ein Benutzer eine Analyse durchführt.',
+      'Perccent-Treasury-Emission skaliert mit Netzwerkblock-Tempo und Wallet-Aktivität. Treasury verdient 0.00000001 PERC pro Minute — unendliche Chronoflux-Kontinuumsversorgung.',
   'wallet_treasury_offline_note':
       'Die Treasury wartet auf den Blockchain-Start. Synchronisieren Sie Ihr Wallet nach dem Start, um Netzwerkbelohnungen zu nutzen.',
-  'wallet_treasury_pool': 'Schatzkammer (Wasserhahn): {amount} PERC',
+  'wallet_treasury_pool': 'Schatzkammer-Pool: {amount} PERC',
   'wallet_treasury_remaining': 'Verbleibende Kasse: {amount} PERC',
   'wallet_treasury_send_locked':
-      'Manuelle Versendungen von evolve_treasury sind deaktiviert. Emissions- und Wasserhahnauszahlungen werden fortgesetzt.',
+      'Manuelle Versendungen von evolve_treasury sind deaktiviert. Netzwerk-Emission wird fortgesetzt.',
   'wallet_treasury_setup_link': 'Schatzmeister? Sicheres Treasury-Konto',
   'wallet_treasury_setup_note':
-      'Der Treasury-Inhaber erhält alle szenariobedingten Emissionen. Erstellen Sie jetzt Ihr Passwort (nur bei der ersten Verwendung).',
+      'Der Treasury-Inhaber erhält alle netzwerkgetriebenen Emissionen. Erstellen Sie jetzt Ihr Passwort (nur bei der ersten Verwendung).',
   'wallet_treasury_setup_title': 'Sicheres Treasury-Konto',
   'wallet_treasury_title': 'Emission des Finanzministeriums',
   'wallet_treasury_username': 'Treasury-Benutzername',
@@ -707,9 +707,9 @@ const walletStringsDe = <String, String>{
   'wallet_tx_received': 'Erhalten von {user}',
   'wallet_tx_pending': 'Ausstehend',
   'wallet_tx_pending_hint':
-      'Führen Sie ein Szenario im Analyse-Bereich aus, um diese Überweisung zu bestätigen und Ihr Guthaben gutzuschreiben.',
+      'Überweisung wird im Netzwerk bestätigt.',
   'wallet_tx_revert': 'Rücktransfer',
-  'wallet_tx_reward': 'Analysebelohnung',
+  'wallet_tx_reward': 'Netzwerkbelohnung',
   'wallet_tx_sent': 'Gesendet an {user}',
   'wallet_tx_staking': 'Einsatzbelohnung',
   'wallet_tx_treasury': 'Emission des Finanzministeriums',
@@ -825,12 +825,12 @@ const walletStringsPt = <String, String>{
   'wallet_camera_permission_title': 'Permitir acesso à câmera',
   'wallet_choose_username': 'Escolha o nome de usuário',
   'wallet_chronoflux_graph_empty':
-      'Execute uma análise de chance percentual ou de coesão social para preencher os gráficos de variáveis ​​Chronoflux.',
+      'Ainda sem histórico Chronoflux — a atividade da rede preencherá estes gráficos.',
   'wallet_chronoflux_graph_note':
       'Radar do Pentágono e séries temporais de cinco pontos para ρt, ω, σ, Iτ, Jμ - os tempos correspondem à ordem de entrada Chronoflux nos desenhos de cenários.',
   'wallet_chronoflux_graph_title': 'Chronoflux variáveis ​​de cinco pontos',
   'wallet_cooldown_popup_body':
-      'Sua carteira já sacou do tesouro nos últimos 7 minutos. A cadeia Perccent avança nos cenários — seu próximo sorteio (e bloqueio) elegível será em aproximadamente {blockWait}. Você pode sacar xx/100 PERC novamente após {wait}.',
+      'Sua carteira já sacou do tesouro nos últimos 7 minutos. Próximo sorteio elegível em aproximadamente {blockWait}. Novo sorteio após {wait}.',
   'wallet_cooldown_popup_ok': 'OK',
   'wallet_cooldown_popup_title': 'Sorteio do Tesouro no tempo de espera',
   'wallet_copy_address': 'Copiar endereço',
@@ -890,7 +890,7 @@ const walletStringsPt = <String, String>{
   'wallet_explorer_degenerate_title':
       'Ansatz degenerado de um vetor - não é uma representação de fluxo de quadros admissível',
   'wallet_explorer_emission_chart': 'Emissão de tesouraria por bloco',
-  'wallet_explorer_empty': 'Ainda não há bloqueios — execute um cenário para avançar a cadeia.',
+  'wallet_explorer_empty': 'Ainda não há blocos — sincronize sua carteira com a rede.',
   'wallet_explorer_frame_flow_center':
       'Divisão legal do fluxo de quadros – o quadro define a fatia; a deriva permanece dentro da fatia',
   'wallet_explorer_frame_flow_status':
@@ -912,7 +912,7 @@ const walletStringsPt = <String, String>{
   'wallet_explorer_microblock_height': 'Microblocos de uso justo registrados: {count}',
   'wallet_explorer_microblock_log_count': 'Entradas de registro: {count}',
   'wallet_explorer_microblock_log_empty':
-      'Ainda não há microblocos – digite nos campos de análise após o lançamento do blockchain.',
+      'Ainda não há microblocos – a atividade da rede aparecerá aqui após o lançamento da blockchain.',
   'wallet_explorer_microblock_log_entry': '#{index} ala {ward} · μ{pos} · {time} · {label}{extra}',
   'wallet_explorer_microblock_log_note':
       'Cada microbloco registra uma interação justa com o aplicativo – pressionamentos de teclas e edições de campo no formulário de análise.',
@@ -979,8 +979,8 @@ const walletStringsPt = <String, String>{
   'wallet_register_note':
       'Escolha um nome de usuário e uma senha – seu endereço Perccent é gerado a partir deles neste dispositivo.',
   'wallet_register_title': 'Crie sua carteira',
-  'wallet_scenario_block_capped': 'Limite de bloqueio de cenário atingido ({max} verificações de cenário)',
-  'wallet_scenario_block_height': 'Seu bloco de cenário: {current} / {max}',
+  'wallet_scenario_block_capped': 'Limite de bloco de rede atingido ({max} pontos de verificação)',
+  'wallet_scenario_block_height': 'Seu bloco de rede: {current} / {max}',
   'wallet_seed_block_anchor': 'Âncora de semente: bloco {block}',
   'wallet_send': 'Enviar',
   'wallet_send_address_pick': 'Ou escolha um endereço conhecido',
@@ -1005,7 +1005,7 @@ const walletStringsPt = <String, String>{
   'wallet_send_to': 'Para o endereço PERC',
   'wallet_send_to_hint': 'Cole ou digitalize o endereço do destinatário PERC',
   'wallet_session_expired':
-      'A sessão da sua carteira terminou após 7 minutos da conexão inicial – faça login novamente para executar análises SCS.',
+      'A sessão da sua carteira terminou após 7 minutos da conexão inicial — faça login novamente para continuar.',
   'wallet_sidechain_height': 'Altura do microbloco da cadeia lateral',
   'wallet_sidechain_id': 'Side chain ID',
   'wallet_sidechain_last_seal': 'Last seal block',
@@ -1017,7 +1017,7 @@ const walletStringsPt = <String, String>{
   'wallet_signed_in_as': 'Conectado como {user}',
   'wallet_staking_earned': 'Total de apostas ganhas: {amount} PERC',
   'wallet_staking_note':
-      'PERC mantido confirmado ganha 0,00000005 PERC por 1 PERC mantido em cada bloco de cenário após 1 confirmação. O tesouro financia todas as recompensas da rede.',
+      'PERC mantido confirmado ganha 0,00000005 PERC por 1 PERC mantido em cada bloco de rede após 1 confirmação. O tesouro financia todas as recompensas da rede.',
   'wallet_staking_title': 'Piquetagem cumulativa',
   'wallet_status_account_created': 'Conta criada',
   'wallet_status_faucet_credited': '+{amount} {symbol}',
@@ -1028,10 +1028,10 @@ const walletStringsPt = <String, String>{
       'Enviado {amount} {symbol} para {dest} (taxa de rede {fee} {symbol}) — em fila até iniciarem sessão na rede em {delay}; caso contrário, devolve à sua carteira',
   'wallet_status_signed_in': 'Sessão iniciada como {user}',
   'wallet_status_treasury_cap': 'Limite da tesouraria atingido',
-  'wallet_status_treasury_empty': 'Tesouraria vazia — execute outro cenário mais tarde',
+  'wallet_status_treasury_empty': 'Tesouraria vazia — sincronize a sua carteira ou tente novamente mais tarde',
   'wallet_status_treasury_secured':
       'Tesouraria protegida — aguardando login da tesouraria seed para lançar a cadeia',
-  'wallet_subtitle': 'Cadeia Perccent · tesouraria orientada por cenário',
+  'wallet_subtitle': 'Cadeia Perccent · tesouraria de rede',
   'wallet_supply_infinite': 'Fornecimento contínuo infinito (∞ PERC)',
   'wallet_sync_button': 'Sincronizar carteira',
   'wallet_sync_partial': 'Partial sync — local height {local}, network height {network}',
@@ -1045,25 +1045,26 @@ const walletStringsPt = <String, String>{
       'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Ciclo de tesouraria #{cycle}',
-  'wallet_treasury_inflation_critical': 'Tesouro com reserva de 1 centavo – renovação do pool no próximo cenário',
+  'wallet_treasury_inflation_critical':
+      'Tesouro com reserva de 1 centavo — emissão alinhada com a próxima atividade de rede',
   'wallet_treasury_inflation_epoch': 'Última época de inflação: {time}',
   'wallet_treasury_inflation_next': 'Hora da próxima inflação: {wait}',
   'wallet_treasury_inflation_ready':
       'Inflação da tesouraria pronta — próxima emissão acumula com atividade de rede',
   'wallet_treasury_manual_send_note':
-      'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
+      'Treasury is active — network emission (~0.00000001 PERC/min) continues. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC cunhado ({pct}% contínuo)',
   'wallet_treasury_note':
-      'A cadeia Perccent avança na análise de cenário - não na construção Grok ou nas teclas de campo. O Tesouro ganha 0.00000001 PERC por minuto decorrido – fornecimento contínuo infinito de Chronoflux. A carteira do Tesouro permanece offline até que qualquer usuário execute a análise.',
+      'A emissão da tesouraria Perccent escala com o ritmo de blocos da rede e a atividade das carteiras. O Tesouro ganha 0.00000001 PERC por minuto — fornecimento contínuo infinito de Chronoflux.',
   'wallet_treasury_offline_note':
       'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
-  'wallet_treasury_pool': 'Pool de tesouraria (torneira): {amount} PERC',
+  'wallet_treasury_pool': 'Pool de tesouraria: {amount} PERC',
   'wallet_treasury_remaining': 'Tesouraria restante: {amount} PERC',
   'wallet_treasury_send_locked':
-      'Manual sends from evolve_treasury are disabled. Emission and faucet payouts continue.',
+      'Manual sends from evolve_treasury are disabled. Network emission continues.',
   'wallet_treasury_setup_link': 'Treasury holder? Secure treasury account',
   'wallet_treasury_setup_note':
-      'Treasury holder receives all scenario-driven emissions. Create your password now (first use only).',
+      'Treasury holder receives all network-driven emissions. Create your password now (first use only).',
   'wallet_treasury_setup_title': 'Secure treasury account',
   'wallet_treasury_title': 'Emissão do Tesouro',
   'wallet_treasury_username': 'Treasury username',
@@ -1075,7 +1076,7 @@ const walletStringsPt = <String, String>{
   'wallet_tx_pending_hint':
       'Confirming transfer on the network.',
   'wallet_tx_revert': 'Transferência devolvida',
-  'wallet_tx_reward': 'Analysis reward',
+  'wallet_tx_reward': 'Network reward',
   'wallet_tx_sent': 'Sent to {user}',
   'wallet_tx_staking': 'Recompensa de aposta',
   'wallet_tx_treasury': 'Treasury emission',
@@ -1190,12 +1191,12 @@ const walletStringsAr = <String, String>{
   'wallet_camera_permission_title': 'السماح بالوصول إلى الكاميرا',
   'wallet_choose_username': 'اختر اسم المستخدم',
   'wallet_chronoflux_graph_empty':
-      'قم بإجراء تحليل النسبة المئوية أو تحليل التماسك الاجتماعي لملء الرسوم البيانية المتغيرة Chronoflux.',
+      'لا يوجد سجل Chronoflux بعد — سيملأ نشاط الشبكة هذه الرسوم البيانية.',
   'wallet_chronoflux_graph_note':
       'رادار البنتاغون وسلسلة زمنية من خمس نقاط لـ ρt، ω، σ، Iτ، Jμ - تتطابق الأوقات مع ترتيب الإدخال Chronoflux عبر سيناريوهات السحب.',
   'wallet_chronoflux_graph_title': 'Chronoflux متغيرات من خمس نقاط',
   'wallet_cooldown_popup_body':
-      'لقد تم بالفعل سحب محفظتك من الخزانة خلال آخر 7 دقائق. تتقدم سلسلة Perccent في السيناريوهات - السحب المؤهل التالي (والكتلة) يكون حوالي {blockWait}. يمكنك رسم xx/100 PERC مرة أخرى بعد {wait}.',
+      'لقد تم بالفعل سحب محفظتك من الخزانة خلال آخر 7 دقائق. السحب المؤهل التالي حوالي {blockWait}. يمكنك السحب مرة أخرى بعد {wait}.',
   'wallet_cooldown_popup_ok': 'نعم',
   'wallet_cooldown_popup_title': 'سحب الخزانة على فترة التهدئة',
   'wallet_copy_address': 'انسخ العنوان',
@@ -1252,7 +1253,7 @@ const walletStringsAr = <String, String>{
       'لا يستطيع نفس المتجه تحديد الإطار وتوفير الانجراف المكاني. يتم عرض الانجراف بعيدًا عندما يتم بناء جهاز العرض من الاتجاه الذي يختبره.',
   'wallet_explorer_degenerate_title': 'انحطاط ansatz ذو ناقل واحد — ليس تمثيلًا مقبولًا لتدفق الإطار',
   'wallet_explorer_emission_chart': 'انبعاثات الخزانة لكل كتلة',
-  'wallet_explorer_empty': 'لا توجد كتل حتى الآن — قم بتشغيل سيناريو لتعزيز السلسلة.',
+  'wallet_explorer_empty': 'لا توجد كتل حتى الآن — قم بمزامنة محفظتك مع الشبكة.',
   'wallet_explorer_frame_flow_center':
       'تقسيم تدفق الإطار بشكل قانوني — يحدد الإطار الشريحة؛ يبقى الانجراف داخل الشريحة',
   'wallet_explorer_frame_flow_status':
@@ -1273,7 +1274,7 @@ const walletStringsAr = <String, String>{
   'wallet_explorer_microblock_fair_usage': 'الاستخدام العادل للتطبيق',
   'wallet_explorer_microblock_height': 'تم تسجيل الكتل الصغيرة للاستخدام العادل: {count}',
   'wallet_explorer_microblock_log_count': 'إدخالات السجل: {count}',
-  'wallet_explorer_microblock_log_empty': 'لا توجد كتل صغيرة حتى الآن – اكتب في حقول التحليل بعد إطلاق blockchain.',
+  'wallet_explorer_microblock_log_empty': 'لا توجد كتل صغيرة حتى الآن – سيظهر نشاط الشبكة هنا بعد إطلاق blockchain.',
   'wallet_explorer_microblock_log_entry': '#{index} جناح {ward} · μ{pos} · {time} · {label}{extra}',
   'wallet_explorer_microblock_log_note':
       'تسجل كل كتلة صغيرة تفاعلًا عادلاً واحدًا مع التطبيق - ضغطات المفاتيح والتحريرات الميدانية في نموذج التحليل.',
@@ -1340,7 +1341,7 @@ const walletStringsAr = <String, String>{
   'wallet_register_title': 'إنشاء محفظتك',
   'wallet_scenario_block_capped':
       'تم الوصول إلى الحد الأقصى لكتلة السيناريو ({max} عمليات التحقق من السيناريو)',
-  'wallet_scenario_block_height': 'كتلة السيناريو الخاصة بك: {current} / {max}',
+  'wallet_scenario_block_height': 'كتلة الشبكة الخاصة بك: {current} / {max}',
   'wallet_seed_block_anchor': 'مرساة البذور: كتلة {block}',
   'wallet_send': 'يرسل',
   'wallet_send_address_pick': 'أو اختر عنوانًا معروفًا',
@@ -1365,7 +1366,7 @@ const walletStringsAr = <String, String>{
   'wallet_send_to': 'إلى عنوان PERC',
   'wallet_send_to_hint': 'قم بلصق أو مسح عنوان المستلم PERC',
   'wallet_session_expired':
-      'انتهت جلسة محفظتك بعد 7 دقائق من الاتصال الأولي — قم بتسجيل الدخول مرة أخرى لتشغيل تحليلات SCS.',
+      'انتهت جلسة محفظتك بعد 7 دقائق من الاتصال الأولي — قم بتسجيل الدخول مرة أخرى للمتابعة.',
   'wallet_sidechain_height': 'ارتفاع الكتلة الصغيرة ذات السلسلة الجانبية',
   'wallet_sidechain_id': 'معرف السلسلة الجانبية',
   'wallet_sidechain_last_seal': 'كتلة الختم الأخيرة',
@@ -1377,7 +1378,7 @@ const walletStringsAr = <String, String>{
   'wallet_signed_in_as': 'تم تسجيل الدخول باسم {user}',
   'wallet_staking_earned': 'إجمالي الحصة المكتسبة: {amount} PERC',
   'wallet_staking_note':
-      'PERC المؤكدة المحتفظ بها تكسب 0.00000005 PERC لكل 1 PERC محتفظ به في كل كتلة سيناريو بعد تأكيد واحد. الخزينة تمول جميع مكافآت الشبكة.',
+      'PERC المؤكدة المحتفظ بها تكسب 0.00000005 PERC لكل 1 PERC محتفظ به في كل كتلة شبكة بعد تأكيد واحد. الخزينة تمول جميع مكافآت الشبكة.',
   'wallet_staking_title': 'الرهن التراكمي',
   'wallet_status_account_created': 'تم إنشاء الحساب',
   'wallet_status_faucet_credited': '+{amount} {symbol}',
@@ -1387,9 +1388,9 @@ const walletStringsAr = <String, String>{
       'تم إرسال {amount} {symbol} إلى {dest} (رسوم الشبكة {fee} {symbol}) — في الانتظار حتى يسجلوا الدخول على الشبكة خلال {delay}، وإلا يعود إلى محفظتك',
   'wallet_status_signed_in': 'تم تسجيل الدخول باسم {user}',
   'wallet_status_treasury_cap': 'تم بلوغ حد الخزينة',
-  'wallet_status_treasury_empty': 'الخزينة فارغة — شغّل سيناريو آخر لاحقًا',
+  'wallet_status_treasury_empty': 'الخزينة فارغة — زامن محفظتك أو حاول مرة أخرى لاحقًا',
   'wallet_status_treasury_secured': 'تم تأمين الخزينة — في انتظار تسجيل دخول خزينة البذرة لإطلاق السلسلة',
-  'wallet_subtitle': 'سلسلة Perccent · الخزانة التي يحركها السيناريو',
+  'wallet_subtitle': 'سلسلة Perccent · خزانة الشبكة',
   'wallet_supply_infinite': 'العرض المستمر اللانهائي (∞ PERC)',
   'wallet_sync_button': 'محفظة المزامنة',
   'wallet_sync_partial': 'Partial sync — local height {local}, network height {network}',
@@ -1403,25 +1404,26 @@ const walletStringsAr = <String, String>{
       'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Treasury cycle #{cycle}',
-  'wallet_treasury_inflation_critical': 'Treasury at 1 cent reserve — pool renewal mint on next scenario',
+  'wallet_treasury_inflation_critical':
+      'Treasury at 1 cent reserve — aligned emission accrues with next network activity',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
   'wallet_treasury_inflation_ready':
       'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_manual_send_note':
-      'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
+      'Treasury is active — network emission (~0.00000001 PERC/min) continues. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC minted ({pct}% continuum)',
   'wallet_treasury_note':
-      'Perccent chain advances on scenario analysis — not on Grok construal or field keystrokes. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply. Treasury wallet stays offline until any user runs analysis.',
+      'Perccent treasury emission scales with network block pace and wallet activity. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply.',
   'wallet_treasury_offline_note':
       'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
-  'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
+  'wallet_treasury_pool': 'Treasury pool: {amount} PERC',
   'wallet_treasury_remaining': 'Treasury remaining: {amount} PERC',
   'wallet_treasury_send_locked':
-      'Manual sends from evolve_treasury are disabled. Emission and faucet payouts continue.',
+      'Manual sends from evolve_treasury are disabled. Network emission continues.',
   'wallet_treasury_setup_link': 'Treasury holder? Secure treasury account',
   'wallet_treasury_setup_note':
-      'Treasury holder receives all scenario-driven emissions. Create your password now (first use only).',
+      'Treasury holder receives all network-driven emissions. Create your password now (first use only).',
   'wallet_treasury_setup_title': 'Secure treasury account',
   'wallet_treasury_title': 'Treasury emission',
   'wallet_treasury_username': 'Treasury username',
@@ -1433,7 +1435,7 @@ const walletStringsAr = <String, String>{
   'wallet_tx_pending_hint':
       'Confirming transfer on the network.',
   'wallet_tx_revert': 'Returned transfer',
-  'wallet_tx_reward': 'Analysis reward',
+  'wallet_tx_reward': 'Network reward',
   'wallet_tx_sent': 'Sent to {user}',
   'wallet_tx_staking': 'Staking reward',
   'wallet_tx_treasury': 'Treasury emission',
@@ -1541,11 +1543,11 @@ const walletStringsZh = <String, String>{
   'wallet_camera_permission_settings_body': 'Evolve 的相机访问已关闭。打开设置并启用相机扫描PERC二维码。',
   'wallet_camera_permission_title': '允许相机访问',
   'wallet_choose_username': '选择用户名',
-  'wallet_chronoflux_graph_empty': '运行百分比机会或社会凝聚力分析来填充 Chronoflux 变量图。',
+  'wallet_chronoflux_graph_empty': '尚无 Chronoflux 历史记录——网络活动将填充这些图表。',
   'wallet_chronoflux_graph_note': '五角大楼雷达和ρt、ω、σ、Iτ、Jμ 的五点时间序列 — 时间与跨场景绘制的Chronoflux 输入顺序相匹配。',
   'wallet_chronoflux_graph_title': 'Chronoflux 五点变量',
   'wallet_cooldown_popup_body':
-      '您的钱包在过去 7 分钟内已从金库提取。 Perccent 链在场景中前进 — 您的下一次符合条件的抽奖（和区块）大约在 {blockWait} 内。您可以在{wait}之后再次绘制xx/100PERC。',
+      '您的钱包在过去 7 分钟内已从金库提取。下一次符合条件的抽奖大约在 {blockWait} 内。可在 {wait} 后再次抽奖。',
   'wallet_cooldown_popup_ok': '好的',
   'wallet_cooldown_popup_title': '财政部提款冷却',
   'wallet_copy_address': '复制地址',
@@ -1597,7 +1599,7 @@ const walletStringsZh = <String, String>{
   'wallet_explorer_degenerate_body': '同一向量无法定义框架并提供空间漂移。当投影仪从其测试的方向建造时，漂移就会被投射出去。',
   'wallet_explorer_degenerate_title': '退化单向量 ansatz — 不是可接受的帧流表示',
   'wallet_explorer_emission_chart': '每个区块的财政部排放量',
-  'wallet_explorer_empty': '还没有区块——运行一个场景来推进链条。',
+  'wallet_explorer_empty': '还没有区块——同步钱包以加入网络。',
   'wallet_explorer_frame_flow_center': '合法的帧流分割——帧定义切片；漂移仍保留在切片内',
   'wallet_explorer_frame_flow_status': 'A2状态：合法的帧流分割；投影仪仅由框架构成；漂移仍然是可测量的。',
   'wallet_explorer_frame_flow_subtitle': '退化的单向量 ansatz 放在一边；保留合法的连续性分裂——将微块捆绑到{bundle}的病房中。',
@@ -1615,7 +1617,7 @@ const walletStringsZh = <String, String>{
   'wallet_explorer_microblock_fair_usage': '公平的应用程序使用',
   'wallet_explorer_microblock_height': '记录的合理使用微块：{count}',
   'wallet_explorer_microblock_log_count': '日志条目：{count}',
-  'wallet_explorer_microblock_log_empty': '还没有微块——区块链启动后在分析字段中输入。',
+  'wallet_explorer_microblock_log_empty': '还没有微块——区块链启动后网络活动将显示在这里。',
   'wallet_explorer_microblock_log_entry': '#{index}病房{ward}·μ{pos}·{time}·{label}{extra}',
   'wallet_explorer_microblock_log_note': '每个微块都会记录一次公平的应用程序交互 - 分析表单上的击键和字段编辑。',
   'wallet_explorer_microblock_log_title': '合理使用微块日志',
@@ -1671,8 +1673,8 @@ const walletStringsZh = <String, String>{
   'wallet_register': '创建账户',
   'wallet_register_note': '选择一个用户名和密码 - 您的 Perccent 地址是在此设备上根据它们生成的。',
   'wallet_register_title': '创建你的钱包',
-  'wallet_scenario_block_capped': '达到场景区块上限（{max}场景检查）',
-  'wallet_scenario_block_height': '您的场景块：{current} / {max}',
+  'wallet_scenario_block_capped': '达到网络区块上限（{max}个检查点）',
+  'wallet_scenario_block_height': '您的网络区块：{current} / {max}',
   'wallet_seed_block_anchor': '种子锚：块{block}',
   'wallet_send': '发送',
   'wallet_send_address_pick': '或者选择一个已知的地址',
@@ -1696,7 +1698,7 @@ const walletStringsZh = <String, String>{
   'wallet_send_to': 'To PERC address',
   'wallet_send_to_hint': 'Paste or scan the recipient PERC address',
   'wallet_session_expired':
-      'Your wallet session ended after 7 minutes away from the seed connection — sign in again to run SCS analyses.',
+      'Your wallet session ended after 7 minutes away from the seed connection — sign in again to continue.',
   'wallet_sidechain_height': 'Side-chain microblock height',
   'wallet_sidechain_id': 'Side chain ID',
   'wallet_sidechain_last_seal': 'Last seal block',
@@ -1708,7 +1710,7 @@ const walletStringsZh = <String, String>{
   'wallet_signed_in_as': 'Signed in as {user}',
   'wallet_staking_earned': 'Total staking earned: {amount} PERC',
   'wallet_staking_note':
-      'Confirmed held PERC earns 0.00000005 PERC per 1 PERC held each scenario block after 1 block confirmation. Treasury funds all holder rewards network-wide.',
+      'Confirmed held PERC earns 0.00000005 PERC per 1 PERC held each network block after 1 block confirmation. Treasury funds all holder rewards network-wide.',
   'wallet_staking_title': 'Cumulative staking',
   'wallet_status_account_created': '账户已创建',
   'wallet_status_faucet_credited': '+{amount} {symbol}',
@@ -1718,9 +1720,9 @@ const walletStringsZh = <String, String>{
       '已向 {dest} 发送 {amount} {symbol} （网络费 {fee} {symbol}）— 排队等待对方在 {delay} 内登录网络，否则退回您的钱包',
   'wallet_status_signed_in': '已以 {user} 登录',
   'wallet_status_treasury_cap': '已达国库上限',
-  'wallet_status_treasury_empty': '国库为空 — 请稍后运行其他情景',
+  'wallet_status_treasury_empty': '国库为空 — 请同步钱包或稍后再试',
   'wallet_status_treasury_secured': '国库已保护 — 等待种子国库登录以启动链',
-  'wallet_subtitle': 'Perccent chain · scenario-driven treasury',
+  'wallet_subtitle': 'Perccent chain · network treasury',
   'wallet_supply_infinite': 'Infinite continuum supply (∞ PERC)',
   'wallet_sync_button': '同步钱包',
   'wallet_sync_partial': 'Partial sync — local height {local}, network height {network}',
@@ -1734,25 +1736,26 @@ const walletStringsZh = <String, String>{
       'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Treasury cycle #{cycle}',
-  'wallet_treasury_inflation_critical': 'Treasury at 1 cent reserve — pool renewal mint on next scenario',
+  'wallet_treasury_inflation_critical':
+      'Treasury at 1 cent reserve — aligned emission accrues with next network activity',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
   'wallet_treasury_inflation_ready':
       'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_manual_send_note':
-      'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
+      'Treasury is active — network emission (~0.00000001 PERC/min) continues. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC minted ({pct}% continuum)',
   'wallet_treasury_note':
-      'Perccent chain advances on scenario analysis — not on Grok construal or field keystrokes. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply. Treasury wallet stays offline until any user runs analysis.',
+      'Perccent treasury emission scales with network block pace and wallet activity. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply.',
   'wallet_treasury_offline_note':
       'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
-  'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
+  'wallet_treasury_pool': 'Treasury pool: {amount} PERC',
   'wallet_treasury_remaining': 'Treasury remaining: {amount} PERC',
   'wallet_treasury_send_locked':
-      'Manual sends from evolve_treasury are disabled. Emission and faucet payouts continue.',
+      'Manual sends from evolve_treasury are disabled. Network emission continues.',
   'wallet_treasury_setup_link': 'Treasury holder? Secure treasury account',
   'wallet_treasury_setup_note':
-      'Treasury holder receives all scenario-driven emissions. Create your password now (first use only).',
+      'Treasury holder receives all network-driven emissions. Create your password now (first use only).',
   'wallet_treasury_setup_title': 'Secure treasury account',
   'wallet_treasury_title': 'Treasury emission',
   'wallet_treasury_username': 'Treasury username',
@@ -1764,7 +1767,7 @@ const walletStringsZh = <String, String>{
   'wallet_tx_pending_hint':
       'Confirming transfer on the network.',
   'wallet_tx_revert': 'Returned transfer',
-  'wallet_tx_reward': 'Analysis reward',
+  'wallet_tx_reward': 'Network reward',
   'wallet_tx_sent': 'Sent to {user}',
   'wallet_tx_staking': 'Staking reward',
   'wallet_tx_treasury': 'Treasury emission',
@@ -1880,12 +1883,12 @@ const walletStringsHi = <String, String>{
   'wallet_camera_permission_title': 'कैमरे तक पहुंच की अनुमति दें',
   'wallet_choose_username': 'उपयोगकर्ता नाम का चयन करें',
   'wallet_chronoflux_graph_empty':
-      'Chronoflux परिवर्तनीय ग्राफ़ को पॉप्युलेट करने के लिए एक प्रतिशत मौका या सामाजिक सामंजस्य विश्लेषण चलाएँ।',
+      'अभी तक कोई Chronoflux इतिहास नहीं — नेटवर्क गतिविधि इन ग्राफ़ को भरेगी।',
   'wallet_chronoflux_graph_note':
       'पेंटागन रडार और ρt, ω, σ, Iτ, Jμ के लिए पांच-बिंदु समय श्रृंखला - परिदृश्य ड्रॉ में Chronoflux इनपुट क्रम से मेल खाता है।',
   'wallet_chronoflux_graph_title': 'Chronoflux पांच-बिंदु चर',
   'wallet_cooldown_popup_body':
-      'आपका बटुआ पिछले 7 मिनट में ही खजाने से निकल चुका है। Perccent श्रृंखला परिदृश्यों पर आगे बढ़ती है - आपका अगला पात्र ड्रा (और ब्लॉक) लगभग {blockWait} में है। आप {wait} के बाद फिर से xx/100 PERC बना सकते हैं।',
+      'आपका बटुआ पिछले 7 मिनट में ही खजाने से निकल चुका है। अगला पात्र ड्रा लगभग {blockWait} में। {wait} के बाद फिर से ड्रा कर सकते हैं।',
   'wallet_cooldown_popup_ok': 'ठीक है',
   'wallet_cooldown_popup_title': 'कूलडाउन पर ट्रेजरी ड्रा',
   'wallet_copy_address': 'पता कॉपी करें',
@@ -1942,7 +1945,7 @@ const walletStringsHi = <String, String>{
       'वही वेक्टर फ़्रेम को परिभाषित नहीं कर सकता और स्थानिक बहाव की आपूर्ति नहीं कर सकता। जब प्रोजेक्टर परीक्षण की दिशा से बनाया जाता है तो बहाव दूर प्रक्षेपित हो जाता है।',
   'wallet_explorer_degenerate_title': 'डिजेनरेट वन-वेक्टर अंसत्ज़ - एक स्वीकार्य फ्रेम-फ्लो प्रतिनिधित्व नहीं',
   'wallet_explorer_emission_chart': 'प्रति ब्लॉक ट्रेजरी उत्सर्जन',
-  'wallet_explorer_empty': 'अभी तक कोई अवरोध नहीं - श्रृंखला को आगे बढ़ाने के लिए एक परिदृश्य चलाएँ।',
+  'wallet_explorer_empty': 'अभी तक कोई ब्लॉक नहीं — नेटवर्क से जुड़ने के लिए अपना वॉलेट सिंक करें।',
   'wallet_explorer_frame_flow_center':
       'वैध फ़्रेम-प्रवाह विभाजन - फ़्रेम स्लाइस को परिभाषित करता है; बहाव स्लाइस के अंदर रहता है',
   'wallet_explorer_frame_flow_status':
@@ -1964,7 +1967,7 @@ const walletStringsHi = <String, String>{
   'wallet_explorer_microblock_height': 'उचित उपयोग वाले माइक्रोब्लॉक लॉग किए गए: {count}',
   'wallet_explorer_microblock_log_count': 'लॉग प्रविष्टियाँ: {count}',
   'wallet_explorer_microblock_log_empty':
-      'अभी तक कोई माइक्रोब्लॉक नहीं - ब्लॉकचेन लॉन्च के बाद विश्लेषण फ़ील्ड में टाइप करें।',
+      'अभी तक कोई माइक्रोब्लॉक नहीं — ब्लॉकचेन लॉन्च के बाद नेटवर्क गतिविधि यहाँ दिखेगी।',
   'wallet_explorer_microblock_log_entry': '#{index} वार्ड {ward} · μ{pos} · {time} · {label}{extra}',
   'wallet_explorer_microblock_log_note':
       'प्रत्येक माइक्रोब्लॉक एक निष्पक्ष ऐप इंटरैक्शन रिकॉर्ड करता है - विश्लेषण फॉर्म पर कीस्ट्रोक्स और फ़ील्ड संपादन।',
@@ -2029,8 +2032,8 @@ const walletStringsHi = <String, String>{
   'wallet_register_note':
       'एक उपयोगकर्ता नाम और पासवर्ड चुनें - आपका Perccent पता इस डिवाइस पर उनसे उत्पन्न होता है।',
   'wallet_register_title': 'अपना बटुआ बनाएं',
-  'wallet_scenario_block_capped': 'परिदृश्य ब्लॉक कैप तक पहुंच गया ({max} परिदृश्य जांच)',
-  'wallet_scenario_block_height': 'आपका परिदृश्य ब्लॉक: {current} / {max}',
+  'wallet_scenario_block_capped': 'नेटवर्क ब्लॉक सीमा पहुँची ({max} जाँच बिंदु)',
+  'wallet_scenario_block_height': 'आपका नेटवर्क ब्लॉक: {current} / {max}',
   'wallet_seed_block_anchor': 'बीज लंगर: ब्लॉक {block}',
   'wallet_send': 'भेजें',
   'wallet_send_address_pick': 'या कोई ज्ञात पता चुनें',
@@ -2055,7 +2058,7 @@ const walletStringsHi = <String, String>{
   'wallet_send_to': 'PERC पते पर',
   'wallet_send_to_hint': 'प्राप्तकर्ता PERC पता चिपकाएँ या स्कैन करें',
   'wallet_session_expired':
-      'आपका वॉलेट सत्र सीड कनेक्शन से 7 मिनट की दूरी पर समाप्त हो गया - एससीएस विश्लेषण चलाने के लिए फिर से साइन इन करें।',
+      'आपका वॉलेट सत्र सीड कनेक्शन से 7 मिनट की दूरी पर समाप्त हो गया — जारी रखने के लिए फिर से साइन इन करें।',
   'wallet_sidechain_height': 'साइड-चेन माइक्रोब्लॉक ऊंचाई',
   'wallet_sidechain_id': 'साइड चेन आईडी',
   'wallet_sidechain_last_seal': 'अंतिम सील ब्लॉक',
@@ -2067,7 +2070,7 @@ const walletStringsHi = <String, String>{
   'wallet_signed_in_as': 'Signed in as {user}',
   'wallet_staking_earned': 'Total staking earned: {amount} PERC',
   'wallet_staking_note':
-      'Confirmed held PERC earns 0.00000005 PERC per 1 PERC held each scenario block after 1 block confirmation. Treasury funds all holder rewards network-wide.',
+      'Confirmed held PERC earns 0.00000005 PERC per 1 PERC held each network block after 1 block confirmation. Treasury funds all holder rewards network-wide.',
   'wallet_staking_title': 'Cumulative staking',
   'wallet_status_account_created': 'खाता बनाया गया',
   'wallet_status_faucet_credited': '+{amount} {symbol}',
@@ -2077,9 +2080,9 @@ const walletStringsHi = <String, String>{
       '{dest} को {amount} {symbol} भेजा गया (नेटवर्क शुल्क {fee} {symbol}) — {delay} के भीतर नेटवर्क पर साइन इन होने तक कतार में, अन्यथा आपके वॉलेट में वापस',
   'wallet_status_signed_in': '{user} के रूप में साइन इन',
   'wallet_status_treasury_cap': 'कोष सीमा पूरी',
-  'wallet_status_treasury_empty': 'कोष खाली — बाद में दूसरा परिदृश्य चलाएँ',
+  'wallet_status_treasury_empty': 'कोष खाली — अपना वॉलेट सिंक करें या बाद में पुनः प्रयास करें',
   'wallet_status_treasury_secured': 'कोष सुरक्षित — चेन लॉन्च के लिए सीड ट्रेज़री साइन-इन की प्रतीक्षा',
-  'wallet_subtitle': 'Perccent chain · scenario-driven treasury',
+  'wallet_subtitle': 'Perccent chain · network treasury',
   'wallet_supply_infinite': 'Infinite continuum supply (∞ PERC)',
   'wallet_sync_button': 'वॉलेट सिंक करें',
   'wallet_sync_partial': 'Partial sync — local height {local}, network height {network}',
@@ -2093,25 +2096,26 @@ const walletStringsHi = <String, String>{
       'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Treasury cycle #{cycle}',
-  'wallet_treasury_inflation_critical': 'Treasury at 1 cent reserve — pool renewal mint on next scenario',
+  'wallet_treasury_inflation_critical':
+      'Treasury at 1 cent reserve — aligned emission accrues with next network activity',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
   'wallet_treasury_inflation_ready':
       'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_manual_send_note':
-      'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
+      'Treasury is active — network emission (~0.00000001 PERC/min) continues. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC minted ({pct}% continuum)',
   'wallet_treasury_note':
-      'Perccent chain advances on scenario analysis — not on Grok construal or field keystrokes. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply. Treasury wallet stays offline until any user runs analysis.',
+      'Perccent treasury emission scales with network block pace and wallet activity. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply.',
   'wallet_treasury_offline_note':
       'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
-  'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
+  'wallet_treasury_pool': 'Treasury pool: {amount} PERC',
   'wallet_treasury_remaining': 'Treasury remaining: {amount} PERC',
   'wallet_treasury_send_locked':
-      'Manual sends from evolve_treasury are disabled. Emission and faucet payouts continue.',
+      'Manual sends from evolve_treasury are disabled. Network emission continues.',
   'wallet_treasury_setup_link': 'Treasury holder? Secure treasury account',
   'wallet_treasury_setup_note':
-      'Treasury holder receives all scenario-driven emissions. Create your password now (first use only).',
+      'Treasury holder receives all network-driven emissions. Create your password now (first use only).',
   'wallet_treasury_setup_title': 'Secure treasury account',
   'wallet_treasury_title': 'Treasury emission',
   'wallet_treasury_username': 'Treasury username',
@@ -2123,7 +2127,7 @@ const walletStringsHi = <String, String>{
   'wallet_tx_pending_hint':
       'Confirming transfer on the network.',
   'wallet_tx_revert': 'Returned transfer',
-  'wallet_tx_reward': 'Analysis reward',
+  'wallet_tx_reward': 'Network reward',
   'wallet_tx_sent': 'Sent to {user}',
   'wallet_tx_staking': 'Staking reward',
   'wallet_tx_treasury': 'Treasury emission',
@@ -2231,12 +2235,12 @@ const walletStringsJa = <String, String>{
   'wallet_camera_permission_settings_body': 'Evolve ではカメラへのアクセスがオフになっています。設定を開き、カメラがPERC QR コードをスキャンできるようにします。',
   'wallet_camera_permission_title': 'カメラへのアクセスを許可する',
   'wallet_choose_username': 'ユーザー名を選択してください',
-  'wallet_chronoflux_graph_empty': 'パーセント確率分析または社会的結合分析を実行して、Chronoflux 変数グラフを作成します。',
+  'wallet_chronoflux_graph_empty': 'Chronoflux の履歴はまだありません — ネットワーク活動でグラフが埋まります。',
   'wallet_chronoflux_graph_note':
       'ペンタゴン レーダーと ρt、ω、σ、Iτ、Jμ の 5 ポイント時系列 — 時間はシナリオ描画全体で Chronoflux の入力順序と一致します。',
   'wallet_chronoflux_graph_title': 'Chronoflux 5 点変数',
   'wallet_cooldown_popup_body':
-      'あなたのウォレットは過去 7 分以内にすでに財務省から引き出されています。 Perccent チェーンはシナリオで進みます。次に対象となるドロー (およびブロック) はおよそ {blockWait} になります。 {wait} の後に、再度 xx/100 PERC を引くことができます。',
+      'あなたのウォレットは過去 7 分以内にすでに財務省から引き出されています。次の対象ドローはおよそ {blockWait} です。{wait} 後に再度ドローできます。',
   'wallet_cooldown_popup_ok': 'わかりました',
   'wallet_cooldown_popup_title': 'クールダウンでの財務ドロー',
   'wallet_copy_address': 'アドレスをコピーする',
@@ -2288,7 +2292,7 @@ const walletStringsJa = <String, String>{
   'wallet_explorer_degenerate_body': '同じベクトルでフレームを定義し、空間ドリフトを提供することはできません。ドリフトは、プロジェクターがテストする方向から構築されるときに投影されます。',
   'wallet_explorer_degenerate_title': '縮退した 1 ベクトル アンザッツ — 許容されるフレーム フロー表現ではない',
   'wallet_explorer_emission_chart': 'ブロックごとの国庫排出量',
-  'wallet_explorer_empty': 'まだブロックがありません — シナリオを実行してチェーンを進めてください。',
+  'wallet_explorer_empty': 'まだブロックがありません — ウォレットを同期してネットワークに参加してください。',
   'wallet_explorer_frame_flow_center': '合法的なフレームフロー分割 — フレームはスライスを定義します。スライス内にドリフトが残る',
   'wallet_explorer_frame_flow_status': 'A2 ステータス: 合法的なフレームフロー分割。フレームのみで作られたプロジェクター。ドリフトは引き続き測定可能です。',
   'wallet_explorer_frame_flow_subtitle':
@@ -2307,7 +2311,7 @@ const walletStringsJa = <String, String>{
   'wallet_explorer_microblock_fair_usage': 'アプリの公平な使用',
   'wallet_explorer_microblock_height': 'ログに記録された公正使用マイクロブロック: {count}',
   'wallet_explorer_microblock_log_count': 'ログエントリ: {count}',
-  'wallet_explorer_microblock_log_empty': 'マイクロブロックはまだありません — ブロックチェーンの起動後に分析フィールドに入力します。',
+  'wallet_explorer_microblock_log_empty': 'マイクロブロックはまだありません — ブロックチェーン起動後にネットワーク活動がここに表示されます。',
   'wallet_explorer_microblock_log_entry': '#{index}区 {ward} · μ{pos} · {time} · {label}{extra}',
   'wallet_explorer_microblock_log_note': '各マイクロブロックは、分析フォーム上のキーストロークとフィールド編集という 1 つの公平なアプリ操作を記録します。',
   'wallet_explorer_microblock_log_title': 'フェアユースマイクロブロックログ',
@@ -2367,8 +2371,8 @@ const walletStringsJa = <String, String>{
   'wallet_register': 'アカウントを作成する',
   'wallet_register_note': 'ユーザー名とパスワードを選択します。あなたの Perccent アドレスは、このデバイス上でそれらから生成されます。',
   'wallet_register_title': 'ウォレットを作成する',
-  'wallet_scenario_block_capped': 'シナリオブロックの上限に達しました ({max} シナリオチェック)',
-  'wallet_scenario_block_height': 'あなたのシナリオブロック: {current} / {max}',
+  'wallet_scenario_block_capped': 'ネットワークブロックの上限に達しました ({max} チェックポイント)',
+  'wallet_scenario_block_height': 'あなたのネットワークブロック: {current} / {max}',
   'wallet_seed_block_anchor': 'Seed anchor: block {block}',
   'wallet_send': '送信',
   'wallet_send_address_pick': 'Or pick a known address',
@@ -2393,7 +2397,7 @@ const walletStringsJa = <String, String>{
   'wallet_send_to': 'To PERC address',
   'wallet_send_to_hint': 'Paste or scan the recipient PERC address',
   'wallet_session_expired':
-      'Your wallet session ended after 7 minutes away from the seed connection — sign in again to run SCS analyses.',
+      'Your wallet session ended after 7 minutes away from the seed connection — sign in again to continue.',
   'wallet_sidechain_height': 'Side-chain microblock height',
   'wallet_sidechain_id': 'Side chain ID',
   'wallet_sidechain_last_seal': 'Last seal block',
@@ -2405,7 +2409,7 @@ const walletStringsJa = <String, String>{
   'wallet_signed_in_as': 'Signed in as {user}',
   'wallet_staking_earned': 'Total staking earned: {amount} PERC',
   'wallet_staking_note':
-      'Confirmed held PERC earns 0.00000005 PERC per 1 PERC held each scenario block after 1 block confirmation. Treasury funds all holder rewards network-wide.',
+      'Confirmed held PERC earns 0.00000005 PERC per 1 PERC held each network block after 1 block confirmation. Treasury funds all holder rewards network-wide.',
   'wallet_staking_title': 'Cumulative staking',
   'wallet_status_account_created': 'アカウントを作成しました',
   'wallet_status_faucet_credited': '+{amount} {symbol}',
@@ -2415,9 +2419,9 @@ const walletStringsJa = <String, String>{
       '{dest} へ {amount} {symbol} を送信 （ネットワーク手数料 {fee} {symbol}）— {delay} 以内にネットワークへサインインするまでキュー、それ以外はウォレットに返却',
   'wallet_status_signed_in': '{user} としてサインイン',
   'wallet_status_treasury_cap': 'トレジャリー上限に達しました',
-  'wallet_status_treasury_empty': 'トレジャリーが空です — 後でもう一度シナリオを実行してください',
+  'wallet_status_treasury_empty': 'トレジャリーが空です — ウォレットを同期するか、後でもう一度お試しください',
   'wallet_status_treasury_secured': 'トレジャリーを保護しました — チェーン起動のためシード・トレジャリーのサインインを待機中',
-  'wallet_subtitle': 'Perccent chain · scenario-driven treasury',
+  'wallet_subtitle': 'Perccent chain · network treasury',
   'wallet_supply_infinite': 'Infinite continuum supply (∞ PERC)',
   'wallet_sync_button': 'ウォレットを同期',
   'wallet_sync_partial': 'Partial sync — local height {local}, network height {network}',
@@ -2431,25 +2435,26 @@ const walletStringsJa = <String, String>{
       'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Treasury cycle #{cycle}',
-  'wallet_treasury_inflation_critical': 'Treasury at 1 cent reserve — pool renewal mint on next scenario',
+  'wallet_treasury_inflation_critical':
+      'Treasury at 1 cent reserve — aligned emission accrues with next network activity',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
   'wallet_treasury_inflation_ready':
       'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_manual_send_note':
-      'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
+      'Treasury is active — network emission (~0.00000001 PERC/min) continues. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC minted ({pct}% continuum)',
   'wallet_treasury_note':
-      'Perccent chain advances on scenario analysis — not on Grok construal or field keystrokes. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply. Treasury wallet stays offline until any user runs analysis.',
+      'Perccent treasury emission scales with network block pace and wallet activity. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply.',
   'wallet_treasury_offline_note':
       'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
-  'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
+  'wallet_treasury_pool': 'Treasury pool: {amount} PERC',
   'wallet_treasury_remaining': 'Treasury remaining: {amount} PERC',
   'wallet_treasury_send_locked':
-      'Manual sends from evolve_treasury are disabled. Emission and faucet payouts continue.',
+      'Manual sends from evolve_treasury are disabled. Network emission continues.',
   'wallet_treasury_setup_link': 'Treasury holder? Secure treasury account',
   'wallet_treasury_setup_note':
-      'Treasury holder receives all scenario-driven emissions. Create your password now (first use only).',
+      'Treasury holder receives all network-driven emissions. Create your password now (first use only).',
   'wallet_treasury_setup_title': 'Secure treasury account',
   'wallet_treasury_title': 'Treasury emission',
   'wallet_treasury_username': 'Treasury username',
@@ -2461,7 +2466,7 @@ const walletStringsJa = <String, String>{
   'wallet_tx_pending_hint':
       'Confirming transfer on the network.',
   'wallet_tx_revert': 'Returned transfer',
-  'wallet_tx_reward': 'Analysis reward',
+  'wallet_tx_reward': 'Network reward',
   'wallet_tx_sent': 'Sent to {user}',
   'wallet_tx_staking': 'Staking reward',
   'wallet_tx_treasury': 'Treasury emission',
@@ -2569,7 +2574,7 @@ const walletStringsProviderEn = <String, String>{
       'Sent {amount} {symbol} to {dest} (network fee {fee} {symbol}) — queued until they sign in on the network within {delay}, otherwise returns to your wallet',
   'wallet_status_signed_in': 'Signed in as {user}',
   'wallet_status_treasury_cap': 'Treasury cap reached',
-  'wallet_status_treasury_empty': 'Treasury empty — run another scenario later',
+  'wallet_status_treasury_empty': 'Treasury empty — sync your wallet or try again later',
   'wallet_status_treasury_secured': 'Treasury secured — awaiting seed treasury sign-in to launch chain',
   'wallet_tx_microblock_seal': 'Chronoflux microblock seal',
 };
@@ -2606,7 +2611,7 @@ const walletStringsProviderEs = <String, String>{
       'Enviado {amount} {symbol} a {dest} (comisión de red {fee} {symbol}) — en cola hasta que inicien sesión en la red en {delay}; si no, vuelve a su monedero',
   'wallet_status_signed_in': 'Sesión iniciada como {user}',
   'wallet_status_treasury_cap': 'Límite de tesorería alcanzado',
-  'wallet_status_treasury_empty': 'Tesorería vacía — ejecute otro escenario más tarde',
+  'wallet_status_treasury_empty': 'Tesorería vacía — sincronice su monedero o inténtelo más tarde',
   'wallet_status_treasury_secured':
       'Tesorería asegurada — en espera del inicio de sesión de tesorería semilla para lanzar la cadena',
   'wallet_tx_microblock_seal': 'Sello de microbloque Chronoflux',
@@ -2643,7 +2648,7 @@ const walletStringsProviderFr = <String, String>{
       'Envoyé {amount} {symbol} à {dest} (frais réseau {fee} {symbol}) — en file jusqu\'à connexion sur le réseau sous {delay}, sinon retour vers votre portefeuille',
   'wallet_status_signed_in': 'Connecté en tant que {user}',
   'wallet_status_treasury_cap': 'Plafond de trésorerie atteint',
-  'wallet_status_treasury_empty': 'Trésorerie vide — relancez un scénario plus tard',
+  'wallet_status_treasury_empty': 'Trésorerie vide — synchronisez votre portefeuille ou réessayez plus tard',
   'wallet_status_treasury_secured':
       'Trésorerie sécurisée — en attente de la connexion trésorerie seed pour lancer la chaîne',
   'wallet_tx_microblock_seal': 'Scellement microbloc Chronoflux',
@@ -2680,7 +2685,7 @@ const walletStringsProviderDe = <String, String>{
       '{amount} {symbol} an {dest} gesendet (Netzwerkgebühr {fee} {symbol}) — in Warteschlange bis Anmeldung im Netzwerk innerhalb von {delay}, sonst Rückgabe an Ihre Wallet',
   'wallet_status_signed_in': 'Angemeldet als {user}',
   'wallet_status_treasury_cap': 'Treasury-Obergrenze erreicht',
-  'wallet_status_treasury_empty': 'Treasury leer — führen Sie später ein weiteres Szenario aus',
+  'wallet_status_treasury_empty': 'Treasury leer — synchronisieren Sie Ihr Wallet oder versuchen Sie es später erneut',
   'wallet_status_treasury_secured':
       'Treasury gesichert — warte auf Seed-Treasury-Anmeldung zum Start der Chain',
   'wallet_tx_microblock_seal': 'Chronoflux-Mikroblock-Siegel',
@@ -2718,7 +2723,7 @@ const walletStringsProviderPt = <String, String>{
       'Enviado {amount} {symbol} para {dest} (taxa de rede {fee} {symbol}) — em fila até iniciarem sessão na rede em {delay}; caso contrário, devolve à sua carteira',
   'wallet_status_signed_in': 'Sessão iniciada como {user}',
   'wallet_status_treasury_cap': 'Limite da tesouraria atingido',
-  'wallet_status_treasury_empty': 'Tesouraria vazia — execute outro cenário mais tarde',
+  'wallet_status_treasury_empty': 'Tesouraria vazia — sincronize a sua carteira ou tente novamente mais tarde',
   'wallet_status_treasury_secured':
       'Tesouraria protegida — aguardando login da tesouraria seed para lançar a cadeia',
   'wallet_tx_microblock_seal': 'Selo de microbloco Chronoflux',
@@ -2754,7 +2759,7 @@ const walletStringsProviderAr = <String, String>{
       'تم إرسال {amount} {symbol} إلى {dest} (رسوم الشبكة {fee} {symbol}) — في الانتظار حتى يسجلوا الدخول على الشبكة خلال {delay}، وإلا يعود إلى محفظتك',
   'wallet_status_signed_in': 'تم تسجيل الدخول باسم {user}',
   'wallet_status_treasury_cap': 'تم بلوغ حد الخزينة',
-  'wallet_status_treasury_empty': 'الخزينة فارغة — شغّل سيناريو آخر لاحقًا',
+  'wallet_status_treasury_empty': 'الخزينة فارغة — زامن محفظتك أو حاول مرة أخرى لاحقًا',
   'wallet_status_treasury_secured': 'تم تأمين الخزينة — في انتظار تسجيل دخول خزينة البذرة لإطلاق السلسلة',
   'wallet_tx_microblock_seal': 'ختم microblock Chronoflux',
 };
@@ -2788,7 +2793,7 @@ const walletStringsProviderZh = <String, String>{
       '已向 {dest} 发送 {amount} {symbol} （网络费 {fee} {symbol}）— 排队等待对方在 {delay} 内登录网络，否则退回您的钱包',
   'wallet_status_signed_in': '已以 {user} 登录',
   'wallet_status_treasury_cap': '已达国库上限',
-  'wallet_status_treasury_empty': '国库为空 — 请稍后运行其他情景',
+  'wallet_status_treasury_empty': '国库为空 — 请同步钱包或稍后再试',
   'wallet_status_treasury_secured': '国库已保护 — 等待种子国库登录以启动链',
   'wallet_tx_microblock_seal': 'Chronoflux 微块封印',
 };
@@ -2823,7 +2828,7 @@ const walletStringsProviderHi = <String, String>{
       '{dest} को {amount} {symbol} भेजा गया (नेटवर्क शुल्क {fee} {symbol}) — {delay} के भीतर नेटवर्क पर साइन इन होने तक कतार में, अन्यथा आपके वॉलेट में वापस',
   'wallet_status_signed_in': '{user} के रूप में साइन इन',
   'wallet_status_treasury_cap': 'कोष सीमा पूरी',
-  'wallet_status_treasury_empty': 'कोष खाली — बाद में दूसरा परिदृश्य चलाएँ',
+  'wallet_status_treasury_empty': 'कोष खाली — अपना वॉलेट सिंक करें या बाद में पुनः प्रयास करें',
   'wallet_status_treasury_secured': 'कोष सुरक्षित — चेन लॉन्च के लिए सीड ट्रेज़री साइन-इन की प्रतीक्षा',
   'wallet_tx_microblock_seal': 'Chronoflux माइक्रोब्लॉक सील',
 };
@@ -2857,7 +2862,7 @@ const walletStringsProviderJa = <String, String>{
       '{dest} へ {amount} {symbol} を送信 （ネットワーク手数料 {fee} {symbol}）— {delay} 以内にネットワークへサインインするまでキュー、それ以外はウォレットに返却',
   'wallet_status_signed_in': '{user} としてサインイン',
   'wallet_status_treasury_cap': 'トレジャリー上限に達しました',
-  'wallet_status_treasury_empty': 'トレジャリーが空です — 後でもう一度シナリオを実行してください',
+  'wallet_status_treasury_empty': 'トレジャリーが空です — ウォレットを同期するか、後でもう一度お試しください',
   'wallet_status_treasury_secured': 'トレジャリーを保護しました — チェーン起動のためシード・トレジャリーのサインインを待機中',
   'wallet_tx_microblock_seal': 'Chronoflux マイクロブロック封印',
 };

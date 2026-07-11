@@ -53,6 +53,8 @@ void main() {
     final src = File('lib/perc/screens/wallet_screen.dart').readAsStringSync();
     expect(src.contains('_faucetCard(wallet'), isFalse);
     expect(src.contains("strings.t('wallet_faucet_title')"), isFalse);
+    expect(src.contains("strings.t('wallet_scenario_block_height')"), isFalse);
+    expect(src.contains("strings.t('wallet_scenario_block_capped')"), isFalse);
   });
 
   test('Credit & Governance copy recommends Evolve Full Community Governance Suite', () {
@@ -94,11 +96,17 @@ void main() {
       'analysis',
       'run a scenario',
       'run analysis',
+      'run another scenario',
       'percent-chance',
       'social-cohesion',
       'social cohesion',
       'Análisis',
       'escenario',
+      'scenario',
+      'faucet',
+      'grifo',
+      'scénario',
+      'Szenario',
     ];
 
     void expectNeutral(String key) {
@@ -113,11 +121,26 @@ void main() {
       expect(value.trim(), isNotEmpty, reason: '$key must not be empty');
     }
 
-    expectNeutral('wallet_transactions_empty');
-    expectNeutral('wallet_blockchain_awaiting_launch');
-    expectNeutral('wallet_blockchain_launch_body');
-    expectNeutral('wallet_treasury_offline_note');
-    expectNeutral('wallet_treasury_inflation_ready');
+    final walletScreenSrc =
+        File('lib/perc/screens/wallet_screen.dart').readAsStringSync();
+    final walletScreenKeys = RegExp(r"strings\.t\('(wallet_[^']+)'\)")
+        .allMatches(walletScreenSrc)
+        .map((m) => m.group(1)!)
+        .toSet()
+        .toList()
+      ..sort();
+
+    expect(walletScreenKeys, isNotEmpty);
+
+    const extraStatusKeys = [
+      'wallet_status_treasury_empty',
+      'wallet_status_treasury_cap',
+      'wallet_status_faucet_credited',
+    ];
+
+    for (final key in {...walletScreenKeys, ...extraStatusKeys}) {
+      expectNeutral(key);
+    }
 
     expect(
       strings.t('wallet_transactions_empty'),
@@ -126,6 +149,22 @@ void main() {
     expect(
       strings.t('wallet_blockchain_awaiting_launch'),
       contains('sync completes'),
+    );
+    expect(
+      strings.t('wallet_session_expired'),
+      contains('sign in again'),
+    );
+    expect(
+      strings.t('wallet_treasury_note'),
+      contains('network block pace'),
+    );
+    expect(
+      strings.t('wallet_status_treasury_empty'),
+      contains('sync your wallet'),
+    );
+    expect(
+      strings.t('wallet_treasury_inflation_critical'),
+      contains('network activity'),
     );
   });
 

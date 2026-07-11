@@ -791,28 +791,6 @@ class _WalletScreenState extends State<WalletScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              wallet.scenarioBlockHeight >=
-                      PercChainConstants.maxScenarioBlocksPerWallet
-                  ? strings
-                      .t('wallet_scenario_block_capped')
-                      .replaceAll(
-                        '{max}',
-                        '${PercChainConstants.maxScenarioBlocksPerWallet}',
-                      )
-                  : strings
-                      .t('wallet_scenario_block_height')
-                      .replaceAll('{current}', '${wallet.scenarioBlockHeight}')
-                      .replaceAll(
-                        '{max}',
-                        '${PercChainConstants.maxScenarioBlocksPerWallet}',
-                      ),
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF6C63FF),
-              ),
-            ),
-            Text(
               strings
                   .t('wallet_seed_block_anchor')
                   .replaceAll('{block}', '${wallet.seedAnchorBlock}'),
