@@ -66,9 +66,9 @@ const walletStringsFr = <String, String>{
   'wallet_balance_label': 'Solde disponible',
   'wallet_block_height': 'Hauteur de bloc : {height}',
   'wallet_blockchain_awaiting_launch':
-      'Connexion au nœud semence Perccent — les récompenses de scénario s\'activent une fois la synchronisation terminée.',
+      'Connexion au nœud semence Perccent — votre portefeuille sera prêt une fois la synchronisation terminée.',
   'wallet_blockchain_launch_body':
-      'La chaîne Perccent est active. Lancez des scénarios pour avancer les blocs.',
+      'La chaîne Perccent est active. Envoyez, recevez et synchronisez votre portefeuille pour participer.',
   'wallet_blockchain_launch_ok': 'C\'est parti',
   'wallet_blockchain_launch_title': 'Blockchain lancée !',
   'wallet_burned_note':
@@ -305,21 +305,22 @@ const walletStringsFr = <String, String>{
   'wallet_time_confirmations_title': 'Confirmations Chronoflux TIME',
   'wallet_title': 'Evolve Wallet',
   'wallet_transactions_empty':
-      'Lancez un calcul de probabilité % ou de cohésion sociale dans Analyse pour recevoir votre premier versement robinet Perccent.',
+      'Aucune transaction pour le moment. Envoyez ou recevez des PERC, ou synchronisez votre portefeuille pour voir l\'activité du réseau.',
   'wallet_transactions_title': 'TRANSACTIONS RÉCENTES',
   'wallet_treasury_cycle': 'Cycle trésorerie n°{cycle}',
   'wallet_treasury_inflation_critical':
       'Trésorerie à 1 cent de réserve — renouvellement du pool au prochain scénario',
   'wallet_treasury_inflation_epoch': 'Dernière époque d\'inflation : {time}',
   'wallet_treasury_inflation_next': 'Temps avant prochaine inflation : {wait}',
-  'wallet_treasury_inflation_ready': 'Inflation prête — lancez un scénario',
+  'wallet_treasury_inflation_ready':
+      'Inflation de trésorerie prête — la prochaine émission s\'accumule avec l\'activité du réseau',
   'wallet_treasury_manual_send_note':
       'Trésorerie active — émission 0,00000001 PERC/min et versements robinet scénario continuent. Envois manuels depuis evolve_treasury désactivés.',
   'wallet_treasury_minted': '{minted} PERC émis ({pct}% continuum)',
   'wallet_treasury_note':
       'La chaîne Perccent avance sur l\'analyse de scénarios — pas sur le construal Grok ni les frappes de champs. La trésorerie gagne 0,00000001 PERC par minute écoulée — offre continuum Chronoflux infinie. Le portefeuille trésorerie reste hors ligne jusqu\'à ce qu\'un utilisateur lance une analyse.',
   'wallet_treasury_offline_note':
-      'La trésorerie attend le lancement de la blockchain. Lancez une analyse après le lancement pour puiser au robinet.',
+      'La trésorerie attend le lancement de la blockchain. Synchronisez votre portefeuille après le lancement pour rejoindre les récompenses du réseau.',
   'wallet_treasury_pool': 'Pool trésorerie (robinet) : {amount} PERC',
   'wallet_treasury_remaining': 'Trésorerie restante : {amount} PERC',
   'wallet_treasury_send_locked':
@@ -434,9 +435,9 @@ const walletStringsDe = <String, String>{
   'wallet_balance_label': 'Verfügbares Guthaben',
   'wallet_block_height': 'Blockhöhe: {height}',
   'wallet_blockchain_awaiting_launch':
-      'Verbindung zum live Perccent-Seed-Knoten — Szenario-Belohnungen nach Abschluss der Synchronisation.',
+      'Verbindung zum live Perccent-Seed-Knoten — Ihr Wallet ist nach Abschluss der Synchronisation bereit.',
   'wallet_blockchain_launch_body':
-      'Die Perccent-Kette ist live. Führen Sie Szenarien aus, um Blöcke voranzutreiben.',
+      'Die Perccent-Kette ist live. Senden, empfangen und synchronisieren Sie Ihr Wallet.',
   'wallet_blockchain_launch_ok': 'Lass uns gehen',
   'wallet_blockchain_launch_title': 'Blockchain gestartet!',
   'wallet_burned_note':
@@ -674,21 +675,22 @@ const walletStringsDe = <String, String>{
   'wallet_time_confirmations_title': 'Chronoflux ZEITbestätigungen',
   'wallet_title': 'Evolve Geldbörse',
   'wallet_transactions_empty':
-      'Führen Sie in Analysis eine prozentuale Chance oder Berechnung des sozialen Zusammenhalts durch, um Ihre erste Faucet-Auszahlung in Höhe von Perccent zu erhalten.',
+      'Noch keine Transaktionen. Senden oder empfangen Sie PERC, oder synchronisieren Sie Ihr Wallet, um Netzwerkaktivität zu sehen.',
   'wallet_transactions_title': 'LETZTE TRANSAKTIONEN',
   'wallet_treasury_cycle': 'Treasury-Zyklus #{cycle}',
   'wallet_treasury_inflation_critical':
       'Finanzministerium mit 1-Cent-Reserve – Pool-Erneuerung im nächsten Szenario',
   'wallet_treasury_inflation_epoch': 'Letzte Inflationsepoche: {time}',
   'wallet_treasury_inflation_next': 'Zeit bis zur nächsten Inflation: {wait}',
-  'wallet_treasury_inflation_ready': 'Bereit für die Inflation – führen Sie ein Szenario durch',
+  'wallet_treasury_inflation_ready':
+      'Treasury-Inflation bereit — nächste Emission sammelt sich mit Netzwerkaktivität',
   'wallet_treasury_manual_send_note':
       'Das Finanzministerium ist aktiv – 0.00000001 PERC/min Emission und Szenario-Faucet-Auszahlungen werden fortgesetzt. Manuelle Versendungen von evolve_treasury sind deaktiviert.',
   'wallet_treasury_minted': '{minted} PERC geprägt ({pct}% Kontinuum)',
   'wallet_treasury_note':
       'Perccent Kettenfortschritte bei der Szenarioanalyse – nicht bei Grok Konstruktions- oder Feldtastenanschlägen. Das Finanzministerium verdient 0.00000001 PERC pro verstrichener Minute – unendliche Chronoflux Kontinuumsversorgung. Die Treasury-Wallet bleibt offline, bis ein Benutzer eine Analyse durchführt.',
   'wallet_treasury_offline_note':
-      'Das Finanzministerium wartet auf den Start der Blockchain. Führen Sie nach dem Start eine Analyse durch, um aus dem Wasserhahn zu schöpfen.',
+      'Die Treasury wartet auf den Blockchain-Start. Synchronisieren Sie Ihr Wallet nach dem Start, um Netzwerkbelohnungen zu nutzen.',
   'wallet_treasury_pool': 'Schatzkammer (Wasserhahn): {amount} PERC',
   'wallet_treasury_remaining': 'Verbleibende Kasse: {amount} PERC',
   'wallet_treasury_send_locked':
@@ -802,9 +804,9 @@ const walletStringsPt = <String, String>{
   'wallet_balance_label': 'Saldo disponível',
   'wallet_block_height': 'Altura do bloco: {height}',
   'wallet_blockchain_awaiting_launch':
-      'A ligar ao nó semilla Perccent — recompensas de cenário após sincronização.',
+      'A ligar ao nó semilla Perccent — a sua carteira estará pronta após a sincronização.',
   'wallet_blockchain_launch_body':
-      'A cadeia Perccent está ativa. Execute cenários para avançar blocos.',
+      'A cadeia Perccent está ativa. Envie, receba e sincronize a sua carteira para participar.',
   'wallet_blockchain_launch_ok': 'Vamos',
   'wallet_blockchain_launch_title': 'Blockchain lançado!',
   'wallet_burned_note':
@@ -1040,20 +1042,21 @@ const walletStringsPt = <String, String>{
   'wallet_time_confirmations_title': 'Chronoflux Confirmações de TEMPO',
   'wallet_title': 'Evolve Wallet',
   'wallet_transactions_empty':
-      'Run a percent-chance or social-cohesion calculation on Analysis to receive your first Perccent faucet payout.',
+      'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Ciclo de tesouraria #{cycle}',
   'wallet_treasury_inflation_critical': 'Tesouro com reserva de 1 centavo – renovação do pool no próximo cenário',
   'wallet_treasury_inflation_epoch': 'Última época de inflação: {time}',
   'wallet_treasury_inflation_next': 'Hora da próxima inflação: {wait}',
-  'wallet_treasury_inflation_ready': 'Preparada para a inflação – execute um cenário',
+  'wallet_treasury_inflation_ready':
+      'Inflação da tesouraria pronta — próxima emissão acumula com atividade de rede',
   'wallet_treasury_manual_send_note':
       'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC cunhado ({pct}% contínuo)',
   'wallet_treasury_note':
       'A cadeia Perccent avança na análise de cenário - não na construção Grok ou nas teclas de campo. O Tesouro ganha 0.00000001 PERC por minuto decorrido – fornecimento contínuo infinito de Chronoflux. A carteira do Tesouro permanece offline até que qualquer usuário execute a análise.',
   'wallet_treasury_offline_note':
-      'Treasury awaits blockchain launch. Run analysis after launch to draw from the faucet.',
+      'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
   'wallet_treasury_pool': 'Pool de tesouraria (torneira): {amount} PERC',
   'wallet_treasury_remaining': 'Tesouraria restante: {amount} PERC',
   'wallet_treasury_send_locked':
@@ -1166,9 +1169,9 @@ const walletStringsAr = <String, String>{
   'wallet_balance_label': 'الرصيد المتاح',
   'wallet_block_height': 'ارتفاع الكتلة: {height}',
   'wallet_blockchain_awaiting_launch':
-      'جارٍ الاتصال بعقدة البذرة Perccent — تُفعَّل مكافآت السيناريو بعد اكتمال المزامنة.',
+      'جارٍ الاتصال بعقدة البذرة Perccent — ستكون محفظتك جاهزة بعد اكتمال المزامنة.',
   'wallet_blockchain_launch_body':
-      'سلسلة Perccent نشطة. شغّل السيناريوهات لتقدّم الكتل.',
+      'سلسلة Perccent نشطة. أرسل واستقبل وزامن محفظتك للمشاركة.',
   'wallet_blockchain_launch_ok': 'دعنا نذهب',
   'wallet_blockchain_launch_title': 'تم إطلاق سلسلة الكتل!',
   'wallet_burned_note':
@@ -1397,20 +1400,21 @@ const walletStringsAr = <String, String>{
   'wallet_time_confirmations_title': 'Chronoflux TIME confirmations',
   'wallet_title': 'Evolve Wallet',
   'wallet_transactions_empty':
-      'Run a percent-chance or social-cohesion calculation on Analysis to receive your first Perccent faucet payout.',
+      'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Treasury cycle #{cycle}',
   'wallet_treasury_inflation_critical': 'Treasury at 1 cent reserve — pool renewal mint on next scenario',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
-  'wallet_treasury_inflation_ready': 'Inflation ready — run a scenario',
+  'wallet_treasury_inflation_ready':
+      'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_manual_send_note':
       'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC minted ({pct}% continuum)',
   'wallet_treasury_note':
       'Perccent chain advances on scenario analysis — not on Grok construal or field keystrokes. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply. Treasury wallet stays offline until any user runs analysis.',
   'wallet_treasury_offline_note':
-      'Treasury awaits blockchain launch. Run analysis after launch to draw from the faucet.',
+      'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
   'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
   'wallet_treasury_remaining': 'Treasury remaining: {amount} PERC',
   'wallet_treasury_send_locked':
@@ -1522,8 +1526,8 @@ const walletStringsZh = <String, String>{
   'wallet_back_to_sign_in': '返回登录',
   'wallet_balance_label': '可用余额',
   'wallet_block_height': '区块高度：{height}',
-  'wallet_blockchain_awaiting_launch': '正在连接 Perccent 种子节点 — 同步完成后解锁情景奖励。',
-  'wallet_blockchain_launch_body': 'Perccent 链已上线。运行情景分析以推进区块。',
+  'wallet_blockchain_awaiting_launch': '正在连接 Perccent 种子节点 — 同步完成后钱包即可使用。',
+  'wallet_blockchain_launch_body': 'Perccent 链已上线。发送、接收并同步钱包即可参与。',
   'wallet_blockchain_launch_ok': '我们走吧',
   'wallet_blockchain_launch_title': '区块链上线！',
   'wallet_burned_note': '每笔发送网络费用 (0.00000001 PERC) 都会被永久销毁——从Perccent链的流通中删除。',
@@ -1727,20 +1731,21 @@ const walletStringsZh = <String, String>{
   'wallet_time_confirmations_title': 'Chronoflux TIME confirmations',
   'wallet_title': 'Evolve Wallet',
   'wallet_transactions_empty':
-      'Run a percent-chance or social-cohesion calculation on Analysis to receive your first Perccent faucet payout.',
+      'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Treasury cycle #{cycle}',
   'wallet_treasury_inflation_critical': 'Treasury at 1 cent reserve — pool renewal mint on next scenario',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
-  'wallet_treasury_inflation_ready': 'Inflation ready — run a scenario',
+  'wallet_treasury_inflation_ready':
+      'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_manual_send_note':
       'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC minted ({pct}% continuum)',
   'wallet_treasury_note':
       'Perccent chain advances on scenario analysis — not on Grok construal or field keystrokes. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply. Treasury wallet stays offline until any user runs analysis.',
   'wallet_treasury_offline_note':
-      'Treasury awaits blockchain launch. Run analysis after launch to draw from the faucet.',
+      'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
   'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
   'wallet_treasury_remaining': 'Treasury remaining: {amount} PERC',
   'wallet_treasury_send_locked':
@@ -1854,9 +1859,9 @@ const walletStringsHi = <String, String>{
   'wallet_balance_label': 'उपलब्ध शेष राशि',
   'wallet_block_height': 'ब्लॉक ऊंचाई: {height}',
   'wallet_blockchain_awaiting_launch':
-      'लाइव Perccent सीड से कनेक्ट हो रहा है — सिंक पूरा होने पर परिदृश्य पुरस्कार सक्रिय होंगे।',
+      'लाइव Perccent सीड से कनेक्ट हो रहा है — सिंक पूरा होने पर आपका वॉलेट तैयार होगा।',
   'wallet_blockchain_launch_body':
-      'Perccent श्रृंखला लाइव है। ब्लॉक आगे बढ़ाने के लिए परिदृश्य चलाएँ।',
+      'Perccent श्रृंखला लाइव है। भेजें, प्राप्त करें और अपना वॉलेट सिंक करें।',
   'wallet_blockchain_launch_ok': 'चल दर',
   'wallet_blockchain_launch_title': 'ब्लॉकचेन लॉन्च!',
   'wallet_burned_note':
@@ -2085,20 +2090,21 @@ const walletStringsHi = <String, String>{
   'wallet_time_confirmations_title': 'Chronoflux TIME confirmations',
   'wallet_title': 'Evolve Wallet',
   'wallet_transactions_empty':
-      'Run a percent-chance or social-cohesion calculation on Analysis to receive your first Perccent faucet payout.',
+      'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Treasury cycle #{cycle}',
   'wallet_treasury_inflation_critical': 'Treasury at 1 cent reserve — pool renewal mint on next scenario',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
-  'wallet_treasury_inflation_ready': 'Inflation ready — run a scenario',
+  'wallet_treasury_inflation_ready':
+      'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_manual_send_note':
       'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC minted ({pct}% continuum)',
   'wallet_treasury_note':
       'Perccent chain advances on scenario analysis — not on Grok construal or field keystrokes. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply. Treasury wallet stays offline until any user runs analysis.',
   'wallet_treasury_offline_note':
-      'Treasury awaits blockchain launch. Run analysis after launch to draw from the faucet.',
+      'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
   'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
   'wallet_treasury_remaining': 'Treasury remaining: {amount} PERC',
   'wallet_treasury_send_locked':
@@ -2210,8 +2216,8 @@ const walletStringsJa = <String, String>{
   'wallet_back_to_sign_in': 'サインインに戻る',
   'wallet_balance_label': '利用可能残高',
   'wallet_block_height': 'ブロックの高さ: {height}',
-  'wallet_blockchain_awaiting_launch': 'ライブ Perccent シードに接続中 — 同期完了後にシナリオ報酬が有効になります。',
-  'wallet_blockchain_launch_body': 'Perccent チェーンはライブです。シナリオを実行してブロックを進めてください。',
+  'wallet_blockchain_awaiting_launch': 'ライブ Perccent シードに接続中 — 同期完了後にウォレットが利用可能になります。',
+  'wallet_blockchain_launch_body': 'Perccent チェーンはライブです。送金・受取・同期でウォレットをご利用ください。',
   'wallet_blockchain_launch_ok': 'さあ行こう',
   'wallet_blockchain_launch_title': 'ブロックチェーンがスタートしました！',
   'wallet_burned_note': 'すべての送信ネットワーク料金 (0.00000001 PERC) は永久に焼かれ、Perccent チェーン全体の流通から削除されます。',
@@ -2422,20 +2428,21 @@ const walletStringsJa = <String, String>{
   'wallet_time_confirmations_title': 'Chronoflux TIME confirmations',
   'wallet_title': 'Evolve Wallet',
   'wallet_transactions_empty':
-      'Run a percent-chance or social-cohesion calculation on Analysis to receive your first Perccent faucet payout.',
+      'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_treasury_cycle': 'Treasury cycle #{cycle}',
   'wallet_treasury_inflation_critical': 'Treasury at 1 cent reserve — pool renewal mint on next scenario',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
-  'wallet_treasury_inflation_ready': 'Inflation ready — run a scenario',
+  'wallet_treasury_inflation_ready':
+      'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_manual_send_note':
       'Treasury is active — 0.00000001 PERC/min emission and scenario faucet payouts continue. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_minted': '{minted} PERC minted ({pct}% continuum)',
   'wallet_treasury_note':
       'Perccent chain advances on scenario analysis — not on Grok construal or field keystrokes. Treasury earns 0.00000001 PERC per elapsed minute — infinite Chronoflux continuum supply. Treasury wallet stays offline until any user runs analysis.',
   'wallet_treasury_offline_note':
-      'Treasury awaits blockchain launch. Run analysis after launch to draw from the faucet.',
+      'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
   'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
   'wallet_treasury_remaining': 'Treasury remaining: {amount} PERC',
   'wallet_treasury_send_locked':

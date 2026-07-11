@@ -425,7 +425,8 @@ final _en = {
   'wallet_treasury_pool': 'Treasury pool (faucet): {amount} PERC',
   'wallet_treasury_inflation_epoch': 'Last inflation epoch: {time}',
   'wallet_treasury_inflation_next': 'Time to next inflation: {wait}',
-  'wallet_treasury_inflation_ready': 'Inflation ready — run a scenario',
+  'wallet_treasury_inflation_ready':
+      'Treasury inflation ready — next emission accrues with network activity',
   'wallet_treasury_inflation_critical':
       'Treasury at 1 cent reserve — aligned emission accrues on next scenario',
   'wallet_treasury_send_locked':
@@ -437,7 +438,7 @@ final _en = {
   'wallet_treasury_manual_send_note':
       'Treasury is active — faucet-aligned emission (~0.14285714 PERC/min) and scenario payouts continue. Manual sends from evolve_treasury are disabled.',
   'wallet_treasury_offline_note':
-      'Treasury awaits blockchain launch. Run analysis after launch to draw from the faucet.',
+      'Treasury awaits blockchain launch. Sync your wallet after launch to join network rewards.',
   'wallet_block_height': 'Block height: {height}',
   'wallet_scenario_block_height':
       'Your scenario block: {current} / {max}',
@@ -651,10 +652,10 @@ final _en = {
       'Your wallet already drew from treasury within the last 7 minutes. The Perccent chain advances on scenarios — your next eligible draw (and block) is in approximately {blockWait}. You can draw xx/100 PERC again after {wait}.',
   'wallet_cooldown_popup_ok': 'OK',
   'wallet_blockchain_awaiting_launch':
-      'Connecting to the live Perccent seed — scenario rewards unlock once sync completes.',
+      'Connecting to the live Perccent seed — your wallet will be ready once sync completes.',
   'wallet_blockchain_launch_title': 'Blockchain launched!',
   'wallet_blockchain_launch_body':
-      'The Perccent chain is live. Run scenarios to advance blocks.',
+      'The Perccent chain is live. Send, receive, and sync your wallet to participate.',
   'wallet_blockchain_launch_ok': 'Let\'s go',
   'wallet_faucet_base': 'Base reward',
   'wallet_faucet_bonus': 'Outcome bonus',
@@ -664,7 +665,7 @@ final _en = {
   'wallet_address_copied': 'Address copied',
   'wallet_transactions_title': 'RECENT TRANSACTIONS',
   'wallet_transactions_empty':
-      'Run a percent-chance or social-cohesion calculation on Analysis to receive your first Perccent faucet payout.',
+      'No transactions yet. Send or receive PERC, or sync your wallet to pick up network activity.',
   'wallet_treasury_setup_title': 'Secure treasury account',
   'wallet_treasury_setup_note':
       'Treasury holder receives all scenario-driven emissions. Create your password now (first use only).',
@@ -1286,7 +1287,8 @@ final _es = {
   'wallet_treasury_pool': 'Fondo de tesorería (grifo): {amount} PERC',
   'wallet_treasury_inflation_epoch': 'Última época de inflación: {time}',
   'wallet_treasury_inflation_next': 'Tiempo hasta la próxima inflación: {wait}',
-  'wallet_treasury_inflation_ready': 'Inflación lista — ejecute un escenario',
+  'wallet_treasury_inflation_ready':
+      'Inflación de tesorería lista — la próxima emisión se acumula con la actividad de red',
   'wallet_treasury_inflation_critical':
       'Tesorería en reserva de 1 cent — la emisión alineada se acumula en el próximo escenario',
   'wallet_treasury_send_locked':
@@ -1294,7 +1296,7 @@ final _es = {
   'wallet_treasury_manual_send_note':
       'La tesorería está activa — emisión alineada con el grifo (~0,14285714 PERC/min) y pagos continúan. Los envíos manuales desde evolve_treasury están deshabilitados.',
   'wallet_treasury_offline_note':
-      'La tesorería espera el lanzamiento de la cadena. Ejecute un análisis tras el lanzamiento para usar el grifo.',
+      'La tesorería espera el lanzamiento de la cadena. Sincronice su monedero tras el lanzamiento para unirse a las recompensas de red.',
   'wallet_block_height': 'Altura de bloque: {height}',
   'wallet_scenario_block_height':
       'Tu bloque de escenario: {current} / {max}',
@@ -1377,10 +1379,10 @@ final _es = {
       'Su monedero ya retiró de la tesorería en los últimos 7 minutos. La cadena avanza con escenarios — su próximo retiro (y bloque) es en aproximadamente {blockWait}. Puede retirar xx/100 PERC de nuevo tras {wait}.',
   'wallet_cooldown_popup_ok': 'OK',
   'wallet_blockchain_awaiting_launch':
-      'Conectando al nodo semilla Perccent — las recompensas de escenario se activan al sincronizar.',
+      'Conectando al nodo semilla Perccent — su monedero estará listo al completar la sincronización.',
   'wallet_blockchain_launch_title': '¡Cadena lanzada!',
   'wallet_blockchain_launch_body':
-      'La cadena Perccent está activa. Ejecute escenarios para avanzar bloques.',
+      'La cadena Perccent está activa. Envíe, reciba y sincronice su monedero para participar.',
   'wallet_blockchain_launch_ok': 'Adelante',
   'wallet_faucet_base': 'Recompensa base',
   'wallet_faucet_bonus': 'Bono por resultado',
@@ -1390,7 +1392,7 @@ final _es = {
   'wallet_address_copied': 'Dirección copiada',
   'wallet_transactions_title': 'TRANSACCIONES RECIENTES',
   'wallet_transactions_empty':
-      'Ejecuta un análisis de probabilidad o cohesión social en Análisis para recibir tu primer pago Perccent.',
+      'Aún no hay transacciones. Envíe o reciba PERC, o sincronice su monedero para ver actividad de la red.',
   'wallet_treasury_setup_title': 'Proteger cuenta de tesorería',
   'wallet_treasury_setup_note':
       'La tesorería recibe todas las emisiones. Cree su contraseña ahora (solo la primera vez).',

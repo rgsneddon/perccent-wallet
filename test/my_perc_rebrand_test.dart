@@ -88,6 +88,47 @@ void main() {
     expect(const WalletSplashPoster(), isA<WalletSplashPoster>());
   });
 
+  test('wallet empty and treasury notices exclude analysis scenario prompts', () {
+    const blocked = [
+      'Analysis',
+      'analysis',
+      'run a scenario',
+      'run analysis',
+      'percent-chance',
+      'social-cohesion',
+      'social cohesion',
+      'Análisis',
+      'escenario',
+    ];
+
+    void expectNeutral(String key) {
+      final value = strings.t(key);
+      for (final phrase in blocked) {
+        expect(
+          value.toLowerCase(),
+          isNot(contains(phrase.toLowerCase())),
+          reason: '$key must not mention "$phrase" — got: $value',
+        );
+      }
+      expect(value.trim(), isNotEmpty, reason: '$key must not be empty');
+    }
+
+    expectNeutral('wallet_transactions_empty');
+    expectNeutral('wallet_blockchain_awaiting_launch');
+    expectNeutral('wallet_blockchain_launch_body');
+    expectNeutral('wallet_treasury_offline_note');
+    expectNeutral('wallet_treasury_inflation_ready');
+
+    expect(
+      strings.t('wallet_transactions_empty'),
+      contains('Send or receive PERC'),
+    );
+    expect(
+      strings.t('wallet_blockchain_awaiting_launch'),
+      contains('sync completes'),
+    );
+  });
+
   test('upgrade advisory strings wire Evolve Suite and MY PERC installer links', () {
     expect(strings.t('my_perc_upgrade_evolve_link'), 'Full Evolve Suite');
     expect(strings.t('my_perc_upgrade_wallet_link'), 'MY PERC installer');
