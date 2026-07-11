@@ -133,9 +133,10 @@ class PercLedger {
   final PercChronofluxMicroVerifier _microVerifier;
 
   List<PercPendingInboundTransfer> pendingInboundFor(String username) {
-    final u = PercAuth.normalizeUsername(username);
+    final receiver = _accountFor(username);
+    if (receiver == null || receiver.address.isEmpty) return const [];
     return pendingInboundTransfers
-        .where((p) => p.toUsername == u)
+        .where((p) => _pendingTargetsUser(p, username))
         .toList(growable: false);
   }
 
@@ -842,7 +843,11 @@ class PercLedger {
     final seen = pendingInboundTransfers.map((p) => p.id).toSet();
     for (final pending in remote.pendingInboundTransfers) {
       if (seen.contains(pending.id)) continue;
-      final recipient = _localWalletForRemoteParty(pending.toUsername, remote);
+      final recipient = _localWalletForRemoteParty(
+        pending.toUsername,
+        remote,
+        toAddress: pending.toAddress,
+      );
       if (recipient == null) continue;
       if (_isTreasuryManualFundingForbidden(recipient.username)) continue;
       if (!pending.switchCommitmentValid) continue;
@@ -850,6 +855,7 @@ class PercLedger {
         id: pending.id,
         fromUsername: pending.fromUsername,
         toUsername: recipient.username,
+        toAddress: pending.toAddress ?? recipient.address,
         amount: pending.amount,
         fee: pending.fee,
         sentAt: pending.sentAt,
@@ -883,13 +889,25 @@ class PercLedger {
         if (pendingInboundTransfers.any((p) => p.id == tx.id)) continue;
         final toUser = tx.toUsername;
         if (toUser == null || toUser.isEmpty) continue;
-        final recipient = _localWalletForRemoteParty(toUser, remote);
+        PercPendingInboundTransfer? remotePending;
+        for (final candidate in remote.pendingInboundTransfers) {
+          if (candidate.id == tx.id) {
+            remotePending = candidate;
+            break;
+          }
+        }
+        final recipient = _localWalletForRemoteParty(
+          toUser,
+          remote,
+          toAddress: remotePending?.toAddress,
+        );
         if (recipient == null) continue;
         if (_isTreasuryManualFundingForbidden(recipient.username)) continue;
         final localPending = PercPendingInboundTransfer(
           id: tx.id,
           fromUsername: tx.fromUsername ?? '',
           toUsername: recipient.username,
+          toAddress: remotePending?.toAddress ?? recipient.address,
           amount: tx.amount,
           sentAt: tx.timestamp,
           memo: tx.memo,
@@ -904,7 +922,22 @@ class PercLedger {
     }
   }
 
-  PercAccount? _localWalletForRemoteParty(String remoteUsername, PercLedger remote) {
+  PercAccount? _localWalletForRemoteParty(
+    String remoteUsername,
+    PercLedger remote, {
+    String? toAddress,
+  }) {
+    final explicit = toAddress?.trim();
+    if (explicit != null && explicit.isNotEmpty) {
+      final normalized = PercAuth.normalizeAddress(explicit);
+      for (final local in accounts.values) {
+        if (local.passwordSet && local.address == normalized) {
+          return local;
+        }
+      }
+      return null;
+    }
+
     PercAccount? remoteParty;
     for (final acc in remote.accounts.values) {
       if (acc.username == remoteUsername) {
@@ -913,14 +946,13 @@ class PercLedger {
       }
     }
     if (remoteParty != null && remoteParty.address.isNotEmpty) {
+      final normalized = PercAuth.normalizeAddress(remoteParty.address);
       for (final local in accounts.values) {
-        if (local.passwordSet && local.address == remoteParty!.address) {
+        if (local.passwordSet && local.address == normalized) {
           return local;
         }
       }
     }
-    final direct = _accountFor(remoteUsername);
-    if (direct != null && direct.passwordSet) return direct;
     return null;
   }
 
@@ -1522,6 +1554,7 @@ class PercLedger {
                 ? to
                 : pending.fromUsername,
             toUsername: pending.toUsername == from ? to : pending.toUsername,
+            toAddress: pending.toAddress,
             amount: pending.amount,
             fee: pending.fee,
             sentAt: pending.sentAt,
@@ -2050,6 +2083,9 @@ class PercLedger {
       address: PercAuth.deriveAddress(u, salt),
       passwordSwitchCommit: PercAuth.passwordSwitchCommit(passwordHash, salt),
     );
+    if (_accountForAddress(acc.address) != null) {
+      throw StateError('Wallet address collision — register again');
+    }
     accounts[u] = acc;
     connectAllWalletsConcurrently();
     return acc;
@@ -2152,21 +2188,35 @@ class PercLedger {
     return '${window.inSeconds} seconds';
   }
 
+  String _pendingRecipientAddress(PercPendingInboundTransfer pending) {
+    final explicit = pending.normalizedToAddress();
+    if (explicit.isNotEmpty) return explicit;
+    final stub = _accountFor(pending.toUsername);
+    if (stub != null && stub.address.isNotEmpty) {
+      return PercAuth.normalizeAddress(stub.address);
+    }
+    return '';
+  }
+
   bool _pendingTargetsUser(PercPendingInboundTransfer pending, String username) {
-    if (pending.toUsername == username) return true;
     final receiver = _accountFor(username);
-    if (receiver == null) return false;
-    final alias = _accountFor(pending.toUsername);
-    return alias != null && alias.address == receiver.address;
+    if (receiver == null || receiver.address.isEmpty) return false;
+    final target = _pendingRecipientAddress(pending);
+    if (target.isEmpty) return false;
+    return receiver.address == target;
   }
 
   PercAccount? _resolvePendingRecipient(PercPendingInboundTransfer pending) {
-    final direct = _accountFor(pending.toUsername);
-    if (direct != null) return direct;
+    final target = _pendingRecipientAddress(pending);
+    if (target.isEmpty) return null;
     for (final acc in accounts.values) {
-      if (acc.passwordSet && _pendingTargetsUser(pending, acc.username)) {
-        return acc;
-      }
+      if (acc.passwordSet && acc.address == target) return acc;
+    }
+    final stub = _accountFor(pending.toUsername);
+    if (stub != null &&
+        stub.address.isNotEmpty &&
+        stub.address == target) {
+      return stub;
     }
     return null;
   }
@@ -2618,6 +2668,7 @@ class PercLedger {
       id: txId,
       fromUsername: from,
       toUsername: to,
+      toAddress: receiver.address,
       amount: amount,
       fee: fee,
       sentAt: now,
