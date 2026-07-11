@@ -35,6 +35,11 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
+# path_provider_android 2.3.x uses JNI-only registration; pin 2.2.19 so the
+# native PathProviderPlugin is registered (matches evolve_app / avoids cold-start JNI crash).
+dependency_overrides:
+  path_provider_android: 2.2.19
+
 flutter:
   uses-material-design: true
   assets:
