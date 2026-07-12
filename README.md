@@ -2,15 +2,15 @@
 
 A **standalone** Flutter wallet for the Perccent (PERC) ledger on chain `evolve-chronoflux-principia-chain-1`. Use it without the Evolve analysis app — same dark UI styling and full wallet feature set inherited from [Evolve](https://github.com/rgsneddon/evolve).
 
-**Latest release:** v1.0.8 (build 6) — [Downloads](https://rgsneddon.github.io/evolve/downloads/) (Perccent section) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases)
+**Latest release:** v1.1.0 (build 7) — [Downloads](https://rgsneddon.github.io/evolve/downloads/) (Perccent section) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases)
 
-Download **perccent-wallet-v1.0.8-windows-x64-setup.exe** or **perccent-wallet-v1.0.8-android-setup.apk** from [Downloads](https://rgsneddon.github.io/evolve/downloads/) or **Releases**. Verify the attached `.sha256` checksum before installing.
+Download **perccent-wallet-v1.1.0-windows-x64-setup.exe** or **perccent-wallet-v1.1.0-android-setup.apk** from [Downloads](https://rgsneddon.github.io/evolve/downloads/) or **Releases**. Verify the attached `.sha256` checksum before installing.
 
 ## Features
 
 - **Send / receive** PERC with QR codes, relay delivery, and switch commitments
 - **Staking** and treasury rewards
-- **Registration & login** with optional 12-word seed recovery
+- **Registration & login** with optional 12-word seed recovery, hold-to-reveal password (eye icon), and optional **Android biometric sign-in** for existing accounts (user opt-in)
 - **Encrypted backup** (`.percbackup`) and restore
 - **Blockchain explorer** with Chronoflux shard graphs
 - **Security** tab for backup export and file restore
@@ -22,7 +22,8 @@ Download **perccent-wallet-v1.0.8-windows-x64-setup.exe** or **perccent-wallet-v
 
 | Mechanism | Purpose |
 |-----------|---------|
-| **Offline receive** | **Zero delay** — inbound transfers credit near-instantly on send/relay; undelivered entries stay pending (no auto-revert window) |
+| **Inbound credits** | Receiver balance updates after **one main-chain confirmation**; pending inbound transfers stay visible until confirmed |
+| **Android wallet refresh** | Pull down on wallet screens to trigger an immediate inbound sync |
 | **Send fee** | **1 cent** burned on every outbound transfer (permanently removed from circulation) |
 | **Peer mesh gossip** | Wallets sync taller chains and pending transfers without a central custodian |
 
