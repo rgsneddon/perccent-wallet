@@ -27,7 +27,7 @@ cd perccent_wallet\perc_chain; npm test
 
 6. **Relay golden path** — Send from Wallet A to offline Wallet B; confirm pending inbound on B, then settlement after B syncs; relay source index visible in block detail.
 7. **Cross-device initiation** — Start send on phone, complete on desktop (or vice versa); initiation merge then settlement relay must not duplicate tx id.
-8. **24-hour revert** — (Staging only) Leave inbound unsettled past revert window; PERC returns to sender per `perc_wallet_transfer_delay_test` policy.
+8. **Revert window (staging override)** — Production uses zero delay (no auto-revert). In tests, override `walletInboundRevertWindowOverride` to verify revert-to-sender when enabled.
 9. **Settlement witness** — After receiver confirms, seed merge shows settled state; explorer/API `resolveRelayBlockView` returns transfer at canonical index.
 
 ## 3. Treasury, staking, and emission
