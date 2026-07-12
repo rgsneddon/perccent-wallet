@@ -17,6 +17,14 @@ void main() {
     PercLedgerHub.resetForTest();
   });
 
+  test('MainActivity extends FlutterFragmentActivity for local_auth', () {
+    final mainActivity = File(
+      'android/app/src/main/kotlin/com/perccent/perccent_wallet/MainActivity.kt',
+    ).readAsStringSync();
+    expect(mainActivity, contains('FlutterFragmentActivity'));
+    expect(mainActivity, isNot(contains('FlutterActivity()')));
+  });
+
   test('credential store saves and unlocks on Android with biometric gate',
       () async {
     final memory = <String, String>{};
