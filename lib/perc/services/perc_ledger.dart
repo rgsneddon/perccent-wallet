@@ -1754,6 +1754,21 @@ class PercLedger {
     blockTxs.add(tx);
   }
 
+  /// Credits [receiver] only when [confirmedTx] is a confirmed inbound transfer.
+  void _applyConfirmedInboundCredit(
+    PercAccount receiver,
+    PercTransaction confirmedTx,
+  ) {
+    if (confirmedTx.kind != PercTxKind.transfer || !confirmedTx.isConfirmed) {
+      throw StateError(
+        'Inbound credit requires a confirmed transfer tx (confirmations >= '
+        '${PercChainConstants.confirmationsRequired})',
+      );
+    }
+    _credit(receiver, confirmedTx.amount);
+    _replaceOrInsertTx(receiver, confirmedTx);
+  }
+
   void _credit(PercAccount acc, PercAmount amount) {
     acc.balance = acc.balance + amount;
   }
@@ -2569,8 +2584,7 @@ class PercLedger {
           pendingInboundTransfers.remove(pending);
           continue;
         }
-        _credit(receiver, pending.amount);
-        _replaceOrInsertTx(receiver, confirmedTx);
+        _applyConfirmedInboundCredit(receiver, confirmedTx);
       }
 
       if (ops.any((o) => o.kind == InboundSettlementOpKind.emitWitness)) {
@@ -2726,8 +2740,7 @@ class PercLedger {
       );
       blockTxs.add(confirmedTx);
       if (!isTransferAlreadySettledForReceiver(txId, receiver)) {
-        _credit(receiver, amount);
-        _replaceOrInsertTx(receiver, confirmedTx);
+        _applyConfirmedInboundCredit(receiver, confirmedTx);
       }
       _finalizeBlock(
         timestamp: now,
