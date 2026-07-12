@@ -1,7 +1,7 @@
 name: perccent_wallet
 description: Standalone Perccent wallet — send, receive, stake, and sync on the Chronoflux Principia chain.
 publish_to: 'none'
-version: 1.0.8+6
+version: 1.1.0+7
 
 environment:
   sdk: '>=3.2.0 <4.0.0'
