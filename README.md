@@ -18,6 +18,14 @@ Download **perccent-wallet-v1.0.8-windows-x64-setup.exe** or **perccent-wallet-v
 - **Multi-language** UI (EN, ES, FR, DE, PT, AR, ZH, HI, JA)
 - **Desktop & mobile** builds (Windows window chrome via `window_manager`)
 
+### Transfer policy
+
+| Mechanism | Purpose |
+|-----------|---------|
+| **Offline receive** | **Zero delay** — inbound transfers credit near-instantly on send/relay; undelivered entries stay pending (no auto-revert window) |
+| **Send fee** | **1 cent** burned on every outbound transfer (permanently removed from circulation) |
+| **Peer mesh gossip** | Wallets sync taller chains and pending transfers without a central custodian |
+
 ## Quick start (wallet app)
 
 ### Prerequisites

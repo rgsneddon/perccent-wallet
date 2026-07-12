@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -9,7 +10,7 @@ import 'package:perccent_wallet/perc/services/perc_chain_tip.dart';
 import 'package:perccent_wallet/perc/services/perc_ledger.dart';
 
 final _scratch = Platform.environment['SCRATCH'] ??
-    r'C:\Users\rgsne\AppData\Local\Temp\grok-goal-cb031749c6db\implementer';
+    r'C:\Users\rgsne\AppData\Local\Temp\grok-goal-20ebd61e53d0\implementer';
 
 void _writeProbeLog(String body) {
   Directory(_scratch).createSync(recursive: true);
@@ -30,6 +31,20 @@ void main() {
         .timeout(PercChainConstants.networkRequestTimeout);
     expect(response.statusCode, 200, reason: 'GET $path');
     return jsonDecode(response.body) as Map<String, dynamic>;
+  }
+
+  Future<bool> liveSeedReachable() async {
+    if (skipLive) return false;
+    try {
+      await getJson('/health');
+      return true;
+    } on TimeoutException {
+      _writeProbeLog('skipped: live seed unreachable (timeout)\n');
+      return false;
+    } on SocketException {
+      _writeProbeLog('skipped: live seed unreachable (socket)\n');
+      return false;
+    }
   }
 
   Future<bool> liveSeedSupportsAccountPrivacy() async {
@@ -56,7 +71,9 @@ void main() {
   }
 
   test('live seed health and ledger match wallet genesis', () async {
-    if (skipLive || !await liveSeedSupportsAccountPrivacy()) return;
+    if (!await liveSeedReachable() || !await liveSeedSupportsAccountPrivacy()) {
+      return;
+    }
     final health = await getJson('/health');
     expect(health['ok'], isTrue);
     expect(health['service'], 'perc-internet-node');
@@ -81,7 +98,9 @@ void main() {
   });
 
   test('live seed exposes v3.1.1 rendezvous endpoints', () async {
-    if (skipLive || !await liveSeedSupportsAccountPrivacy()) return;
+    if (!await liveSeedReachable() || !await liveSeedSupportsAccountPrivacy()) {
+      return;
+    }
     final online = await getJson(
       '/perc/rendezvous/online?username=${PercChainConstants.seedUsername}',
     );
@@ -124,10 +143,7 @@ void main() {
   });
 
   test('live seed status tip vs client ledger tip probe', () async {
-    if (skipLive) {
-      _writeProbeLog('skipped: PERC_SKIP_LIVE_SEED=true\n');
-      return;
-    }
+    if (!await liveSeedReachable()) return;
     if (!await liveSeedSupportsAccountPrivacy()) {
       _writeProbeLog('skipped: live seed ledger not privacy-sanitized yet\n');
       return;
@@ -163,7 +179,7 @@ void main() {
   });
 
   test('live seed peer online window aligns with wallet (7 minutes)', () async {
-    if (skipLive || !await liveSeedSupportsAccountPrivacy()) return;
+    if (!await liveSeedReachable()) return;
     final health = await getJson('/health');
     expect(health['service'], 'perc-internet-node');
     expect(
