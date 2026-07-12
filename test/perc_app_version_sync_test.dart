@@ -22,7 +22,7 @@ void main() {
   test('AppUpdateChecker reports no update when remote matches current', () async {
     AppUpdateChecker.fetchBodyOverride = (uri) async {
       return '''
-{"version":"1.0.8","build_number":6,"package_name":"perccent_wallet"}
+{"version":"1.1.0","build_number":7,"package_name":"perccent_wallet"}
 ''';
     };
     addTearDown(() => AppUpdateChecker.fetchBodyOverride = null);
