@@ -1,4 +1,4 @@
-Perccent Wallet — Standalone Chronoflux Principia Chain Wallet
+MY PERC (Perccent Wallet) — Standalone Chronoflux Principia Chain Wallet
 Proprietary / Dual License
 
 Copyright (c) 2026 Evolve Chronoflux. All Rights Reserved.
@@ -13,10 +13,13 @@ drive Perccent microblock verification derive from and operate through that
 Principia.
 
 This software and associated documentation (the "Software"), including the
-Perccent wallet application, internet seed node (`perc_chain`), build outputs,
-and related materials, are proprietary intellectual property of the copyright
-holder unless otherwise stated below. Rights in the Chronoflux Principia remain
-with Roy D Herbert; rights in this Software implementation remain with the
+MY PERC / Perccent wallet application for all supported platforms (Windows,
+Android, iOS, web, and other Flutter targets), internet seed node
+(`perc_chain`), installers and build outputs (including APK, Windows setup
+executables, and iOS IPA / simulator products when produced), and related
+materials, are proprietary intellectual property of the copyright holder
+unless otherwise stated below. Rights in the Chronoflux Principia remain with
+Roy D Herbert; rights in this Software implementation remain with the
 copyright holder named above.
 
 
@@ -44,13 +47,18 @@ PERSONAL / NON-COMMERCIAL USE (Proprietary License Grant)
 Subject to the restrictions below, the copyright holder grants you a
 revocable, non-exclusive, non-transferable license to:
 
-  - Install and run the Software for your own personal use;
+  - Install and run the Software for your own personal use on any supported
+    platform (including iOS Simulator builds you compile yourself and signed
+    iOS IPAs obtained from official release channels when available);
   - Use the Software for private, non-commercial research or evaluation;
   - Deploy a self-hosted internet seed node for personal or community use on
     the public Perccent network, provided you do not misrepresent your node as
     the official Evolve seed;
   - View the source code for personal reference and debugging on your own
-    machines.
+    machines;
+  - Build the Software from this repository for personal non-commercial use,
+    including iOS builds under your own Apple developer signing identity when
+    required by Apple tooling.
 
 You may not exercise these rights on behalf of an organisation for
 commercial benefit without a Commercial License.
@@ -66,8 +74,9 @@ Without a separate Commercial License, you may NOT:
     portion of it;
   - Publish, sell, or make the Software available to third parties;
   - Remove or alter copyright, trademark, license, or attribution notices;
-  - Use the names "Evolve", "Perccent", "Chronoflux", "Roy D Herbert", or the
-    copyright holder's name to endorse derivative works without written permission;
+  - Use the names "Evolve", "Perccent", "MY PERC", "Chronoflux",
+    "Roy D Herbert", or the copyright holder's name to endorse derivative
+    works without written permission;
   - Reverse engineer the Software except where such restriction is
     prohibited by applicable law.
 

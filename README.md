@@ -1,16 +1,24 @@
-# Perccent Wallet (standalone)
+# MY PERC (Perccent Wallet)
 
-A **standalone** Flutter wallet for the Perccent (PERC) ledger on chain `evolve-chronoflux-principia-chain-1`. Use it without the Evolve analysis app — same dark UI styling and full wallet feature set inherited from [Evolve](https://github.com/rgsneddon/evolve).
+**MY PERC** is the standalone Flutter wallet for the Perccent (PERC) ledger on chain `evolve-chronoflux-principia-chain-1`. Use it without the Evolve analysis app — same dark UI styling and full wallet feature set inherited from [Evolve](https://github.com/rgsneddon/evolve).
 
-**Latest release:** v1.1.5 (build 10) — [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases)
+Package name: `perccent_wallet` · Bundle ID (iOS): `com.perccent.perccentWallet`
 
-Download **perccent-wallet-v1.1.5-windows-x64-setup.exe** or **perccent-wallet-v1.1.5-android-setup.apk** from [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) or **Releases**. Verify the attached `.sha256` checksum before installing.
+**Latest release:** v1.1.5 (build 10) — [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases) · [Release notes](RELEASE_NOTES.md)
+
+| Platform | Artifact |
+|----------|----------|
+| **Windows** | `perccent-wallet-v1.1.5-windows-x64-setup.exe` |
+| **Android** | `perccent-wallet-v1.1.5-android-setup.apk` |
+| **iOS** | Build from this repo (simulator / device IPA when Apple signing is configured). Planned release name: `perccent-wallet-v1.1.5-ios-setup.ipa` |
+
+Download Windows and Android installers from [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) or **Releases**. Verify the attached `.sha256` checksum before installing. For **iOS**, build with Flutter on macOS (below) or install a signed IPA when published under [Releases](https://github.com/rgsneddon/perccent-wallet/releases).
 
 ## Features
 
 - **Send / receive** PERC with QR codes, relay delivery, and switch commitments
 - **Staking** and treasury rewards
-- **Registration & login** with optional 12-word seed recovery, hold-to-reveal password (eye icon), and optional **Android biometric sign-in** after login or registration seed setup (user opt-in)
+- **Registration & login** with optional 12-word seed recovery, hold-to-reveal password (eye icon), and optional **Android biometric sign-in** after login or registration seed setup (user opt-in; iOS Face ID vault enrollment is not enabled in this release)
 - **Random PERC addresses** — each independent registration gets a randomly assigned address, not derived from username or password
 - **Multi-device wallet sync** — wallets restored from the same seed or backup share address, balance, and transaction history across devices
 - **Send re-authentication** — outbound PERC sends require password or enrolled Android biometric confirmation; receive, staking, and sync are unchanged
@@ -19,7 +27,7 @@ Download **perccent-wallet-v1.1.5-windows-x64-setup.exe** or **perccent-wallet-v
 - **Security** tab for backup export and file restore
 - **Credit** tab with governance context and creator attribution
 - **Multi-language** UI (EN, ES, FR, DE, PT, AR, ZH, HI, JA)
-- **Desktop & mobile** builds (Windows window chrome via `window_manager`)
+- **Desktop & mobile** builds — Windows, Android, **iOS**, web, and other Flutter targets
 
 ### Transfer policy
 
@@ -35,7 +43,9 @@ Download **perccent-wallet-v1.1.5-windows-x64-setup.exe** or **perccent-wallet-v
 ### Prerequisites
 
 - [Flutter](https://docs.flutter.dev/get-started/install) 3.2+ (stable channel)
-- For Android: SDK 21+; for desktop: platform build tools per Flutter docs
+- For Android: SDK 21+
+- For **iOS**: macOS with Xcode 15+ (or current stable), CocoaPods, and an iOS Simulator runtime (or a development team for device/IPA builds)
+- For desktop: platform build tools per Flutter docs
 
 ### Run locally
 
@@ -46,6 +56,26 @@ flutter pub get
 flutter run
 ```
 
+### iOS (MY PERC)
+
+```bash
+# Simulator (no Apple Developer certificate required)
+flutter pub get
+cd ios && pod install && cd ..
+flutter run -d ios
+# or compile only:
+flutter build ios --simulator --debug
+# Product: build/ios/iphonesimulator/Runner.app
+
+# Device / signed IPA (requires Apple Developer Program + DEVELOPMENT_TEAM)
+export DEVELOPMENT_TEAM=XXXXXXXXXX   # see ios/SIGNING.md
+flutter build ipa --release --export-options-plist=ios/ExportOptions.plist
+# Or package with checksums (macOS host):
+#   pwsh ./scripts/build_ios_installer.ps1
+```
+
+Bundle ID: `com.perccent.perccentWallet`. Camera and Face ID usage strings are set in `ios/Runner/Info.plist` for QR scan and future biometric unlock; **password login works on iOS today**. Optional biometric vault enrollment remains **Android-only** in this release.
+
 ### Build release
 
 ```bash
@@ -54,6 +84,12 @@ flutter build apk --release
 
 # Windows
 flutter build windows --release
+
+# iOS simulator app
+flutter build ios --simulator --debug
+
+# iOS release IPA (signed — see ios/SIGNING.md)
+flutter build ipa --release --export-options-plist=ios/ExportOptions.plist
 
 # Web
 flutter build web --release
@@ -121,9 +157,9 @@ Point the wallet at your seed by editing `assets/config/perc_network.json` befor
 
 ## Security / Safe use
 
-Perccent Wallet release installers are **checked regularly for safe use** before publish:
+MY PERC (Perccent Wallet) release installers are **checked regularly for safe use** before publish:
 
-- **Malware scan** — `perccent-wallet-v*-windows-x64-setup.exe` and `perccent-wallet-v*-android-setup.apk` under `build/downloads/v<version>/` are scanned with Windows Defender (when available) plus APK/PE integrity checks (expected package id `com.perccent.perccent_wallet`).
+- **Malware scan** — `perccent-wallet-v*-windows-x64-setup.exe`, `perccent-wallet-v*-android-setup.apk`, and signed `perccent-wallet-v*-ios-setup.ipa` (when produced) under `build/downloads/v<version>/` are scanned with Windows Defender (when available) plus APK/PE/IPA integrity checks (expected Android package id `com.perccent.perccent_wallet`; iOS bundle id `com.perccent.perccentWallet`).
 - **Dependency audit** — `flutter pub audit` and `npm audit --audit-level=high` in `perc_chain/` run before each release; documented exceptions live in [SECURITY.md](SECURITY.md).
 - **Integrity** — SHA-256 and SHA-512 checksum sidecars ship with every release asset on [GitHub Releases](https://github.com/rgsneddon/perccent-wallet/releases). Verify the `.sha256` file **before installing**.
 
@@ -154,12 +190,14 @@ cd perc_chain && npm test
 |------|---------|
 | `lib/perc/` | Wallet core (ledger, network, UI screens) |
 | `lib/wallet_core/` | Shared types, Chronoflux micro-engine, locale — no Evolve app shell |
-| `lib/main.dart` | Standalone app entry |
+| `lib/main.dart` | Standalone MY PERC app entry |
 | `lib/screens/wallet_shell_screen.dart` | Wallet / Security / Credit tabs |
+| `ios/` | iOS Xcode project, Podfile, signing notes (`SIGNING.md`) |
 | `perc_chain/` | Internet seed node (Node.js) |
 | `render.yaml` | Render blueprint for self-hosted seed |
+| `RELEASE_NOTES.md` | GitHub-oriented release notes |
 | `PRIVACY_POLICY.md` | Data handling for wallet + optional seed |
-| `LICENSE` | Proprietary / dual license |
+| `LICENSE` | Proprietary / dual license (all platforms including iOS) |
 
 ## Relationship to Evolve
 

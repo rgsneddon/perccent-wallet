@@ -1,14 +1,16 @@
-# Perccent Wallet — Privacy Policy
+# MY PERC (Perccent Wallet) — Privacy Policy
 
 **Effective date:** 8 July 2026  
-**Last updated:** 13 July 2026 (v1.1.5 build 10 — MY PERC rebrand and icon refresh; Android biometric enrollment after registration seed setup; randomly assigned PERC addresses for independent registrations; balance and transaction sync for wallets restored from the same seed or backup; send re-authentication before outbound PERC transfers; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
-**Applies to:** the standalone Perccent Wallet application and optional self-hosted `perc_chain` internet seed node in this repository.
+**Last updated:** 13 July 2026 (v1.1.5 build 10 — MY PERC iOS build target documented and verified; iOS/macOS CocoaPods project wiring; Android biometric enrollment after registration seed setup remains Android-only; randomly assigned PERC addresses; multi-device seed/backup sync; send re-authentication; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
+**Applies to:** the standalone **MY PERC** / Perccent Wallet application on **Windows, Android, iOS, web, and other Flutter targets**, and the optional self-hosted `perc_chain` internet seed node in this repository.
 
 ## Summary
 
-Perccent Wallet is designed to minimise data collection. Your wallet keys, passwords, encrypted backups, and ledger state stay on your device unless you explicitly send transactions or sync with the public Perccent network. We do not operate a central account service for this standalone app.
+MY PERC is designed to minimise data collection. Your wallet keys, passwords, encrypted backups, and ledger state stay on your device unless you explicitly send transactions or sync with the public Perccent network. We do not operate a central account service for this standalone app.
 
 On **Android only**, you may optionally enable **biometric sign-in** after logging in or completing new-registration seed setup. If you opt in, your username and password are stored **only on your device** in OS-backed secure storage and unlocked via the device biometric prompt. Biometric data and plaintext passwords are **not** sent to Evolve, seed servers, or third parties. You can decline and keep manual login.
+
+On **iOS**, MY PERC uses password login and standard on-device storage for ledger and session data. The app may declare camera and Face ID usage strings for QR scanning and future biometric unlock, but **optional biometric vault enrollment is not enabled on iOS in this release** — Face ID templates are not enrolled or uploaded by MY PERC.
 
 Each independent wallet registration receives a **randomly assigned PERC address** — not derived from your username or password. Wallets restored from the same seed phrase or encrypted backup file share the same address across devices, and balances and transaction history merge when either clone sends or receives PERC.
 
@@ -16,14 +18,15 @@ Before any **outbound PERC send**, the app requires **password re-authentication
 
 ## What the wallet stores locally
 
-On your phone, desktop, or browser storage, the app may persist:
+On your phone (including **iOS** and Android), desktop, or browser storage, the app may persist:
 
 - **Account credentials** — username, salted password hash, and session state (not your plaintext password after login).
-- **Optional Android biometric vault** — if you opt in after signing in to an existing account, your username and password in OS-backed secure storage (`flutter_secure_storage` with encrypted shared preferences on Android) for fingerprint unlock via `local_auth`. This is never uploaded to servers.
-- **Ledger data** — balances, transaction history, scenario blocks, stash, and staking state for your Perccent accounts.
+- **Optional Android biometric vault** — if you opt in after signing in to an existing account, your username and password in OS-backed secure storage (`flutter_secure_storage` with encrypted shared preferences on Android) for fingerprint unlock via `local_auth`. This is never uploaded to servers and is **not** used on iOS in this release.
+- **Ledger data** — balances, transaction history, scenario blocks, stash, and staking state for your Perccent accounts (file-backed on mobile/desktop via `path_provider` where applicable).
 - **Recovery material** — optional 12-word BIP-39 mnemonic and encrypted `.percbackup` files you create.
 - **Locale preferences** — language and region selection.
 - **Network cache** — last-known seed height, peer rendezvous hints, and sync checkpoints from `assets/config/perc_network.json` and live probes.
+- **Camera (mobile)** — used only when you open the PERC QR scanner; permission is requested at that time (iOS `NSCameraUsageDescription` / Android runtime permission).
 
 This data is stored using platform-specific secure storage where available. You are responsible for backup passphrases and seed phrases.
 
@@ -64,7 +67,7 @@ The standalone wallet repository authors do **not**:
 
 ## Third-party services
 
-Your use of Render, other cloud providers, Flutter dependencies, or public seed URLs is subject to those parties' policies. Review their terms when deploying or syncing. Android biometric unlock uses your device's platform biometric API (`local_auth`); Google/Android processes biometric verification under their own device policies.
+Your use of Render, other cloud providers, Flutter dependencies, or public seed URLs is subject to those parties' policies. Review their terms when deploying or syncing. Android biometric unlock uses your device's platform biometric API (`local_auth`); Google/Android processes biometric verification under their own device policies. iOS distribution and any future Face ID unlock would use Apple platform APIs under Apple’s policies; MY PERC does not currently enroll Face ID for credential vault unlock.
 
 ## Children's privacy
 

@@ -1,13 +1,17 @@
-﻿{
-    "url":  "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-ios-setup.ipa",
-    "build":  "10",
-    "platform":  "ios",
-    "version":  "1.1.5",
-    "sizeMb":  0,
-    "sha512":  "2d23913d3759ef01704a86b4bee3ac8a29002313ecc98a7424425a78170f219577822fd77e4ae96313547696ad7d5949b58e12d5063ef2ee063b595740a3a12d",
-    "name":  "perccent-wallet-v1.1.5-ios-setup.ipa",
-    "pagesUrl":  "https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.5/perccent-wallet-v1.1.5-ios-setup.ipa",
-    "bundleId":  "com.perccent.perccentWallet",
-    "sha256":  "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
-    "sizeBytes":  4096
+{
+  "name": "perccent-wallet-v1.1.5-ios-setup.ipa",
+  "version": "1.1.5",
+  "build": "10",
+  "platform": "ios",
+  "bundleId": "com.perccent.perccentWallet",
+  "productName": "MY PERC",
+  "status": "simulator_verified_signed_ipa_pending",
+  "notes": "Real simulator product: build/ios/iphonesimulator/Runner.app. Signed IPA requires DEVELOPMENT_TEAM and codesign identities (see ios/SIGNING.md). Do not treat placeholder sizeBytes as a published IPA.",
+  "simulatorApp": "build/ios/iphonesimulator/Runner.app",
+  "url": "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-ios-setup.ipa",
+  "pagesUrl": "https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.5/perccent-wallet-v1.1.5-ios-setup.ipa",
+  "sizeBytes": null,
+  "sizeMb": null,
+  "sha256": null,
+  "sha512": null
 }

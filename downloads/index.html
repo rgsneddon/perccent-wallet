@@ -241,16 +241,17 @@
       <article class="card ios">
         <div class="card-icon" aria-hidden="true">&#63743;</div>
         <h2>iOS</h2>
-        <p>Sideload the signed IPA on iPhone or iPad. Requires Apple developer signing or enterprise distribution.</p>
-        <p class="meta">perccent-wallet-v1.1.5-ios-setup.ipa &middot; ~0 MB</p>
-        <p class="meta"><strong>Install:</strong> Transfer <code id="perccent-ios-name">perccent-wallet-v1.1.5-ios-setup.ipa</code> via Apple Configurator, AltStore, or MDM.</p>
+        <p>Build MY PERC for iOS from source (simulator) or install a signed IPA when published. Requires macOS + Xcode; device IPA needs Apple developer signing.</p>
+        <p class="meta">perccent-wallet-v1.1.5-ios-setup.ipa &middot; signed release when available</p>
+        <p class="meta"><strong>Build:</strong> <code>flutter build ios --simulator --debug</code> (see README). Planned IPA: <code id="perccent-ios-name">perccent-wallet-v1.1.5-ios-setup.ipa</code>.</p>
         <a class="btn btn-primary" href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-ios-setup.ipa" download>
           Download iOS Installer
         </a>
         <p class="meta" style="margin-top:12px;margin-bottom:0;">
-          SHA-256:
-          <code id="perccent-ios-sha256" style="font-size:0.72rem;word-break:break-all;">ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7</code>
-          (<a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-ios-setup.ipa.sha256">.sha256</a>)
+          When a signed IPA is published, verify SHA-256 via the release
+          <a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-ios-setup.ipa.sha256">.sha256</a>
+          sidecar. Source builds: see <a href="https://github.com/rgsneddon/perccent-wallet#ios-my-perc">README iOS section</a>.
+          <code id="perccent-ios-sha256" style="display:none;">pending-signed-ipa</code>
         </p>
       </article>
     </div>
@@ -260,7 +261,7 @@
       <ul>
         <li><strong>Windows:</strong> Verify SHA-256 before installing. Windows SmartScreen may ask you to confirm.</li>
         <li><strong>Android:</strong> Requires Android 6.0+ (API 23). Camera permission is requested only when you scan a PERC QR code.</li>
-        <li><strong>iOS:</strong> Requires iOS 13+. Face ID is used for wallet unlock when enabled.</li>
+        <li><strong>iOS:</strong> Requires iOS 13+ and Xcode to build. Password login works on device/simulator; optional biometric vault enrollment is Android-only in this release. Signed IPA install needs Apple developer signing.</li>
         <li><strong>Integrity:</strong> Every package ships with SHA-256 and SHA-512 checksum sidecars. Verify with <a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/CHECKSUMS.sha256">CHECKSUMS.sha256</a> or <a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/checksums.json">checksums.json</a>.</li>
         <li><strong>Full suite:</strong> For Evolve scenario analysis and governance tools, see <a href="https://rgsneddon.github.io/evolve/">Evolve Chronoflux</a>.</li>
       </ul>
