@@ -1,11 +1,11 @@
 {
-    "name": "perccent_wallet",
-    "short_name": "perccent_wallet",
+    "name": "MY PERC",
+    "short_name": "MY PERC",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0F1A24",
+    "theme_color": "#0F1A24",
+    "description": "Send, receive, stake, and sync PERC on the Chronoflux Principia chain.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -14,6 +14,7 @@ import '../providers/locale_provider.dart';
 import '../wallet_core/services/app_update_check.dart';
 import '../perc/widgets/wallet_language_selector.dart';
 import '../standalone/my_perc_branding.dart';
+import '../widgets/my_perc_logo.dart';
 import '../widgets/my_perc_upgrade_advisory.dart';
 import '../widgets/wallet_splash_poster.dart';
 import '../widgets/splash_version_status.dart';
@@ -168,6 +169,8 @@ class _WalletLoadingScreenState extends State<WalletLoadingScreen>
                           padding: const EdgeInsets.symmetric(horizontal: 24),
                           child: Column(
                             children: [
+                              const MyPercLogo(key: Key('my_perc_splash_logo')),
+                              const SizedBox(height: 12),
                               Text(
                                 MyPercBranding.productName,
                                 textAlign: TextAlign.center,

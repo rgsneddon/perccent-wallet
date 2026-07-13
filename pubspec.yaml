@@ -1,7 +1,7 @@
 name: perccent_wallet
 description: Standalone Perccent wallet — send, receive, stake, and sync on the Chronoflux Principia chain.
 publish_to: 'none'
-version: 1.1.4+9
+version: 1.1.5+10
 
 environment:
   sdk: '>=3.2.0 <4.0.0'
@@ -47,6 +47,7 @@ dependency_overrides:
 flutter:
   uses-material-design: true
   assets:
+    - assets/branding/my_perc_logo.png
     - assets/banner/evolve.jpg
     - assets/data/outcome_registry.json
     - assets/config/perc_network.json

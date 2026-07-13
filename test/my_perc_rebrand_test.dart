@@ -83,9 +83,12 @@ void main() {
 
   test('WalletSplashPoster uses solid MY PERC background without banner asset', () {
     final src = File('lib/widgets/wallet_splash_poster.dart').readAsStringSync();
+    final splashSrc =
+        File('lib/screens/wallet_loading_screen.dart').readAsStringSync();
     expect(src.contains('evolve.jpg'), isFalse);
     expect(src.contains('Image.asset'), isFalse);
     expect(src.contains('MyPercBranding.splashBackground'), isTrue);
+    expect(splashSrc, contains('MyPercLogo'));
     expect(MyPercBranding.splashBackground, const Color(0xFF0F1A24));
     expect(const WalletSplashPoster(), isA<WalletSplashPoster>());
   });
