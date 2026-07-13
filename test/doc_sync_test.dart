@@ -20,14 +20,18 @@ void main() {
     expect(readme.toLowerCase(), contains('pull'));
     expect(readme.toLowerCase(), contains('hold-to-reveal'));
     expect(readme.toLowerCase(), contains('one main-chain confirmation'));
+    expect(readme.toLowerCase(), contains('send re-authentication'));
   });
 
-  test('PRIVACY_POLICY discloses optional Android biometric vault', () {
+  test('PRIVACY_POLICY discloses biometric vault and send re-auth', () {
+    final semver = _semverFromPubspec();
     final policy = File('PRIVACY_POLICY.md').readAsStringSync().toLowerCase();
     expect(policy, contains('biometric'));
     expect(policy, anyOf(contains('secure storage'), contains('os-backed')));
     expect(policy, anyOf(contains('opt-in'), contains('opt in')));
-    expect(policy, contains('v1.1.0'));
+    expect(policy, contains('v$semver'));
+    expect(policy, anyOf(contains('send re-authentication'), contains('send re-auth')));
+    expect(policy, contains('outbound'));
   });
 
   test('LICENSE copies match canonical repo root', () {

@@ -1,7 +1,7 @@
 # Perccent Wallet — Privacy Policy
 
 **Effective date:** 8 July 2026  
-**Last updated:** 13 July 2026 (v1.1.0 build 7 — inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password; optional Android biometric sign-in)  
+**Last updated:** 13 July 2026 (v1.1.1 build 8 — send re-authentication before outbound PERC transfers; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password; optional Android biometric sign-in)  
 **Applies to:** the standalone Perccent Wallet application and optional self-hosted `perc_chain` internet seed node in this repository.
 
 ## Summary
@@ -9,6 +9,8 @@
 Perccent Wallet is designed to minimise data collection. Your wallet keys, passwords, encrypted backups, and ledger state stay on your device unless you explicitly send transactions or sync with the public Perccent network. We do not operate a central account service for this standalone app.
 
 On **Android only**, you may optionally enable **biometric sign-in** after logging in to an **existing** account. If you opt in, your username and password are stored **only on your device** in OS-backed secure storage and unlocked via the device biometric prompt. Biometric data and plaintext passwords are **not** sent to Evolve, seed servers, or third parties. You can decline and keep manual login.
+
+Before any **outbound PERC send**, the app requires **password re-authentication** or, when enrolled on Android, a successful **biometric unlock**. Analysis rewards, receive, staking, and backup flows do not use this send gate.
 
 ## What the wallet stores locally
 
@@ -23,6 +25,10 @@ On your phone, desktop, or browser storage, the app may persist:
 
 This data is stored using platform-specific secure storage where available. You are responsible for backup passphrases and seed phrases.
 
+## Send re-authentication
+
+When you confirm an outbound PERC transfer, MY PERC asks for your wallet password or, on Android with enrolled biometrics, a device biometric prompt that unlocks your on-device stored credentials. Cancel or failure aborts the send with no debit. This applies **only** to sends — not to receive, staking, sync, or other wallet actions.
+
 ## What the wallet sends over the network
 
 When you use send/receive, staking, or seed sync, the wallet communicates with:
@@ -34,7 +40,7 @@ When you use send/receive, staking, or seed sync, the wallet communicates with:
 
 Transactions and ledger exports use pseudonymous Perccent addresses and hashed account identifiers. Scenario labels and usernames are stripped from public ledger exports per chain privacy rules.
 
-Biometric sign-in does **not** transmit your fingerprint, face data, biometric templates, or stored plaintext password to network services.
+Biometric sign-in and send re-authentication do **not** transmit your fingerprint, face data, biometric templates, or stored plaintext password to network services.
 
 ## Self-hosted seed nodes
 
