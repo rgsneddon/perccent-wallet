@@ -1,0 +1,10 @@
+﻿2dd9a7e5d4cab383970eb199f17581d30217f2ac85d6d6d727a768d3d688ab05  perccent-wallet-v1.1.5-android-setup.apk
+algorithm=SHA256
+algorithm_secondary=SHA512
+sha512=e0eed99034c8006c2bb71f059dabf4ce1dadb479b3b29e5a2fc26ec472fc1ba98ee451493f23bc109f1d3bb8a57241a33ace79c08e0f933ca7d91b2034c24e6e
+version=1.1.5
+build=10
+platform=android
+url=https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-android-setup.apk
+abis=arm64-v8a, armeabi-v7a, x86_64
+minSdk=23

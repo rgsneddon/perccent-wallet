@@ -1,0 +1,8 @@
+﻿68db69cd0096a6082d697842bc5caf999e7b228f2780b99a5378f9e88b81238e  perccent-wallet-v1.1.5-windows-x64-setup.exe
+algorithm=SHA256
+algorithm_secondary=SHA512
+sha512=b2999aa25b79b536aa91f497add399d4c423f4d3ae90680f4eec8006a2d79b58c88b6c2e4a36ac79eaf8d9b196632ebdc7a370c5c2a973637aba370d379e5a75
+version=1.1.5
+build=10
+platform=windows
+url=https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-windows-x64-setup.exe

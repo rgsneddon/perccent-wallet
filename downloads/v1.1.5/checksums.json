@@ -1,0 +1,24 @@
+﻿{
+    "minimumAlgorithm":  "SHA256",
+    "generatedAt":  "2026-07-13T16:10:28.4579036Z",
+    "packages":  [
+                     {
+                         "file":  "perccent-wallet-v1.1.5-android-setup.apk",
+                         "bytes":  74297329,
+                         "sha256":  "2dd9a7e5d4cab383970eb199f17581d30217f2ac85d6d6d727a768d3d688ab05",
+                         "sha512":  "e0eed99034c8006c2bb71f059dabf4ce1dadb479b3b29e5a2fc26ec472fc1ba98ee451493f23bc109f1d3bb8a57241a33ace79c08e0f933ca7d91b2034c24e6e",
+                         "url":  "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-android-setup.apk"
+                     },
+                     {
+                         "file":  "perccent-wallet-v1.1.5-windows-x64-setup.exe",
+                         "bytes":  12162725,
+                         "sha256":  "68db69cd0096a6082d697842bc5caf999e7b228f2780b99a5378f9e88b81238e",
+                         "sha512":  "b2999aa25b79b536aa91f497add399d4c423f4d3ae90680f4eec8006a2d79b58c88b6c2e4a36ac79eaf8d9b196632ebdc7a370c5c2a973637aba370d379e5a75",
+                         "url":  "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-windows-x64-setup.exe"
+                     }
+                 ],
+    "algorithms":  [
+                       "SHA256",
+                       "SHA512"
+                   ]
+}
