@@ -7,6 +7,7 @@ import 'package:perccent_wallet/perc/services/perc_ledger_hub.dart';
 import 'package:perccent_wallet/perc/services/wallet_biometric_credential_store.dart';
 import 'package:perccent_wallet/perc/services/wallet_send_auth_gate.dart';
 import 'package:perccent_wallet/perc/services/perc_wallet_store_memory.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 int _outboundTransferCount() {
@@ -120,7 +121,7 @@ void main() {
       () async {
     final memory = <String, String>{};
     WalletSendAuthGate.biometricStoreOverride = WalletBiometricCredentialStore(
-      androidPlatformOverride: true,
+      biometricPlatformOverride: true,
       memoryStorage: memory,
       authenticateOverride: (_) async => true,
       availabilityOverride: () async => true,
@@ -142,10 +143,38 @@ void main() {
     expect(wallet.errorMessage, isNull);
   });
 
+  test('iOS biometric unlock allows send when credentials match session',
+      () async {
+    debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+    addTearDown(() => debugDefaultTargetPlatformOverride = null);
+
+    WalletSendAuthGate.biometricStoreOverride = WalletBiometricCredentialStore(
+      biometricPlatformOverride: true,
+      memoryStorage: <String, String>{},
+      authenticateOverride: (_) async => true,
+      availabilityOverride: () async => true,
+    );
+    await WalletSendAuthGate.biometricStoreOverride!
+        .saveCredentials(username: 'alice', password: 'password12345');
+
+    final wallet = await _fundedSender();
+    final creds = await WalletSendAuthGate.biometricStoreOverride!
+        .unlockWithBiometric(localizedReason: 'Face ID');
+    expect(creds, isNotNull);
+    expect(wallet.verifySendAuthPassword(creds!.password), isTrue);
+
+    await wallet.send(
+      toAddress: PercLedgerHub.instance.ledger.account('bob')!.address,
+      amountText: '0.00000001',
+      sendAuthPassword: creds.password,
+    );
+    expect(wallet.errorMessage, isNull);
+  });
+
   test('biometric failure leaves send blocked without provider password', () async {
     final memory = <String, String>{};
     WalletSendAuthGate.biometricStoreOverride = WalletBiometricCredentialStore(
-      androidPlatformOverride: true,
+      biometricPlatformOverride: true,
       memoryStorage: memory,
       authenticateOverride: (_) async => false,
       availabilityOverride: () async => true,

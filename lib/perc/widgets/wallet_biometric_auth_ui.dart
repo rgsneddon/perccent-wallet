@@ -5,7 +5,7 @@ import '../../l10n/app_localizations.dart';
 import '../providers/perc_wallet_provider.dart';
 import '../services/wallet_biometric_credential_store.dart';
 
-/// Android biometric sign-in affordance + post-login enrollment dialog.
+/// Mobile (Android + iOS) biometric sign-in affordance + post-login enrollment.
 class WalletBiometricAuthUi {
   const WalletBiometricAuthUi._();
 
@@ -26,16 +26,33 @@ class WalletBiometricAuthUi {
   }
 
   @visibleForTesting
-  static bool? androidPlatformOverrideForTest;
+  static bool? biometricPlatformOverrideForTest;
+
+  /// Legacy test alias — prefer [biometricPlatformOverrideForTest].
+  @visibleForTesting
+  static bool? get androidPlatformOverrideForTest =>
+      biometricPlatformOverrideForTest;
+
+  @visibleForTesting
+  static set androidPlatformOverrideForTest(bool? value) {
+    biometricPlatformOverrideForTest = value;
+  }
+
+  /// Whether this host is eligible for the biometric vault (Android / iOS).
+  static bool get isBiometricPlatform {
+    if (kIsWeb) return false;
+    if (biometricPlatformOverrideForTest != null) {
+      return biometricPlatformOverrideForTest!;
+    }
+    return defaultTargetPlatform == TargetPlatform.android ||
+        defaultTargetPlatform == TargetPlatform.iOS;
+  }
 
   static bool showBiometricSignIn({
     required bool loginMode,
     required bool hasStoredCredentials,
   }) {
-    if (kIsWeb) return false;
-    final isAndroid = androidPlatformOverrideForTest ??
-        defaultTargetPlatform == TargetPlatform.android;
-    if (!isAndroid) return false;
+    if (!isBiometricPlatform) return false;
     return loginMode && hasStoredCredentials;
   }
 
@@ -56,7 +73,11 @@ class WalletBiometricAuthUi {
         usernameController: usernameController,
         passwordController: passwordController,
       ),
-      icon: const Icon(Icons.fingerprint),
+      icon: Icon(
+        defaultTargetPlatform == TargetPlatform.iOS
+            ? Icons.face
+            : Icons.fingerprint,
+      ),
       label: Text(strings.t('wallet_biometric_sign_in')),
     );
   }

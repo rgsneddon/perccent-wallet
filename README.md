@@ -18,10 +18,10 @@ Download installers from [Downloads](https://rgsneddon.github.io/perccent-wallet
 
 - **Send / receive** PERC with QR codes, relay delivery, and switch commitments
 - **Staking** and treasury rewards
-- **Registration & login** with optional 12-word seed recovery, hold-to-reveal password (eye icon), and optional **Android biometric sign-in** after login or registration seed setup (user opt-in; iOS Face ID vault enrollment is not enabled in this release)
+- **Registration & login** with optional 12-word seed recovery, hold-to-reveal password (eye icon), and optional **biometric sign-in** (Android fingerprint / iOS Face ID or Touch ID) after login or registration seed setup (user opt-in)
 - **Random PERC addresses** — each independent registration gets a randomly assigned address, not derived from username or password
 - **Multi-device wallet sync** — wallets restored from the same seed or backup share address, balance, and transaction history across devices
-- **Send re-authentication** — outbound PERC sends require password or enrolled Android biometric confirmation; receive, staking, and sync are unchanged
+- **Send re-authentication** — outbound PERC sends require password or enrolled mobile biometric confirmation; receive, staking, and sync are unchanged
 - **Encrypted backup** (`.percbackup`) and restore
 - **Blockchain explorer** with Chronoflux shard graphs
 - **Security** tab for backup export and file restore
@@ -77,7 +77,7 @@ flutter build ipa --release --export-options-plist=ios/ExportOptions.plist
 #   pwsh ./scripts/build_ios_installer.ps1
 ```
 
-Bundle ID: `com.perccent.perccentWallet`. Camera and Face ID usage strings are set in `ios/Runner/Info.plist` for QR scan and future biometric unlock; **password login works on iOS today**. Optional biometric vault enrollment remains **Android-only** in this release.
+Bundle ID: `com.perccent.perccentWallet`. Camera and Face ID usage strings are set in `ios/Runner/Info.plist` for QR scan and optional biometric unlock. On iOS, users may opt in to Face ID / Touch ID vault enrollment after login; credentials stay on-device in the Keychain (`flutter_secure_storage`).
 
 ### Build release
 

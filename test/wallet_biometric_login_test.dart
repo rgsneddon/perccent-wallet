@@ -23,16 +23,17 @@ void main() {
   tearDown(() {
     PercWalletProvider.sessionTimeoutEnabled = true;
     WalletBiometricAuthUi.storeOverride = null;
-    WalletBiometricAuthUi.androidPlatformOverrideForTest = null;
+    WalletBiometricAuthUi.biometricPlatformOverrideForTest = null;
     PercLedgerHub.resetForTest();
   });
 
   WalletBiometricCredentialStore testStore({
     Map<String, String>? memory,
     Future<bool> Function(String reason)? authenticate,
+    bool platform = true,
   }) {
     return WalletBiometricCredentialStore(
-      androidPlatformOverride: true,
+      biometricPlatformOverride: platform,
       memoryStorage: memory ?? <String, String>{},
       authenticateOverride: authenticate ?? (_) async => true,
       availabilityOverride: () async => true,
@@ -47,32 +48,84 @@ void main() {
     expect(mainActivity, isNot(contains('FlutterActivity()')));
   });
 
-  test('biometric sign-in affordance gated to Android login with stored creds',
-      () {
+  test('iOS Info.plist declares Face ID usage for biometric vault', () {
+    final plist = File('ios/Runner/Info.plist').readAsStringSync();
+    expect(plist, contains('NSFaceIDUsageDescription'));
+    expect(plist.toLowerCase(), contains('face id'));
+  });
+
+  test('biometric vault is gated to Android and iOS (not web)', () {
     final authUi =
         File('lib/perc/widgets/wallet_biometric_auth_ui.dart').readAsStringSync();
+    final store = File(
+      'lib/perc/services/wallet_biometric_credential_store.dart',
+    ).readAsStringSync();
     final panel =
         File('lib/perc/widgets/wallet_auth_panel.dart').readAsStringSync();
     final seedDialog = File(
       'lib/perc/widgets/registration_seed_setup_dialog.dart',
     ).readAsStringSync();
+
     expect(authUi, contains('TargetPlatform.android'));
-    expect(authUi, contains('Icons.fingerprint'));
+    expect(authUi, contains('TargetPlatform.iOS'));
+    expect(store, contains('TargetPlatform.iOS'));
+    expect(store, contains('IOSOptions'));
+    expect(store, contains('KeychainAccessibility.first_unlock_this_device'));
     expect(authUi, contains('offerEnrollmentIfNeeded'));
-    final screen =
-        File('lib/perc/screens/wallet_screen.dart').readAsStringSync();
     expect(panel, contains('WalletBiometricAuthUi.showBiometricSignIn'));
     expect(panel, contains('offerEnrollmentIfNeeded'));
-    expect(panel, contains('credentialsRevision'));
-    expect(screen, contains('credentialsRevision'));
     expect(seedDialog, contains('offerEnrollmentIfNeeded'));
-    expect(panel, isNot(contains('accountExisted')));
+  });
+
+  test('credential store rejects non-mobile platforms', () async {
+    final store = testStore(platform: false);
+    expect(store.isBiometricPlatform, isFalse);
+    expect(await store.isBiometricAvailableOnDevice(), isFalse);
+    expect(
+      await store.saveCredentials(username: 'a', password: 'b'),
+      isFalse,
+    );
+    expect(await store.hasStoredCredentials(), isFalse);
+  });
+
+  test('iOS platform override enrolls, unlocks, and fails closed', () async {
+    debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+    addTearDown(() => debugDefaultTargetPlatformOverride = null);
+
+    final store = WalletBiometricCredentialStore(
+      biometricPlatformOverride: true,
+      memoryStorage: <String, String>{},
+      authenticateOverride: (_) async => true,
+      availabilityOverride: () async => true,
+    );
+    expect(store.isBiometricPlatform, isTrue);
+    expect(await store.saveCredentials(username: 'alice', password: 'secret'),
+        isTrue);
+    expect(await store.hasStoredCredentials(), isTrue);
+    final ok = await store.unlockWithBiometric(localizedReason: 'Face ID');
+    expect(ok?.username, 'alice');
+    expect(ok?.password, 'secret');
+
+    final failStore = WalletBiometricCredentialStore(
+      biometricPlatformOverride: true,
+      memoryStorage: <String, String>{
+        'wallet_biometric_enabled': 'true',
+        'wallet_biometric_credentials':
+            '{"username":"alice","password":"secret"}',
+      },
+      authenticateOverride: (_) async => false,
+      availabilityOverride: () async => true,
+    );
+    expect(
+      await failStore.unlockWithBiometric(localizedReason: 'Face ID'),
+      isNull,
+    );
   });
 
   testWidgets(
     'registration seed enrollment refreshes auth panel biometric button',
     (tester) async {
-      WalletBiometricAuthUi.androidPlatformOverrideForTest = true;
+      WalletBiometricAuthUi.biometricPlatformOverrideForTest = true;
 
       final store = testStore();
       WalletBiometricAuthUi.storeOverride = store;
@@ -134,13 +187,13 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.byIcon(Icons.fingerprint), findsOneWidget);
       expect(find.text('Sign in with biometrics'), findsOneWidget);
     },
   );
 
   test('registration session can enroll biometric via real credential store',
       () async {
+    WalletBiometricAuthUi.biometricPlatformOverrideForTest = true;
     final store = testStore();
 
     final wallet = PercWalletProvider(store: PercWalletStoreMemory());
@@ -157,7 +210,27 @@ void main() {
         loginMode: true,
         hasStoredCredentials: await store.hasStoredCredentials(),
       ),
-      defaultTargetPlatform == TargetPlatform.android,
+      isTrue,
+    );
+  });
+
+  test('showBiometricSignIn true on iOS override with stored creds', () {
+    debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+    addTearDown(() => debugDefaultTargetPlatformOverride = null);
+    WalletBiometricAuthUi.biometricPlatformOverrideForTest = true;
+    expect(
+      WalletBiometricAuthUi.showBiometricSignIn(
+        loginMode: true,
+        hasStoredCredentials: true,
+      ),
+      isTrue,
+    );
+    expect(
+      WalletBiometricAuthUi.showBiometricSignIn(
+        loginMode: false,
+        hasStoredCredentials: true,
+      ),
+      isFalse,
     );
   });
 

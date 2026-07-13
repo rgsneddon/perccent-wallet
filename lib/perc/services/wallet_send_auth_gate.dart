@@ -7,7 +7,7 @@ import '../widgets/wallet_biometric_auth_ui.dart';
 import '../widgets/wallet_password_field.dart';
 import 'wallet_biometric_credential_store.dart';
 
-/// Password or Android biometric confirmation before outbound PERC sends.
+/// Password or mobile biometric confirmation before outbound PERC sends.
 class WalletSendAuthGate {
   const WalletSendAuthGate._();
 
@@ -132,7 +132,11 @@ class _SendAuthDialogState extends State<_SendAuthDialog> {
             const SizedBox(height: 12),
             OutlinedButton.icon(
               onPressed: _signInWithBiometric,
-              icon: const Icon(Icons.fingerprint),
+              icon: Icon(
+                defaultTargetPlatform == TargetPlatform.iOS
+                    ? Icons.face
+                    : Icons.fingerprint,
+              ),
               label: Text(strings.t('wallet_biometric_sign_in')),
             ),
           ],

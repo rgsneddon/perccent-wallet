@@ -15,11 +15,12 @@ class WalletBiometricCredentials {
   final String password;
 }
 
-/// Android-only vault: secure storage + [LocalAuthentication] gate.
+/// Mobile biometric vault (Android + iOS): secure storage + [LocalAuthentication].
 class WalletBiometricCredentialStore {
   WalletBiometricCredentialStore({
     LocalAuthentication? localAuth,
     FlutterSecureStorage? secureStorage,
+    @visibleForTesting bool? biometricPlatformOverride,
     @visibleForTesting bool? androidPlatformOverride,
     @visibleForTesting Future<bool> Function(String reason)? authenticateOverride,
     @visibleForTesting Future<bool> Function()? availabilityOverride,
@@ -28,8 +29,12 @@ class WalletBiometricCredentialStore {
         _storage = secureStorage ??
             const FlutterSecureStorage(
               aOptions: AndroidOptions(encryptedSharedPreferences: true),
+              iOptions: IOSOptions(
+                accessibility: KeychainAccessibility.first_unlock_this_device,
+              ),
             ),
-        _androidPlatformOverride = androidPlatformOverride,
+        _biometricPlatformOverride =
+            biometricPlatformOverride ?? androidPlatformOverride,
         _authenticateOverride = authenticateOverride,
         _availabilityOverride = availabilityOverride,
         _memoryStorage = memoryStorage;
@@ -39,19 +44,24 @@ class WalletBiometricCredentialStore {
 
   final LocalAuthentication _localAuth;
   final FlutterSecureStorage _storage;
-  final bool? _androidPlatformOverride;
+  final bool? _biometricPlatformOverride;
   final Future<bool> Function(String reason)? _authenticateOverride;
   final Future<bool> Function()? _availabilityOverride;
   final Map<String, String>? _memoryStorage;
 
-  bool get isAndroidPlatform {
-    if (_androidPlatformOverride != null) return _androidPlatformOverride!;
+  /// Android and iOS support optional biometric vault enrollment.
+  bool get isBiometricPlatform {
+    if (_biometricPlatformOverride != null) return _biometricPlatformOverride!;
     if (kIsWeb) return false;
-    return defaultTargetPlatform == TargetPlatform.android;
+    return defaultTargetPlatform == TargetPlatform.android ||
+        defaultTargetPlatform == TargetPlatform.iOS;
   }
 
+  /// Legacy alias used by older tests/call sites.
+  bool get isAndroidPlatform => isBiometricPlatform;
+
   Future<bool> isBiometricAvailableOnDevice() async {
-    if (!isAndroidPlatform) return false;
+    if (!isBiometricPlatform) return false;
     if (_availabilityOverride != null) return _availabilityOverride!();
     try {
       final canCheck = await _localAuth.canCheckBiometrics;
@@ -63,7 +73,7 @@ class WalletBiometricCredentialStore {
   }
 
   Future<bool> hasStoredCredentials() async {
-    if (!isAndroidPlatform) return false;
+    if (!isBiometricPlatform) return false;
     final enabled = await _read(_keyEnabled);
     return enabled == 'true';
   }
@@ -84,7 +94,7 @@ class WalletBiometricCredentialStore {
     required String username,
     required String password,
   }) async {
-    if (!isAndroidPlatform) return false;
+    if (!isBiometricPlatform) return false;
     final payload = jsonEncode({
       'username': username,
       'password': password,
@@ -97,7 +107,7 @@ class WalletBiometricCredentialStore {
   Future<WalletBiometricCredentials?> unlockWithBiometric({
     required String localizedReason,
   }) async {
-    if (!isAndroidPlatform) return null;
+    if (!isBiometricPlatform) return null;
     if (!await hasStoredCredentials()) return null;
     try {
       final ok = _authenticateOverride != null

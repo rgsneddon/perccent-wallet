@@ -15,6 +15,11 @@ Product name: **MY PERC** (`perccent_wallet`).
 - **Signing project settings** committed: `DEVELOPMENT_TEAM=SFCBP95595` in Xcode project + `ExportOptions.plist`.
 - Windows and Android installers were **not** rebuilt this cycle; downloads still link the verified **v1.1.5** Windows/Android packages so links do not 404.
 
+### Biometrics (current)
+
+- Optional **Face ID / Touch ID / fingerprint** vault on **iOS and Android** after login or registration seed setup.
+- Send re-auth accepts enrolled biometrics or password on both mobile platforms.
+
 ### iOS signing note
 
 Automatic `flutter build ipa` archive failed because the Apple team has **no registered devices** for a development provisioning profile. The published IPA is a **release build** of `Runner.app` codesigned with the Apple Development certificate and packaged as a standard Payload IPA for GitHub distribution / sideload workflows. Full Xcode automatic provisioning for device install improves once a physical device UDID is registered on the team.
@@ -50,4 +55,4 @@ Product name: **MY PERC** (`perccent_wallet`).
 
 - **iOS is a supported build target** for MY PERC. The `ios/` Xcode project, CocoaPods `Podfile`, and packaging scripts produce a real simulator app (`build/ios/iphonesimulator/Runner.app`, bundle id `com.perccent.perccentWallet`).
 - **Build path documented** in [README.md](README.md).
-- **Privacy policy** and **LICENSE** updated for MY PERC multi-platform distribution (including iOS). Biometric vault enrollment remains **Android-only**.
+- **Privacy policy** and **LICENSE** updated for MY PERC multi-platform distribution (including iOS). Biometric vault enrollment later extended to **Android and iOS** (see current README / PRIVACY_POLICY).

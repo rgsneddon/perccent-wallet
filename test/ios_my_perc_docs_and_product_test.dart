@@ -69,14 +69,12 @@ void main() {
 
     expect(privacy, contains('MY PERC'));
     expect(privacy, contains('iOS'));
-    expect(privacy, contains('Android only'));
+    expect(privacy, contains('Android and iOS'));
+    expect(privacy, contains('Face ID'));
+    expect(privacy, contains('Keychain'));
     expect(
       privacy.toLowerCase(),
-      isNot(contains('face id is used for wallet unlock when enabled')),
-    );
-    expect(
-      privacy,
-      contains('biometric vault enrollment is not enabled on iOS'),
+      isNot(contains('biometric vault enrollment is not enabled on ios')),
     );
 
     expect(license, contains('MY PERC'));
@@ -87,7 +85,7 @@ void main() {
     File('${_scratchDir()}${Platform.pathSeparator}legal_check.txt')
         .writeAsStringSync(
       'privacy_has_ios=${privacy.contains('iOS')}\n'
-      'privacy_android_only_biometrics=${privacy.contains('Android only')}\n'
+      'privacy_mobile_biometrics=${privacy.contains('Android and iOS')}\n'
       'license_has_ios=${license.contains('iOS')}\n'
       'license_my_perc=${license.contains('MY PERC')}\n',
     );
