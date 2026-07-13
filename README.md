@@ -2,9 +2,9 @@
 
 A **standalone** Flutter wallet for the Perccent (PERC) ledger on chain `evolve-chronoflux-principia-chain-1`. Use it without the Evolve analysis app — same dark UI styling and full wallet feature set inherited from [Evolve](https://github.com/rgsneddon/evolve).
 
-**Latest release:** v1.1.4 (build 9) — [Downloads](https://rgsneddon.github.io/evolve/downloads/) (MY PERC section) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases)
+**Latest release:** v1.1.5 (build 10) — [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases)
 
-Download **perccent-wallet-v1.1.4-windows-x64-setup.exe** or **perccent-wallet-v1.1.4-android-setup.apk** from [Downloads](https://rgsneddon.github.io/evolve/downloads/) or **Releases**. Verify the attached `.sha256` checksum before installing.
+Download **perccent-wallet-v1.1.5-windows-x64-setup.exe** or **perccent-wallet-v1.1.5-android-setup.apk** from [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) or **Releases**. Verify the attached `.sha256` checksum before installing.
 
 ## Features
 

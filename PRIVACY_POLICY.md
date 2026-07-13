@@ -1,7 +1,7 @@
 # Perccent Wallet — Privacy Policy
 
 **Effective date:** 8 July 2026  
-**Last updated:** 13 July 2026 (v1.1.4 build 9 — Android biometric enrollment after registration seed setup; randomly assigned PERC addresses for independent registrations; balance and transaction sync for wallets restored from the same seed or backup; send re-authentication before outbound PERC transfers; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
+**Last updated:** 13 July 2026 (v1.1.5 build 10 — MY PERC rebrand and icon refresh; Android biometric enrollment after registration seed setup; randomly assigned PERC addresses for independent registrations; balance and transaction sync for wallets restored from the same seed or backup; send re-authentication before outbound PERC transfers; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
 **Applies to:** the standalone Perccent Wallet application and optional self-hosted `perc_chain` internet seed node in this repository.
 
 ## Summary
