@@ -4,15 +4,15 @@
 
 Package name: `perccent_wallet` · Bundle ID (iOS): `com.perccent.perccentWallet`
 
-**Latest release:** v1.1.5 (build 10) — [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases) · [Release notes](RELEASE_NOTES.md)
+**Latest release:** v1.1.6 (build 11) — [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases) · [Release notes](RELEASE_NOTES.md)
 
 | Platform | Artifact |
 |----------|----------|
-| **Windows** | `perccent-wallet-v1.1.5-windows-x64-setup.exe` |
-| **Android** | `perccent-wallet-v1.1.5-android-setup.apk` |
-| **iOS** | Build from this repo (simulator / device IPA when Apple signing is configured). Planned release name: `perccent-wallet-v1.1.5-ios-setup.ipa` |
+| **Windows** | `perccent-wallet-v1.1.5-windows-x64-setup.exe` (last Windows build) |
+| **Android** | `perccent-wallet-v1.1.5-android-setup.apk` (last Android build) |
+| **iOS** | `perccent-wallet-v1.1.6-ios-setup.ipa` (Apple Development–signed, team `SFCBP95595`) |
 
-Download Windows and Android installers from [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) or **Releases**. Verify the attached `.sha256` checksum before installing. For **iOS**, build with Flutter on macOS (below) or install a signed IPA when published under [Releases](https://github.com/rgsneddon/perccent-wallet/releases).
+Download installers from [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) or **Releases**. Verify the attached `.sha256` checksum before installing.
 
 ## Features
 
@@ -67,10 +67,13 @@ flutter run -d ios
 flutter build ios --simulator --debug
 # Product: build/ios/iphonesimulator/Runner.app
 
-# Device / signed IPA (requires Apple Developer Program + DEVELOPMENT_TEAM)
-export DEVELOPMENT_TEAM=XXXXXXXXXX   # see ios/SIGNING.md
+# Device / signed IPA (requires DEVELOPMENT_TEAM + signing identity)
+export DEVELOPMENT_TEAM=SFCBP95595   # see ios/SIGNING.md
+# Xcode automatic archive needs a registered device for development profiles.
+# Release IPA may also be produced via: flutter build ios --release --no-codesign
+# then codesign + zip Payload (see RELEASE_NOTES.md / packaging scripts).
 flutter build ipa --release --export-options-plist=ios/ExportOptions.plist
-# Or package with checksums (macOS host):
+# Or package with checksums (macOS host with PowerShell):
 #   pwsh ./scripts/build_ios_installer.ps1
 ```
 

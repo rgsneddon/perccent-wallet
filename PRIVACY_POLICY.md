@@ -1,7 +1,7 @@
 # MY PERC (Perccent Wallet) — Privacy Policy
 
 **Effective date:** 8 July 2026  
-**Last updated:** 13 July 2026 (v1.1.5 build 10 — MY PERC iOS build target documented and verified; iOS/macOS CocoaPods project wiring; Android biometric enrollment after registration seed setup remains Android-only; randomly assigned PERC addresses; multi-device seed/backup sync; send re-authentication; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
+**Last updated:** 14 July 2026 (v1.1.6 build 11 — signed MY PERC iOS IPA published for GitHub/downloads; team SFCBP95595; Android biometric enrollment remains Android-only; randomly assigned PERC addresses; multi-device seed/backup sync; send re-authentication; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
 **Applies to:** the standalone **MY PERC** / Perccent Wallet application on **Windows, Android, iOS, web, and other Flutter targets**, and the optional self-hosted `perc_chain` internet seed node in this repository.
 
 ## Summary

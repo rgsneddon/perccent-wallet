@@ -14,8 +14,10 @@ Bundle ID: `com.perccent.perccentWallet` (see `Runner.xcodeproj`).
 Set Team ID locally:
 
 ```bash
-export DEVELOPMENT_TEAM=XXXXXXXXXX
+export DEVELOPMENT_TEAM=SFCBP95595
 ```
+
+This team is also set in `Runner.xcodeproj` (`DEVELOPMENT_TEAM`) and `ExportOptions.plist` (`teamID`).
 
 ## Export options
 

@@ -1,0 +1,19 @@
+{
+  "name": "perccent-wallet-v1.1.6-ios-setup.ipa",
+  "version": "1.1.6",
+  "build": "11",
+  "platform": "ios",
+  "bundleId": "com.perccent.perccentWallet",
+  "productName": "MY PERC",
+  "teamId": "SFCBP95595",
+  "signingIdentity": "Apple Development: Russell Sneddon (U37S5938B4)",
+  "exportMethod": "development-codesign-package",
+  "status": "signed_published",
+  "sizeBytes": 8653370,
+  "sizeMb": 8.3,
+  "sha256": "1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5",
+  "sha512": "803e80465b01ee00e92ee36c111733778904850e111e8bb0f49c09677527a0a6310e14333cfc8b0676cd4529de25ef93fc5dd80cdec1c787f80d074598125ddf",
+  "url": "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-ios-setup.ipa",
+  "pagesUrl": "https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.6/perccent-wallet-v1.1.6-ios-setup.ipa",
+  "notes": "Development-signed IPA (team SFCBP95595). Automatic Xcode archive failed: team has no registered devices for development provisioning profiles. App was release-built then codesigned with Apple Development identity and packaged as IPA for GitHub distribution/sideload workflows that re-sign or use matching free-team trust."
+}
