@@ -21,8 +21,10 @@ void main() {
 
   test('AppUpdateChecker reports no update when remote matches current', () async {
     AppUpdateChecker.fetchBodyOverride = (uri) async {
+      final release = PercAppVersion.releaseOf(PercAppVersion.current);
+      final build = PercAppVersion.buildOf(PercAppVersion.current);
       return '''
-{"version":"1.1.1","build_number":8,"package_name":"perccent_wallet"}
+{"version":"$release","build_number":$build,"package_name":"perccent_wallet"}
 ''';
     };
     addTearDown(() => AppUpdateChecker.fetchBodyOverride = null);

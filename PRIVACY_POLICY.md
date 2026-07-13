@@ -1,16 +1,18 @@
 # Perccent Wallet — Privacy Policy
 
 **Effective date:** 8 July 2026  
-**Last updated:** 13 July 2026 (v1.1.1 build 8 — send re-authentication before outbound PERC transfers; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password; optional Android biometric sign-in)  
+**Last updated:** 13 July 2026 (v1.1.4 build 9 — Android biometric enrollment after registration seed setup; randomly assigned PERC addresses for independent registrations; balance and transaction sync for wallets restored from the same seed or backup; send re-authentication before outbound PERC transfers; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
 **Applies to:** the standalone Perccent Wallet application and optional self-hosted `perc_chain` internet seed node in this repository.
 
 ## Summary
 
 Perccent Wallet is designed to minimise data collection. Your wallet keys, passwords, encrypted backups, and ledger state stay on your device unless you explicitly send transactions or sync with the public Perccent network. We do not operate a central account service for this standalone app.
 
-On **Android only**, you may optionally enable **biometric sign-in** after logging in to an **existing** account. If you opt in, your username and password are stored **only on your device** in OS-backed secure storage and unlocked via the device biometric prompt. Biometric data and plaintext passwords are **not** sent to Evolve, seed servers, or third parties. You can decline and keep manual login.
+On **Android only**, you may optionally enable **biometric sign-in** after logging in or completing new-registration seed setup. If you opt in, your username and password are stored **only on your device** in OS-backed secure storage and unlocked via the device biometric prompt. Biometric data and plaintext passwords are **not** sent to Evolve, seed servers, or third parties. You can decline and keep manual login.
 
-Before any **outbound PERC send**, the app requires **password re-authentication** or, when enrolled on Android, a successful **biometric unlock**. Analysis rewards, receive, staking, and backup flows do not use this send gate.
+Each independent wallet registration receives a **randomly assigned PERC address** — not derived from your username or password. Wallets restored from the same seed phrase or encrypted backup file share the same address across devices, and balances and transaction history merge when either clone sends or receives PERC.
+
+Before any **outbound PERC send**, the app requires **password re-authentication** or, when enrolled on Android, a successful **biometric unlock**. Receive, staking, and backup flows do not use this send gate.
 
 ## What the wallet stores locally
 
