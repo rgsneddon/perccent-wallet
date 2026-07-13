@@ -27,4 +27,9 @@ if (-not (Test-Path $SourceDir)) {
 }
 
 Test-VersionPackageChecksums -VersionDir $SourceDir -RequireSidecars
+$indexInfo = Update-DownloadsIndexPage -VersionDir $SourceDir -Version $Version
 Write-Host "Checksum verification passed for v$Version" -ForegroundColor Green
+if ($indexInfo) {
+    $iosLabel = if ($indexInfo.iOS) { ", $($indexInfo.iOS)" } else { '' }
+    Write-Host "  downloads/index.html -> v$($indexInfo.Version) ($($indexInfo.Windows), $($indexInfo.Android)$iosLabel)" -ForegroundColor Cyan
+}

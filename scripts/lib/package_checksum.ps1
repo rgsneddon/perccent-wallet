@@ -111,6 +111,117 @@ function Write-VersionChecksumManifest {
     return $entries
 }
 
+function Update-DownloadsIndexPage {
+    param(
+        [Parameter(Mandatory = $true)][string]$VersionDir,
+        [string]$DownloadsIndex = '',
+        [string]$Version = '',
+        [string]$Build = ''
+    )
+
+    $Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
+    if (-not $DownloadsIndex) {
+        $DownloadsIndex = Join-Path $Root 'downloads\index.html'
+    }
+    if (-not (Test-Path $DownloadsIndex)) {
+        throw "Missing downloads index: $DownloadsIndex"
+    }
+
+    $manifestPath = Join-Path $VersionDir 'checksums.json'
+    if (-not (Test-Path $manifestPath)) {
+        throw "Missing checksum manifest: $manifestPath"
+    }
+    $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
+
+    if (-not $Version) {
+        if ($VersionDir -match 'v([0-9.]+)$') {
+            $Version = $Matches[1]
+        } else {
+            throw 'Could not infer version from VersionDir'
+        }
+    }
+    if (-not $Build) {
+        $pubspec = Join-Path $Root 'pubspec.yaml'
+        if (Test-Path $pubspec) {
+            $pub = Get-Content $pubspec -Raw
+            if ($pub -match 'version:\s*[0-9.]+\+(\d+)') {
+                $Build = $Matches[1]
+            }
+        }
+        if (-not $Build) { $Build = '0' }
+    }
+
+    $win = $manifest.packages | Where-Object { $_.file -match 'perccent-wallet.*windows' } | Select-Object -First 1
+    $apk = $manifest.packages | Where-Object { $_.file -match 'perccent-wallet.*android|perccent-wallet.*apk' } | Select-Object -First 1
+    $ios = $manifest.packages | Where-Object { $_.file -match 'perccent-wallet.*ios|\.ipa$' } | Select-Object -First 1
+    if (-not $win -or -not $apk) {
+        throw 'checksums.json must include windows and android packages'
+    }
+
+    $winMb = [math]::Round($win.bytes / 1MB, 1)
+    $apkMb = [math]::Round($apk.bytes / 1MB, 1)
+    $iosMb = if ($ios) { [math]::Round($ios.bytes / 1MB, 1) } else { 0 }
+
+    . (Join-Path $PSScriptRoot 'github.ps1')
+    $owner = Get-GitHubOwner -Root $Root
+    $releaseBase = "https://github.com/$owner/perccent-wallet/releases/download/v$Version"
+
+    $html = Get-Content $DownloadsIndex -Raw
+    $html = $html -replace 'Latest release: <strong>v[0-9.]+</strong> \(build \d+\)',
+        "Latest release: <strong>v$Version</strong> (build $Build)"
+
+    $html = $html -replace 'perccent-wallet-v[0-9.]+-windows-x64-setup\.exe &middot; ~[0-9.]+ MB',
+        "$($win.file) &middot; ~$winMb MB"
+    $html = $html -replace 'href="(?:v[0-9.]+/|https://github\.com/[^/]+/perccent-wallet/releases/download/v[0-9.]+/)perccent-wallet-v[0-9.]+-windows-x64-setup\.exe"',
+        "href=`"$releaseBase/$($win.file)`""
+    $html = $html -replace '(?s)(<article class="card windows">.*?SHA-256:\s*<code[^>]*>)[a-f0-9]{64}(</code>)',
+        "`${1}$($win.sha256)`${2}"
+    $html = $html -replace 'href="(?:v[0-9.]+/|https://github\.com/[^/]+/perccent-wallet/releases/download/v[0-9.]+/)perccent-wallet-v[0-9.]+-windows-x64-setup\.exe\.sha256"',
+        "href=`"$releaseBase/$($win.file).sha256`""
+    $html = $html -replace '<code id="perccent-setup-name">perccent-wallet-v[0-9.]+-windows-x64-setup\.exe</code>',
+        "<code id=`"perccent-setup-name`">$($win.file)</code>"
+
+    $html = $html -replace 'perccent-wallet-v[0-9.]+-android-setup\.apk &middot; ~[0-9.]+ MB',
+        "$($apk.file) &middot; ~$apkMb MB"
+    $html = $html -replace 'href="(?:v[0-9.]+/|https://github\.com/[^/]+/perccent-wallet/releases/download/v[0-9.]+/)perccent-wallet-v[0-9.]+-android-setup\.apk"',
+        "href=`"$releaseBase/$($apk.file)`""
+    $html = $html -replace '(?s)(<article class="card android">.*?SHA-256:\s*<code id="perccent-apk-sha256"[^>]*>)[a-f0-9]{64}(</code>)',
+        "`${1}$($apk.sha256)`${2}"
+    $html = $html -replace 'href="(?:v[0-9.]+/|https://github\.com/[^/]+/perccent-wallet/releases/download/v[0-9.]+/)perccent-wallet-v[0-9.]+-android-setup\.apk\.sha256"',
+        "href=`"$releaseBase/$($apk.file).sha256`""
+    $html = $html -replace '<code id="perccent-apk-name">perccent-wallet-v[0-9.]+-android-setup\.apk</code>',
+        "<code id=`"perccent-apk-name`">$($apk.file)</code>"
+
+    if ($ios) {
+        $html = $html -replace 'perccent-wallet-v[0-9.]+-ios-setup\.ipa &middot; ~[0-9.]+ MB',
+            "$($ios.file) &middot; ~$iosMb MB"
+        $html = $html -replace 'href="(?:v[0-9.]+/|https://github\.com/[^/]+/perccent-wallet/releases/download/v[0-9.]+/)perccent-wallet-v[0-9.]+-ios-setup\.ipa"',
+            "href=`"$releaseBase/$($ios.file)`""
+        $html = $html -replace '(?s)(<article class="card ios">.*?SHA-256:\s*<code id="perccent-ios-sha256"[^>]*>)[a-f0-9]{64}(</code>)',
+            "`${1}$($ios.sha256)`${2}"
+        $html = $html -replace 'href="(?:v[0-9.]+/|https://github\.com/[^/]+/perccent-wallet/releases/download/v[0-9.]+/)perccent-wallet-v[0-9.]+-ios-setup\.ipa\.sha256"',
+            "href=`"$releaseBase/$($ios.file).sha256`""
+        $html = $html -replace '<code id="perccent-ios-name">perccent-wallet-v[0-9.]+-ios-setup\.ipa</code>',
+            "<code id=`"perccent-ios-name`">$($ios.file)</code>"
+    }
+
+    $html = $html -replace 'href="(?:v[0-9.]+/|https://github\.com/[^/]+/perccent-wallet/releases/download/v[0-9.]+/)CHECKSUMS\.sha256"',
+        "href=`"$releaseBase/CHECKSUMS.sha256`""
+    $html = $html -replace 'href="(?:v[0-9.]+/|https://github\.com/[^/]+/perccent-wallet/releases/download/v[0-9.]+/)CHECKSUMS\.sha512"',
+        "href=`"$releaseBase/CHECKSUMS.sha512`""
+    $html = $html -replace 'href="(?:v[0-9.]+/|https://github\.com/[^/]+/perccent-wallet/releases/download/v[0-9.]+/)checksums\.json"',
+        "href=`"$releaseBase/checksums.json`""
+
+    Set-Content -Path $DownloadsIndex -Value $html -NoNewline
+    return [PSCustomObject]@{
+        Version = $Version
+        Build = $Build
+        Windows = $win.file
+        Android = $apk.file
+        iOS = if ($ios) { $ios.file } else { '' }
+    }
+}
+
 function Test-VersionPackageChecksums {
     param(
         [Parameter(Mandatory = $true)][string]$VersionDir,

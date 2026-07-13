@@ -59,6 +59,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Scan PERC wallet QR codes to send and receive Perccent coins.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Authenticate with Face ID to sign in to MY PERC quickly and securely.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

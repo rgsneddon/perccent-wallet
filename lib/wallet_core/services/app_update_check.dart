@@ -125,6 +125,13 @@ class AppUpdateChecker {
           '$releasesTagBaseUrl/$tag',
           downloadsBaseUrl,
         ];
+      case TargetPlatform.iOS:
+        return [
+          '$releasesBaseUrl/$tag/$prefix-v$release-ios-setup.ipa',
+          'https://rgsneddon.github.io/perccent-wallet/downloads/$tag/$prefix-v$release-ios-setup.ipa',
+          '$releasesTagBaseUrl/$tag',
+          downloadsBaseUrl,
+        ];
       default:
         return [downloadsBaseUrl];
     }

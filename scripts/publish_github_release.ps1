@@ -65,6 +65,7 @@ Standalone PERC wallet — send, receive, stake, and sync on the Chronoflux Prin
 
 Windows: ``perccent-wallet-v$versionNoV-windows-x64-setup.exe``
 Android: ``perccent-wallet-v$versionNoV-android-setup.apk``
+iOS: ``perccent-wallet-v$versionNoV-ios-setup.ipa`` (when built on macOS with Xcode signing)
 Verify downloads with attached ``.sha256`` / ``.sha512`` checksum files (minimum SHA-256)
 "@
 $notes = if ($ReleaseNotes.Trim()) { $ReleaseNotes.Trim() } else { $defaultNotes }

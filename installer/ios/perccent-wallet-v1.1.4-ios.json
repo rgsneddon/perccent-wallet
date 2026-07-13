@@ -1,0 +1,13 @@
+﻿{
+    "url":  "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.4/perccent-wallet-v1.1.4-ios-setup.ipa",
+    "build":  "9",
+    "platform":  "ios",
+    "version":  "1.1.4",
+    "sizeMb":  0,
+    "sha512":  "2a1f5dbc8d3d20a8bbf74c3f2927c7b6d78d12507b7c87848e227995831c1d486f69f8276f478137e8649b1b78da2efa76cbb9e07488ee131caef7a8361923fa",
+    "name":  "perccent-wallet-v1.1.4-ios-setup.ipa",
+    "pagesUrl":  "https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.4/perccent-wallet-v1.1.4-ios-setup.ipa",
+    "bundleId":  "com.perccent.perccentWallet",
+    "sha256":  "26b7e40be0bcf3e6667020b3acf6e07faa17585b21b2936305dd6c9ad3860b15",
+    "sizeBytes":  4096
+}
