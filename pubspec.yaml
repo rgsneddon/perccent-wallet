@@ -41,6 +41,8 @@ dev_dependencies:
 # native PathProviderPlugin is registered (matches evolve_app / avoids cold-start JNI crash).
 dependency_overrides:
   path_provider_android: 2.2.19
+  flutter_secure_storage_windows:
+    path: stubs/flutter_secure_storage_windows
 
 flutter:
   uses-material-design: true
