@@ -8,12 +8,14 @@ Package name: `perccent_wallet` · Bundle ID: `com.perccent.perccentWallet` (iOS
 
 | Platform | Artifact |
 |----------|----------|
-| **Windows** | `perccent-wallet-v1.1.5-windows-x64-setup.exe` (last Windows build) |
-| **Android** | `perccent-wallet-v1.1.5-android-setup.apk` (last Android build) |
+| **Windows** | `perccent-wallet-v1.1.6-windows-x64-setup.exe` |
+| **Android** | `perccent-wallet-v1.1.6-android-setup.apk` |
 | **iOS** | `perccent-wallet-v1.1.6-ios-setup.ipa` (Apple Development–signed, team `SFCBP95595`) |
 | **macOS** | `perccent-wallet-v1.1.6-macos-setup.zip` (universal `MY PERC.app`, Apple Development–signed) |
 
 Download installers from **[MY PERC Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/)** or **[GitHub Releases](https://github.com/rgsneddon/perccent-wallet/releases)**. Verify the attached `.sha256` checksum before installing.
+
+**v1.1.6** aligns Windows, Android, iOS, and macOS on one release tag and fixes the splash-screen update advisory so each platform only compares against its own published build (a newer iOS-only release no longer nags Windows or Android users who are already current).
 
 **iOS / macOS hosting:** MY PERC iOS and macOS packages for v1.1.6 are published via the **perccent-wallet** downloads/release surfaces. The iOS IPA is also linked from the Perccent Wallet section on the Evolve downloads page. There is no separate Evolve Chronoflux iOS installer for the wallet.
 

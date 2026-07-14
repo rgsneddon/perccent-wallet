@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -19,12 +20,31 @@ void main() {
     expect(PercAppVersion.current, _pubspecVersion());
   });
 
+  test('version.json matches PercAppVersion.current', () {
+    final jsonFile = File('version.json');
+    expect(jsonFile.existsSync(), isTrue);
+    final json = jsonDecode(jsonFile.readAsStringSync()) as Map<String, dynamic>;
+    final release = (json['version'] as String).trim();
+    final build = int.tryParse('${json['build_number']}') ?? 0;
+    expect('$release+$build', PercAppVersion.current);
+    expect(release, '1.1.6');
+  });
+
   test('AppUpdateChecker reports no update when remote matches current', () async {
     AppUpdateChecker.fetchBodyOverride = (uri) async {
       final release = PercAppVersion.releaseOf(PercAppVersion.current);
       final build = PercAppVersion.buildOf(PercAppVersion.current);
       return '''
-{"version":"$release","build_number":$build,"package_name":"perccent_wallet"}
+{
+  "version":"$release",
+  "build_number":$build,
+  "package_name":"perccent_wallet",
+  "platforms":{
+    "windows":{"version":"$release","build_number":$build},
+    "android":{"version":"$release","build_number":$build},
+    "ios":{"version":"$release","build_number":$build}
+  }
+}
 ''';
     };
     addTearDown(() => AppUpdateChecker.fetchBodyOverride = null);

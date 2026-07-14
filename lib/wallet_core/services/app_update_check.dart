@@ -32,12 +32,20 @@ class AppUpdateInfo {
 }
 
 class RemoteVersionFeed {
-  const RemoteVersionFeed({required this.release, required this.build});
+  const RemoteVersionFeed({
+    required this.release,
+    required this.build,
+    this.platforms = const {},
+  });
 
   final String release;
   final int build;
+  final Map<String, RemoteVersionFeed> platforms;
 
   String get full => '$release+$build';
+
+  RemoteVersionFeed? platformFeed(String platformKey) =>
+      platforms[platformKey];
 
   factory RemoteVersionFeed.fromJson(Map<String, dynamic> json) {
     final release = (json['version'] as String? ?? '').trim();
@@ -45,7 +53,23 @@ class RemoteVersionFeed {
     final build = buildRaw is int
         ? buildRaw
         : int.tryParse('$buildRaw') ?? 0;
-    return RemoteVersionFeed(release: release, build: build);
+
+    final platforms = <String, RemoteVersionFeed>{};
+    final platformsJson = json['platforms'];
+    if (platformsJson is Map<String, dynamic>) {
+      for (final entry in platformsJson.entries) {
+        final value = entry.value;
+        if (value is Map<String, dynamic>) {
+          platforms[entry.key] = RemoteVersionFeed.fromJson(value);
+        }
+      }
+    }
+
+    return RemoteVersionFeed(
+      release: release,
+      build: build,
+      platforms: platforms,
+    );
   }
 }
 
@@ -91,14 +115,39 @@ class AppUpdateChecker {
       );
     }
 
-    final updateAvailable = PercAppVersion.isNewerThan(newest.full, current);
+    final platformFeed = _platformFeedForCurrentTarget(newest);
+    final latestFull = platformFeed?.full ?? newest.full;
+    final latestRelease = platformFeed?.release ?? newest.release;
+    final updateAvailable = PercAppVersion.isNewerThan(latestFull, current);
     return AppUpdateInfo(
       currentFull: current,
-      latestFull: newest.full,
+      latestFull: latestFull,
       updateAvailable: updateAvailable,
       checkSucceeded: true,
-      updateUrl: updateUrlForRelease(newest.release),
+      updateUrl: updateUrlForRelease(latestRelease),
     );
+  }
+
+  /// Platform key used in [RemoteVersionFeed.platforms] (version.json).
+  @visibleForTesting
+  static String? platformKeyForCurrentTarget() {
+    if (kIsWeb) return 'web';
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.windows:
+        return 'windows';
+      case TargetPlatform.android:
+        return 'android';
+      case TargetPlatform.iOS:
+        return 'ios';
+      default:
+        return null;
+    }
+  }
+
+  static RemoteVersionFeed? _platformFeedForCurrentTarget(RemoteVersionFeed feed) {
+    final key = platformKeyForCurrentTarget();
+    if (key == null) return null;
+    return feed.platformFeed(key);
   }
 
   static String updateUrlForRelease(String release) {

@@ -1,6 +1,6 @@
 # MY PERC — Release notes
 
-## v1.1.6 (build 11) — Signed iOS IPA + macOS app (14 July 2026)
+## v1.1.6 (build 11) — Aligned platform installers + update-check fix (14 July 2026)
 
 Product name: **MY PERC** (`perccent_wallet`).
 
@@ -19,7 +19,8 @@ Product name: **MY PERC** (`perccent_wallet`).
   - Install: unzip, open `MY PERC.app` (Gatekeeper may require right-click → Open if not notarized)
 - **Downloads page** lists v1.1.6 with real iOS + macOS size/SHA-256 (not placeholders).
 - **Signing project settings** committed: `DEVELOPMENT_TEAM=SFCBP95595` in Xcode project + `ExportOptions.plist`.
-- Windows and Android installers were **not** rebuilt this cycle; downloads still link the verified **v1.1.5** Windows/Android packages so links do not 404.
+- **Windows and Android rebuilt** on the unified **v1.1.6** tag: `perccent-wallet-v1.1.6-windows-x64-setup.exe` and `perccent-wallet-v1.1.6-android-setup.apk`.
+- **Platform-specific splash update checks:** `version.json` now includes per-platform version fields; the sign-in update advisory compares only your device type (Windows, Android, or iOS), so a newer iOS-only release no longer nags Windows or Android users who are already current.
 
 ### Biometrics (current)
 
@@ -34,8 +35,8 @@ Automatic `flutter build ipa` archive failed because the Apple team has **no reg
 
 | Platform | Status |
 |----------|--------|
-| Windows | v1.1.5 installer on Releases / Downloads |
-| Android | v1.1.5 APK on Releases / Downloads |
+| Windows | **v1.1.6** installer on Releases / Downloads |
+| Android | **v1.1.6** APK on Releases / Downloads |
 | **iOS** | **v1.1.6 signed IPA** on Releases / Downloads |
 | **macOS** | **v1.1.6 app zip** on Releases / Downloads |
 | Web | `flutter build web --release` from source |

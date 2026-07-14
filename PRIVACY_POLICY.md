@@ -1,7 +1,7 @@
 # MY PERC (Perccent Wallet) — Privacy Policy
 
 **Effective date:** 8 July 2026  
-**Last updated:** 14 July 2026 (v1.1.6+ macOS desktop app release; biometric vault on Android and iOS — Face ID / Touch ID / fingerprint opt-in; signed iOS IPA; randomly assigned PERC addresses; multi-device seed/backup sync; send re-authentication; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
+**Last updated:** 14 July 2026 (v1.1.6 build 11 — aligned Windows/Android/iOS/macOS installers; platform-specific splash update checks; biometric vault on Android and iOS; signed iOS IPA; randomly assigned PERC addresses; multi-device seed/backup sync; send re-authentication; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
 **Applies to:** the standalone **MY PERC** / Perccent Wallet application on **Windows, Android, iOS, macOS, web, and other Flutter targets**, and the optional self-hosted `perc_chain` internet seed node in this repository.
 
 ## Summary
@@ -39,7 +39,7 @@ When you use send/receive, staking, or seed sync, the wallet communicates with:
 - **Public internet seed nodes** (default rendezvous: `https://evolve-perc-internet.onrender.com`, configurable in `assets/config/perc_network.json`).
 - **Other Perccent peers** via the mesh rendezvous protocol for inbound transfer delivery and block propagation.
 - **Public IP lookup services** (e.g. `api.ipify.org`, `ifconfig.me`) to advertise your node's public endpoint when you run local peer features.
-- **Optional update checks** — the splash screen may request version metadata from configured update endpoints (no wallet secrets are sent). The MY PERC **iOS IPA** is distributed via the **perccent-wallet** GitHub Releases / downloads page (not as an Evolve Chronoflux platform installer).
+- **Optional update checks** — the splash screen may request version metadata from configured update endpoints (no wallet secrets are sent). Since v1.1.6 the feed may include per-platform version fields; only the entry for your device type (Windows, Android, or iOS) is used for update advisories. The MY PERC **iOS IPA** is distributed via the **perccent-wallet** GitHub Releases / downloads page (not as an Evolve Chronoflux platform installer).
 
 Transactions and ledger exports use pseudonymous Perccent addresses and hashed account identifiers. Scenario labels and usernames are stripped from public ledger exports per chain privacy rules.
 
