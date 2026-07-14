@@ -7,14 +7,16 @@
   "productName": "MY PERC",
   "appName": "MY PERC.app",
   "teamId": "SFCBP95595",
-  "signingIdentity": "Apple Development: Russell Sneddon (U37S5938B4)",
+  "signingIdentity": "Developer ID Application: Russell Sneddon (SFCBP95595)",
   "packageFormat": "zip",
-  "status": "signed_published",
-  "sizeBytes": 20685099,
+  "notarized": true,
+  "notarizationId": "dd7736ef-f056-4f82-b658-9bb3a0d20fa6",
+  "status": "signed_notarized_published",
+  "sizeBytes": 20654058,
   "sizeMb": 19.7,
-  "sha256": "d0cbd2028e2b862af8d4073fdd01b2e89c60ba4f7a7fa418373daee1f751c1b3",
-  "sha512": "c0c6d00d31d51695f961c66d76b8091f4e345a5647988444a910c6630e15366aab261875c2de0b80119d02be5882ce7e6e2b2f657400e8dbdd7797d20a0cee9b",
+  "sha256": "5742d898a27a4a79b7346215c4cc22f63d00d3417a14c6b4e7dbff094fb99597",
+  "sha512": "4a4f09437f22207d2d87b6d61d265c48622552aa60f23b0f067fae4782a984bb47c13874d7435ab755c888afadf73709c1d1aeef979f6592e651b406cab064a9",
   "url": "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip",
   "pagesUrl": "https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip",
-  "notes": "Rebuilt for App ID/Bundle ID perccent-wallet on team SFCBP95595. Universal MY PERC.app, Apple Development\u2013signed. Unzip and open; Gatekeeper may require right-click Open for non-notarized builds."
+  "notes": "Developer ID Application signed, notarized (ticket stapled). Bundle ID perccent-wallet, team SFCBP95595. Double-click open should work without Gatekeeper block."
 }

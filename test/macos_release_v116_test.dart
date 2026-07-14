@@ -33,7 +33,7 @@ void main() {
     expect(readme, contains('macos-setup.zip'));
     expect(readme, contains('macOS'));
     expect(notes, contains('macos-setup.zip'));
-    expect(notes, contains('d0cbd2028e2b862af8d4073fdd01b2e89c60ba4f7a7fa418373daee1f751c1b3'));
+    expect(notes, contains('5742d898a27a4a79b7346215c4cc22f63d00d3417a14c6b4e7dbff094fb99597'));
   });
 
   test('PRIVACY and LICENSE mention macOS as supported platform', () {

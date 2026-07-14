@@ -11,7 +11,7 @@ Package name: `perccent_wallet` · Bundle ID: `perccent-wallet` (iOS / macOS)
 | **Windows** | `perccent-wallet-v1.1.6-windows-x64-setup.exe` |
 | **Android** | `perccent-wallet-v1.1.6-android-setup.apk` |
 | **iOS** | `perccent-wallet-v1.1.6-ios-setup.ipa` (Apple Development–signed, team `SFCBP95595`) |
-| **macOS** | `perccent-wallet-v1.1.6-macos-setup.zip` (universal `MY PERC.app`, Apple Development–signed) |
+| **macOS** | `perccent-wallet-v1.1.6-macos-setup.zip` (universal `MY PERC.app`, Developer ID–signed + notarized) |
 
 Download installers from **[MY PERC Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/)** or **[GitHub Releases](https://github.com/rgsneddon/perccent-wallet/releases)**. Verify the attached `.sha256` checksum before installing.
 

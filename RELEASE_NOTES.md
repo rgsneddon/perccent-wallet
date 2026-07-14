@@ -14,9 +14,9 @@ Product name: **MY PERC** (`perccent_wallet`).
 - **macOS app published:** `perccent-wallet-v1.1.6-macos-setup.zip` (~19.7 MB)
   - Contains `MY PERC.app` (universal arm64 + x86_64)
   - Bundle ID: `perccent-wallet`
-  - Team: `SFCBP95595` (Apple Development–signed)
-  - SHA-256: `d0cbd2028e2b862af8d4073fdd01b2e89c60ba4f7a7fa418373daee1f751c1b3`
-  - Install: unzip, open `MY PERC.app` (Gatekeeper may require right-click → Open if not notarized)
+  - Team: `SFCBP95595` — **Developer ID Application** signed, **notarized** (ticket stapled)
+  - SHA-256: `5742d898a27a4a79b7346215c4cc22f63d00d3417a14c6b4e7dbff094fb99597`
+  - Install: unzip and open `MY PERC.app` (Gatekeeper should accept as Notarized Developer ID)
 - **App ID / Bundle ID migration:** iOS + macOS rebuilt and re-published under Bundle ID `perccent-wallet` (matches App ID on team `SFCBP95595`). Previous `com.perccent.perccentWallet` binaries replaced on the same v1.1.6 tag.
 - **Downloads page** lists v1.1.6 with real iOS + macOS size/SHA-256 (not placeholders).
 - **Signing project settings** committed: `DEVELOPMENT_TEAM=SFCBP95595` in Xcode project + `ExportOptions.plist`.
@@ -52,7 +52,7 @@ Automatic `flutter build ipa` archive failed because the Apple team has **no reg
 
 1. Download `perccent-wallet-v1.1.6-macos-setup.zip` from [Releases](https://github.com/rgsneddon/perccent-wallet/releases/tag/v1.1.6) or [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/).
 2. Verify SHA-256 against the `.sha256` sidecar.
-3. Unzip and open `MY PERC.app`. If macOS Gatekeeper blocks a non-notarized build, right-click the app and choose **Open**.
+3. Unzip and open `MY PERC.app`. This build is Developer ID–signed and notarized (stapled); Gatekeeper should allow a normal open.
 
 ### Docs
 
