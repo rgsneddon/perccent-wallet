@@ -87,11 +87,25 @@
       .grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    @media (min-width: 1100px) {
+    @media (min-width: 900px) {
       .grid { grid-template-columns: repeat(4, 1fr); }
     }
 
+    .card.macos {
+      border-color: rgba(232, 168, 56, 0.55);
+      box-shadow: 0 0 0 1px rgba(232, 168, 56, 0.15);
+    }
+
     .card.macos .card-icon { background: rgba(148, 163, 184, 0.2); }
+
+    .card .btn-mirror {
+      margin-top: 8px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--panel-border);
+      font-size: 0.85rem;
+      padding: 10px 14px;
+    }
 
     .card {
       background: var(--panel);
@@ -208,10 +222,29 @@
       <p class="subtitle">
         Standalone PERC wallet for send, receive, stake, and chain sync on the Chronoflux Principia chain.
       </p>
-      <p class="version">Latest release: <strong>v1.1.6</strong> (build 11)</p>
+      <p class="version">Latest release: <strong>v1.1.6</strong> (build 11) — macOS + iOS + Windows published; Android APK still v1.1.5</p>
     </header>
 
     <div class="grid">
+      <article class="card macos">
+        <div class="card-icon" aria-hidden="true">&#63743;</div>
+        <h2>macOS</h2>
+        <p>Download the MY PERC macOS app (universal). Unzip and open <code>MY PERC.app</code>. Gatekeeper may require right-click &rarr; Open for non-notarized builds.</p>
+        <p class="meta">perccent-wallet-v1.1.6-macos-setup.zip &middot; ~19.7 MB &middot; arm64 + x86_64</p>
+        <p class="meta"><strong>Install:</strong> Unzip <code id="perccent-macos-name">perccent-wallet-v1.1.6-macos-setup.zip</code>, then open <code>MY PERC.app</code>.</p>
+        <a class="btn btn-primary" href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip" download>
+          Download macOS Installer
+        </a>
+        <a class="btn btn-mirror" href="https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip" download>
+          Mirror (GitHub Pages)
+        </a>
+        <p class="meta" style="margin-top:12px;margin-bottom:0;">
+          SHA-256:
+          <code id="perccent-macos-sha256" style="font-size:0.72rem;word-break:break-all;">a0f61d73528d90866e37e6e7ce06705f8be9417de7f5135691c58fec3311d495</code>
+          (<a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip.sha256">.sha256</a>)
+        </p>
+      </article>
+
       <article class="card windows">
         <div class="card-icon" aria-hidden="true">&#8862;</div>
         <h2>Windows</h2>
@@ -257,22 +290,6 @@
           SHA-256:
           <code id="perccent-ios-sha256" style="font-size:0.72rem;word-break:break-all;">1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5</code>
           (<a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-ios-setup.ipa.sha256">.sha256</a>)
-        </p>
-      </article>
-
-      <article class="card macos">
-        <div class="card-icon" aria-hidden="true">&#63743;</div>
-        <h2>macOS</h2>
-        <p>Download the MY PERC macOS app (universal). Unzip and open <code>MY PERC.app</code>. Gatekeeper may require right-click &rarr; Open for non-notarized builds.</p>
-        <p class="meta">perccent-wallet-v1.1.6-macos-setup.zip &middot; ~19.7 MB &middot; arm64 + x86_64</p>
-        <p class="meta"><strong>Install:</strong> Unzip <code id="perccent-macos-name">perccent-wallet-v1.1.6-macos-setup.zip</code>, then open <code>MY PERC.app</code>.</p>
-        <a class="btn btn-primary" href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip" download>
-          Download macOS Installer
-        </a>
-        <p class="meta" style="margin-top:12px;margin-bottom:0;">
-          SHA-256:
-          <code id="perccent-macos-sha256" style="font-size:0.72rem;word-break:break-all;">a0f61d73528d90866e37e6e7ce06705f8be9417de7f5135691c58fec3311d495</code>
-          (<a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip.sha256">.sha256</a>)
         </p>
       </article>
     </div>
