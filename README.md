@@ -4,20 +4,20 @@
 
 Package name: `perccent_wallet` · Bundle ID: `perccent-wallet` (iOS / macOS)
 
-**Latest release:** v1.1.6 (build 11) — [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases) · [Release notes](RELEASE_NOTES.md)
+**Latest release:** v1.1.7 (build 12) — Apple platforms (iOS + macOS) — [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases) · [Release notes](RELEASE_NOTES.md)
 
 | Platform | Artifact |
 |----------|----------|
 | **Windows** | `perccent-wallet-v1.1.6-windows-x64-setup.exe` |
 | **Android** | `perccent-wallet-v1.1.6-android-setup.apk` |
-| **iOS** | `perccent-wallet-v1.1.6-ios-setup.ipa` (Apple Development–signed, team `SFCBP95595`) |
-| **macOS** | `perccent-wallet-v1.1.6-macos-setup.zip` (universal `MY PERC.app`, Developer ID–signed + notarized) |
+| **iOS** | `perccent-wallet-v1.1.7-ios-setup.ipa` (Apple Development–signed, team `SFCBP95595`) |
+| **macOS** | `perccent-wallet-v1.1.7-macos-setup.zip` (universal `MY PERC.app`, Developer ID–signed + notarized) |
 
 Download installers from **[MY PERC Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/)** or **[GitHub Releases](https://github.com/rgsneddon/perccent-wallet/releases)**. Verify the attached `.sha256` checksum before installing.
 
-**v1.1.6** aligns Windows, Android, iOS, and macOS on one release tag and fixes the splash-screen update advisory so each platform only compares against its own published build (a newer iOS-only release no longer nags Windows or Android users who are already current).
+**v1.1.7** ships updated **iOS** and **macOS** packages under Bundle ID `perccent-wallet` (team `SFCBP95595`). Windows and Android remain on **v1.1.6** installers; platform-specific update checks only compare each device type against its own published build.
 
-**iOS / macOS hosting:** MY PERC iOS and macOS packages for v1.1.6 are published via the **perccent-wallet** downloads/release surfaces. The iOS IPA is also linked from the Perccent Wallet section on the Evolve downloads page. There is no separate Evolve Chronoflux iOS installer for the wallet.
+**iOS / macOS hosting:** MY PERC iOS and macOS packages for v1.1.7 are published via the **perccent-wallet** downloads/release surfaces. There is no separate Evolve Chronoflux iOS installer for the wallet.
 
 ## Features
 

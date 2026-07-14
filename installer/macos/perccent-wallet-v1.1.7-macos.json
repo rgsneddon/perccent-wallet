@@ -1,0 +1,22 @@
+{
+  "name": "perccent-wallet-v1.1.7-macos-setup.zip",
+  "version": "1.1.7",
+  "build": "12",
+  "platform": "macos",
+  "bundleId": "perccent-wallet",
+  "productName": "MY PERC",
+  "appName": "MY PERC.app",
+  "teamId": "SFCBP95595",
+  "signingIdentity": "Developer ID Application: Russell Sneddon (SFCBP95595)",
+  "packageFormat": "zip",
+  "notarized": true,
+  "notarizationId": "2c7cd2d8-f851-46bb-9aba-a28bbe6acd83",
+  "status": "signed_notarized_published",
+  "sizeBytes": 20654190,
+  "sizeMb": 19.7,
+  "sha256": "ca08120f2573805a0f17e4d05e68c31983428008fc7360f3e572a8638f61f3db",
+  "sha512": "4bca060dfe65a1a08bbb32e8190d21a12d562011f7d7274ce05a2f4f1e90843e0e2124de5da1c4c16271f8608c72100548d33fe79fbb5b68149d77b283a26e34",
+  "url": "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.7/perccent-wallet-v1.1.7-macos-setup.zip",
+  "pagesUrl": "https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.7/perccent-wallet-v1.1.7-macos-setup.zip",
+  "notes": "v1.1.7 Developer ID Application signed + notarized (stapled). Bundle ID perccent-wallet, team SFCBP95595."
+}

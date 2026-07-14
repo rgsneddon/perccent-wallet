@@ -21,22 +21,29 @@ File _repoFile(String relativePath) {
 }
 
 void main() {
-  test('pubspec and version.json are 1.1.6+11', () {
+  test('pubspec and version.json are 1.1.7+12 with Apple platform fields', () {
     final pubspec = _repoFile('pubspec.yaml').readAsStringSync();
-    expect(pubspec, contains('version: 1.1.6+11'));
+    expect(pubspec, contains('version: 1.1.7+12'));
     final vj = jsonDecode(_repoFile('version.json').readAsStringSync())
         as Map<String, dynamic>;
-    expect(vj['version'], '1.1.6');
-    expect(vj['build_number'].toString(), '11');
+    expect(vj['version'], '1.1.7');
+    expect(vj['build_number'].toString(), '12');
+    final platforms = vj['platforms'] as Map<String, dynamic>;
+    final ios = platforms['ios'] as Map<String, dynamic>;
+    final macos = platforms['macos'] as Map<String, dynamic>;
+    expect(ios['version'], '1.1.7');
+    expect(ios['build_number'].toString(), '12');
+    expect(macos['version'], '1.1.7');
+    expect(macos['build_number'].toString(), '12');
   });
 
-  test('downloads page advertises real v1.1.6 iOS IPA with matching sha256', () {
+  test('downloads page advertises real v1.1.7 iOS IPA with matching sha256', () {
     final html = _repoFile('downloads/index.html').readAsStringSync();
-    expect(html, contains('v1.1.6'));
-    expect(html, contains('perccent-wallet-v1.1.6-ios-setup.ipa'));
+    expect(html, contains('v1.1.7'));
+    expect(html, contains('perccent-wallet-v1.1.7-ios-setup.ipa'));
     expect(html, contains('<article class="card ios">'));
 
-    final metaPath = _repoFile('installer/ios/perccent-wallet-v1.1.6-ios.json');
+    final metaPath = _repoFile('installer/ios/perccent-wallet-v1.1.7-ios.json');
     expect(metaPath.existsSync(), isTrue);
     final meta = jsonDecode(metaPath.readAsStringSync()) as Map<String, dynamic>;
     final sha = meta['sha256'] as String;
@@ -45,6 +52,7 @@ void main() {
     expect(meta['sizeBytes'] as int, greaterThan(4096 * 100));
     expect(meta['status'], 'signed_published');
     expect(meta['teamId'], 'SFCBP95595');
+    expect(meta['bundleId'], 'perccent-wallet');
   });
 
   test('DEVELOPMENT_TEAM is set in iOS project', () {
@@ -55,10 +63,13 @@ void main() {
     expect(export, contains('SFCBP95595'));
   });
 
-  test('RELEASE_NOTES cover signed iOS v1.1.6', () {
+  test('RELEASE_NOTES cover signed iOS v1.1.7', () {
     final notes = _repoFile('RELEASE_NOTES.md').readAsStringSync();
-    expect(notes, contains('v1.1.6'));
+    expect(notes, contains('v1.1.7'));
     expect(notes, contains('ios-setup.ipa'));
-    expect(notes, contains('5953c92a0429b45fd54dab7ef1be14d80e0d5349a49d1bb9803b964576270b28'));
+    final meta = jsonDecode(
+      _repoFile('installer/ios/perccent-wallet-v1.1.7-ios.json').readAsStringSync(),
+    ) as Map<String, dynamic>;
+    expect(notes, contains(meta['sha256'] as String));
   });
 }

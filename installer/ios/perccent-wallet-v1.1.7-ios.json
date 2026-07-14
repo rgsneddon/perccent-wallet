@@ -1,0 +1,19 @@
+{
+  "name": "perccent-wallet-v1.1.7-ios-setup.ipa",
+  "version": "1.1.7",
+  "build": "12",
+  "platform": "ios",
+  "bundleId": "perccent-wallet",
+  "productName": "MY PERC",
+  "teamId": "SFCBP95595",
+  "signingIdentity": "Apple Development: Russell Sneddon (U37S5938B4)",
+  "exportMethod": "development-codesign-package",
+  "status": "signed_published",
+  "sizeBytes": 8666626,
+  "sizeMb": 8.3,
+  "sha256": "05cbc25eef4112516f6525b29f008259d9ebd6689d8eb40dea75a1a8e54f932d",
+  "sha512": "d21673bb4de1382012bbfe43c9c04722a261dd5ddcf2431b0b12554febc393e61b0bfc3f2974a5ba852808e376de08852e44fff1ac1225f3e9ef8907acf56ec6",
+  "url": "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.7/perccent-wallet-v1.1.7-ios-setup.ipa",
+  "pagesUrl": "https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.7/perccent-wallet-v1.1.7-ios-setup.ipa",
+  "notes": "v1.1.7 development-signed IPA (team SFCBP95595, Bundle ID perccent-wallet). Release build + Apple Development codesign package."
+}

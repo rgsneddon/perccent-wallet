@@ -1,5 +1,38 @@
 # MY PERC — Release notes
 
+## v1.1.7 (build 12) — Apple platforms bump (iOS + macOS) (14 July 2026)
+
+Product name: **MY PERC** (`perccent_wallet`).
+
+### Highlights
+
+- **iOS IPA:** `perccent-wallet-v1.1.7-ios-setup.ipa` (~8.3 MB)
+  - Bundle ID: `perccent-wallet`
+  - Team: `SFCBP95595`
+  - Identity: Apple Development (Russell Sneddon)
+  - SHA-256: `05cbc25eef4112516f6525b29f008259d9ebd6689d8eb40dea75a1a8e54f932d`
+- **macOS app:** `perccent-wallet-v1.1.7-macos-setup.zip` (~19.7 MB)
+  - Contains `MY PERC.app` (universal arm64 + x86_64), CFBundleShortVersionString `1.1.7` build `12`
+  - Bundle ID: `perccent-wallet`
+  - Team: `SFCBP95595` — **Developer ID Application** signed, **notarized** (ticket stapled)
+  - SHA-256: `ca08120f2573805a0f17e4d05e68c31983428008fc7360f3e572a8638f61f3db`
+- **version.json** top-level `1.1.7+12`; platform fields: iOS/macOS `1.1.7+12`, Windows/Android remain `1.1.6+11`.
+- Windows/Android installers unchanged on **v1.1.6**.
+
+### Install (iOS)
+
+1. Download `perccent-wallet-v1.1.7-ios-setup.ipa` from [Releases](https://github.com/rgsneddon/perccent-wallet/releases/tag/v1.1.7) or [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/).
+2. Verify SHA-256 against the `.sha256` sidecar.
+3. Sideload with Apple Configurator, AltStore, or MDM; trust the developer certificate if prompted.
+
+### Install (macOS)
+
+1. Download `perccent-wallet-v1.1.7-macos-setup.zip` from [Releases](https://github.com/rgsneddon/perccent-wallet/releases/tag/v1.1.7) or [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/).
+2. Verify SHA-256 against the `.sha256` sidecar.
+3. Unzip and open `MY PERC.app` (Notarized Developer ID — Gatekeeper should allow a normal open).
+
+---
+
 ## v1.1.6 (build 11) — Aligned platform installers + update-check fix (14 July 2026)
 
 Product name: **MY PERC** (`perccent_wallet`).
