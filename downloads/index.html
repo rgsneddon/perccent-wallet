@@ -79,19 +79,29 @@
       margin-top: 36px;
     }
 
-    @media (min-width: 700px) {
+    @media (min-width: 640px) {
       .grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    @media (min-width: 960px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (min-width: 1100px) {
+    @media (min-width: 900px) {
       .grid { grid-template-columns: repeat(4, 1fr); }
     }
 
+    .card.macos {
+      border-color: rgba(232, 168, 56, 0.55);
+      box-shadow: 0 0 0 1px rgba(232, 168, 56, 0.15);
+    }
+
     .card.macos .card-icon { background: rgba(148, 163, 184, 0.2); }
+
+    .card .btn-mirror {
+      margin-top: 8px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--panel-border);
+      font-size: 0.85rem;
+      padding: 10px 14px;
+    }
 
     .card {
       background: var(--panel);
@@ -208,39 +218,41 @@
       <p class="subtitle">
         Standalone PERC wallet for send, receive, stake, and chain sync on the Chronoflux Principia chain.
       </p>
-      <p class="version">Latest release: <strong>v1.1.6</strong> (build 11) — iOS IPA + macOS app; Windows/Android installers remain v1.1.5 until rebuilt</p>
+      <p class="version">Latest release: <strong>v1.1.6</strong> (build 11) — macOS + iOS + Windows published; Android APK still v1.1.5</p>
     </header>
 
     <div class="grid">
+      <article class="card macos">
+        <div class="card-icon" aria-hidden="true">&#63743;</div>
+        <h2>macOS</h2>
+        <p>Download the MY PERC macOS app (universal). Unzip and open <code>MY PERC.app</code>. Gatekeeper may require right-click &rarr; Open for non-notarized builds.</p>
+        <p class="meta">perccent-wallet-v1.1.6-macos-setup.zip &middot; ~19.7 MB &middot; arm64 + x86_64</p>
+        <p class="meta"><strong>Install:</strong> Unzip <code id="perccent-macos-name">perccent-wallet-v1.1.6-macos-setup.zip</code>, then open <code>MY PERC.app</code>.</p>
+        <a class="btn btn-primary" id="macos-download-primary" href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip" download>
+          Download macOS Installer
+        </a>
+        <a class="btn btn-mirror" href="https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip" download>
+          Mirror (GitHub Pages)
+        </a>
+        <p class="meta" style="margin-top:12px;margin-bottom:0;">
+          SHA-256:
+          <code id="perccent-macos-sha256" style="font-size:0.72rem;word-break:break-all;">a0f61d73528d90866e37e6e7ce06705f8be9417de7f5135691c58fec3311d495</code>
+          (<a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip.sha256">.sha256</a>)
+        </p>
+      </article>
+
       <article class="card windows">
         <div class="card-icon" aria-hidden="true">&#8862;</div>
         <h2>Windows</h2>
         <p>Install MY PERC with Start Menu shortcut and uninstaller.</p>
-        <p class="meta">perccent-wallet-v1.1.5-windows-x64-setup.exe &middot; ~11.6 MB (last Windows build)</p>
-        <p class="meta"><strong>Install:</strong> Run <code id="perccent-setup-name">perccent-wallet-v1.1.5-windows-x64-setup.exe</code>. Verify SHA-256 before installing.</p>
-        <a class="btn btn-primary" href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-windows-x64-setup.exe" download>
+        <p class="meta">perccent-wallet-v1.1.6-windows-x64-setup.exe &middot; ~11.6 MB</p>
+        <p class="meta"><strong>Install:</strong> Run <code id="perccent-setup-name">perccent-wallet-v1.1.6-windows-x64-setup.exe</code>. Verify SHA-256 before installing.</p>
+        <a class="btn btn-primary" href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-windows-x64-setup.exe" download>
           Download Windows Installer
         </a>
         <p class="meta" style="margin-top:12px;margin-bottom:0;">
-          SHA-256:
-          <code style="font-size:0.72rem;word-break:break-all;">68db69cd0096a6082d697842bc5caf999e7b228f2780b99a5378f9e88b81238e</code>
-          (<a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-windows-x64-setup.exe.sha256">.sha256</a>)
-        </p>
-      </article>
-
-      <article class="card android">
-        <div class="card-icon" aria-hidden="true">&#9741;</div>
-        <h2>Android</h2>
-        <p>Install the versioned setup APK on your phone or tablet. Enable &ldquo;Install unknown apps&rdquo; if prompted.</p>
-        <p class="meta">perccent-wallet-v1.1.5-android-setup.apk &middot; ~70.9 MB &middot; arm64, arm32, x86_64 (last Android build)</p>
-        <p class="meta"><strong>Install:</strong> Open <code id="perccent-apk-name">perccent-wallet-v1.1.5-android-setup.apk</code> after download.</p>
-        <a class="btn btn-secondary" href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-android-setup.apk" download>
-          Download Android Installer
-        </a>
-        <p class="meta" style="margin-top:12px;margin-bottom:0;">
-          SHA-256:
-          <code id="perccent-apk-sha256" style="font-size:0.72rem;word-break:break-all;">2dd9a7e5d4cab383970eb199f17581d30217f2ac85d6d6d727a768d3d688ab05</code>
-          (<a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-android-setup.apk.sha256">.sha256</a>)
+          SHA-256 sidecar:
+          <a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-windows-x64-setup.exe.sha256">.sha256</a>
         </p>
       </article>
 
@@ -260,19 +272,19 @@
         </p>
       </article>
 
-      <article class="card macos">
-        <div class="card-icon" aria-hidden="true">&#63743;</div>
-        <h2>macOS</h2>
-        <p>Download the MY PERC macOS app (universal). Unzip and open <code>MY PERC.app</code>. Gatekeeper may require right-click &rarr; Open for non-notarized builds.</p>
-        <p class="meta">perccent-wallet-v1.1.6-macos-setup.zip &middot; ~19.7 MB &middot; arm64 + x86_64</p>
-        <p class="meta"><strong>Install:</strong> Unzip <code id="perccent-macos-name">perccent-wallet-v1.1.6-macos-setup.zip</code>, then open <code>MY PERC.app</code>.</p>
-        <a class="btn btn-primary" href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip" download>
-          Download macOS Installer
+      <article class="card android">
+        <div class="card-icon" aria-hidden="true">&#9741;</div>
+        <h2>Android</h2>
+        <p>Install the versioned setup APK on your phone or tablet. Enable &ldquo;Install unknown apps&rdquo; if prompted.</p>
+        <p class="meta">perccent-wallet-v1.1.5-android-setup.apk &middot; ~70.9 MB &middot; arm64, arm32, x86_64 (last full APK build)</p>
+        <p class="meta"><strong>Install:</strong> Open <code id="perccent-apk-name">perccent-wallet-v1.1.5-android-setup.apk</code> after download.</p>
+        <a class="btn btn-secondary" href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-android-setup.apk" download>
+          Download Android Installer
         </a>
         <p class="meta" style="margin-top:12px;margin-bottom:0;">
           SHA-256:
-          <code id="perccent-macos-sha256" style="font-size:0.72rem;word-break:break-all;">a0f61d73528d90866e37e6e7ce06705f8be9417de7f5135691c58fec3311d495</code>
-          (<a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip.sha256">.sha256</a>)
+          <code id="perccent-apk-sha256" style="font-size:0.72rem;word-break:break-all;">2dd9a7e5d4cab383970eb199f17581d30217f2ac85d6d6d727a768d3d688ab05</code>
+          (<a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.5/perccent-wallet-v1.1.5-android-setup.apk.sha256">.sha256</a>)
         </p>
       </article>
     </div>
@@ -280,12 +292,12 @@
     <section class="notes">
       <h3>Install notes</h3>
       <ul>
-        <li><strong>Windows:</strong> Verify SHA-256 before installing. Windows SmartScreen may ask you to confirm. Current installer is still v1.1.5.</li>
-        <li><strong>Android:</strong> Requires Android 6.0+ (API 23). Camera permission is requested only when you scan a PERC QR code. Current installer is still v1.1.5.</li>
-        <li><strong>iOS:</strong> Requires iOS 13+. v1.1.6 IPA is Apple Development–signed (team SFCBP95595). Password login and optional Face ID / Touch ID biometric vault enrollment are supported; enroll after login when prompted.</li>
-        <li><strong>macOS:</strong> Requires macOS 10.15+. v1.1.6 zip contains <code>MY PERC.app</code> (universal). Development-signed; if Gatekeeper blocks, right-click the app and choose Open.</li>
-        <li><strong>Integrity:</strong> iOS and macOS v1.1.6 packages ship with SHA-256/SHA-512 sidecars. Verify with the linked <code>.sha256</code> files or <a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/checksums.json">checksums.json</a>.</li>
-        <li><strong>Full suite:</strong> For Evolve scenario analysis and governance tools, see <a href="https://rgsneddon.github.io/evolve/">Evolve Chronoflux</a>.</li>
+        <li><strong>macOS:</strong> Requires macOS 10.15+. Download <code>perccent-wallet-v1.1.6-macos-setup.zip</code> (first card above), unzip, open <code>MY PERC.app</code>. If Gatekeeper blocks, right-click → Open. Mirror: <a href="https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip">GitHub Pages</a>.</li>
+        <li><strong>Windows:</strong> v1.1.6 setup exe on Releases. Verify SHA-256 before installing.</li>
+        <li><strong>iOS:</strong> Requires iOS 13+. v1.1.6 IPA is Apple Development–signed (team SFCBP95595).</li>
+        <li><strong>Android:</strong> Requires Android 6.0+ (API 23). Full APK still v1.1.5 until a new APK is attached.</li>
+        <li><strong>Integrity:</strong> Verify with linked <code>.sha256</code> files or <a href="https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/checksums.json">checksums.json</a>.</li>
+        <li><strong>Full suite:</strong> For Evolve scenario analysis, see <a href="https://rgsneddon.github.io/evolve/">Evolve Chronoflux</a>.</li>
       </ul>
     </section>
 
