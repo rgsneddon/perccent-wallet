@@ -2,7 +2,7 @@
 
 **MY PERC** is the standalone Flutter wallet for the Perccent (PERC) ledger on chain `evolve-chronoflux-principia-chain-1`. Use it without the Evolve analysis app — same dark UI styling and full wallet feature set inherited from [Evolve](https://github.com/rgsneddon/evolve).
 
-Package name: `perccent_wallet` · Bundle ID (iOS): `com.perccent.perccentWallet`
+Package name: `perccent_wallet` · Bundle ID: `com.perccent.perccentWallet` (iOS / macOS)
 
 **Latest release:** v1.1.6 (build 11) — [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases) · [Release notes](RELEASE_NOTES.md)
 
@@ -11,10 +11,11 @@ Package name: `perccent_wallet` · Bundle ID (iOS): `com.perccent.perccentWallet
 | **Windows** | `perccent-wallet-v1.1.5-windows-x64-setup.exe` (last Windows build) |
 | **Android** | `perccent-wallet-v1.1.5-android-setup.apk` (last Android build) |
 | **iOS** | `perccent-wallet-v1.1.6-ios-setup.ipa` (Apple Development–signed, team `SFCBP95595`) |
+| **macOS** | `perccent-wallet-v1.1.6-macos-setup.zip` (universal `MY PERC.app`, Apple Development–signed) |
 
 Download installers from **[MY PERC Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/)** or **[GitHub Releases](https://github.com/rgsneddon/perccent-wallet/releases)**. Verify the attached `.sha256` checksum before installing.
 
-**iOS hosting:** the MY PERC iOS IPA (`perccent-wallet-v1.1.6-ios-setup.ipa`) is published only via the **perccent-wallet** downloads/release surfaces (and linked from the Perccent Wallet section on the Evolve downloads page). There is no separate Evolve Chronoflux iOS installer for the wallet.
+**iOS / macOS hosting:** MY PERC iOS and macOS packages for v1.1.6 are published via the **perccent-wallet** downloads/release surfaces. The iOS IPA is also linked from the Perccent Wallet section on the Evolve downloads page. There is no separate Evolve Chronoflux iOS installer for the wallet.
 
 ## Features
 
@@ -29,7 +30,7 @@ Download installers from **[MY PERC Downloads](https://rgsneddon.github.io/percc
 - **Security** tab for backup export and file restore
 - **Credit** tab with governance context and creator attribution
 - **Multi-language** UI (EN, ES, FR, DE, PT, AR, ZH, HI, JA)
-- **Desktop & mobile** builds — Windows, Android, **iOS**, web, and other Flutter targets
+- **Desktop & mobile** builds — Windows, Android, **iOS**, **macOS**, web, and other Flutter targets
 
 ### Transfer policy
 
@@ -95,6 +96,11 @@ flutter build ios --simulator --debug
 
 # iOS release IPA (signed — see ios/SIGNING.md)
 flutter build ipa --release --export-options-plist=ios/ExportOptions.plist
+
+# macOS release app
+flutter build macos --release
+# Product: build/macos/Build/Products/Release/perccent_wallet.app
+# Packaged release zip: perccent-wallet-v1.1.6-macos-setup.zip (contains MY PERC.app)
 
 # Web
 flutter build web --release

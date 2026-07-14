@@ -1,8 +1,8 @@
 # MY PERC (Perccent Wallet) — Privacy Policy
 
 **Effective date:** 8 July 2026  
-**Last updated:** 14 July 2026 (v1.1.6+ biometric vault on Android and iOS — Face ID / Touch ID / fingerprint opt-in; signed iOS IPA; randomly assigned PERC addresses; multi-device seed/backup sync; send re-authentication; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
-**Applies to:** the standalone **MY PERC** / Perccent Wallet application on **Windows, Android, iOS, web, and other Flutter targets**, and the optional self-hosted `perc_chain` internet seed node in this repository.
+**Last updated:** 14 July 2026 (v1.1.6+ macOS desktop app release; biometric vault on Android and iOS — Face ID / Touch ID / fingerprint opt-in; signed iOS IPA; randomly assigned PERC addresses; multi-device seed/backup sync; send re-authentication; inbound credits at one main-chain confirmation; Android pull-to-refresh; hold-to-reveal login password)
+**Applies to:** the standalone **MY PERC** / Perccent Wallet application on **Windows, Android, iOS, macOS, web, and other Flutter targets**, and the optional self-hosted `perc_chain` internet seed node in this repository.
 
 ## Summary
 
@@ -16,7 +16,7 @@ Before any **outbound PERC send**, the app requires **password re-authentication
 
 ## What the wallet stores locally
 
-On your phone (including **iOS** and Android), desktop, or browser storage, the app may persist:
+On your phone (including **iOS** and Android), desktop (**Windows** / **macOS**), or browser storage, the app may persist:
 
 - **Account credentials** — username, salted password hash, and session state (not your plaintext password after login).
 - **Optional mobile biometric vault (Android and iOS)** — if you opt in after signing in, your username and password in OS-backed secure storage (`flutter_secure_storage`: encrypted shared preferences on Android; Keychain with first-unlock accessibility on iOS) for biometric unlock via `local_auth` (fingerprint / Face ID / Touch ID). This is never uploaded to servers.

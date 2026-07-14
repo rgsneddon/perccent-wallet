@@ -1,6 +1,6 @@
 # MY PERC — Release notes
 
-## v1.1.6 (build 11) — Signed iOS IPA (14 July 2026)
+## v1.1.6 (build 11) — Signed iOS IPA + macOS app (14 July 2026)
 
 Product name: **MY PERC** (`perccent_wallet`).
 
@@ -11,7 +11,13 @@ Product name: **MY PERC** (`perccent_wallet`).
   - Team: `SFCBP95595`
   - Identity: Apple Development (Russell Sneddon)
   - SHA-256: `1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5`
-- **Downloads page** lists v1.1.6 as latest with a real iOS size + SHA-256 (not a placeholder).
+- **macOS app published:** `perccent-wallet-v1.1.6-macos-setup.zip` (~19.7 MB)
+  - Contains `MY PERC.app` (universal arm64 + x86_64)
+  - Bundle ID: `com.perccent.perccentWallet`
+  - Team: `SFCBP95595` (Apple Development–signed)
+  - SHA-256: `a0f61d73528d90866e37e6e7ce06705f8be9417de7f5135691c58fec3311d495`
+  - Install: unzip, open `MY PERC.app` (Gatekeeper may require right-click → Open if not notarized)
+- **Downloads page** lists v1.1.6 with real iOS + macOS size/SHA-256 (not placeholders).
 - **Signing project settings** committed: `DEVELOPMENT_TEAM=SFCBP95595` in Xcode project + `ExportOptions.plist`.
 - Windows and Android installers were **not** rebuilt this cycle; downloads still link the verified **v1.1.5** Windows/Android packages so links do not 404.
 
@@ -31,6 +37,7 @@ Automatic `flutter build ipa` archive failed because the Apple team has **no reg
 | Windows | v1.1.5 installer on Releases / Downloads |
 | Android | v1.1.5 APK on Releases / Downloads |
 | **iOS** | **v1.1.6 signed IPA** on Releases / Downloads |
+| **macOS** | **v1.1.6 app zip** on Releases / Downloads |
 | Web | `flutter build web --release` from source |
 
 ### Install (iOS IPA)
@@ -38,6 +45,12 @@ Automatic `flutter build ipa` archive failed because the Apple team has **no reg
 1. Download `perccent-wallet-v1.1.6-ios-setup.ipa` from [Releases](https://github.com/rgsneddon/perccent-wallet/releases/tag/v1.1.6) or [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/).
 2. Verify SHA-256 against the `.sha256` sidecar.
 3. Sideload with Apple Configurator, AltStore, or MDM; trust the developer certificate if prompted.
+
+### Install (macOS)
+
+1. Download `perccent-wallet-v1.1.6-macos-setup.zip` from [Releases](https://github.com/rgsneddon/perccent-wallet/releases/tag/v1.1.6) or [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/).
+2. Verify SHA-256 against the `.sha256` sidecar.
+3. Unzip and open `MY PERC.app`. If macOS Gatekeeper blocks a non-notarized build, right-click the app and choose **Open**.
 
 ### Docs
 

@@ -23,7 +23,7 @@ void main() {
     final readme = File('README.md').readAsStringSync();
     expect(readme, contains('v1.1.6'));
     expect(readme, contains('perccent-wallet-v1.1.6-ios-setup.ipa'));
-    expect(readme.toLowerCase(), contains('iOS hosting'.toLowerCase()));
+    expect(readme.toLowerCase(), contains('hosting'));
     expect(readme, contains('no separate Evolve Chronoflux iOS installer'));
   });
 
