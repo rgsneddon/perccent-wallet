@@ -39,7 +39,7 @@ When you use send/receive, staking, or seed sync, the wallet communicates with:
 - **Public internet seed nodes** (default rendezvous: `https://evolve-perc-internet.onrender.com`, configurable in `assets/config/perc_network.json`).
 - **Other Perccent peers** via the mesh rendezvous protocol for inbound transfer delivery and block propagation.
 - **Public IP lookup services** (e.g. `api.ipify.org`, `ifconfig.me`) to advertise your node's public endpoint when you run local peer features.
-- **Optional update checks** — the splash screen may request version metadata from configured update endpoints (no wallet secrets are sent).
+- **Optional update checks** — the splash screen may request version metadata from configured update endpoints (no wallet secrets are sent). The MY PERC **iOS IPA** is distributed via the **perccent-wallet** GitHub Releases / downloads page (not as an Evolve Chronoflux platform installer).
 
 Transactions and ledger exports use pseudonymous Perccent addresses and hashed account identifiers. Scenario labels and usernames are stripped from public ledger exports per chain privacy rules.
 

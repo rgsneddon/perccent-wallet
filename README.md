@@ -12,7 +12,9 @@ Package name: `perccent_wallet` · Bundle ID (iOS): `com.perccent.perccentWallet
 | **Android** | `perccent-wallet-v1.1.5-android-setup.apk` (last Android build) |
 | **iOS** | `perccent-wallet-v1.1.6-ios-setup.ipa` (Apple Development–signed, team `SFCBP95595`) |
 
-Download installers from [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) or **Releases**. Verify the attached `.sha256` checksum before installing.
+Download installers from **[MY PERC Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/)** or **[GitHub Releases](https://github.com/rgsneddon/perccent-wallet/releases)**. Verify the attached `.sha256` checksum before installing.
+
+**iOS hosting:** the MY PERC iOS IPA (`perccent-wallet-v1.1.6-ios-setup.ipa`) is published only via the **perccent-wallet** downloads/release surfaces (and linked from the Perccent Wallet section on the Evolve downloads page). There is no separate Evolve Chronoflux iOS installer for the wallet.
 
 ## Features
 
