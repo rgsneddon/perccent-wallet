@@ -1,0 +1,14 @@
+ca08120f2573805a0f17e4d05e68c31983428008fc7360f3e572a8638f61f3db  perccent-wallet-v1.1.7-macos-setup.zip
+algorithm=SHA256
+algorithm_secondary=SHA512
+sha512=4bca060dfe65a1a08bbb32e8190d21a12d562011f7d7274ce05a2f4f1e90843e0e2124de5da1c4c16271f8608c72100548d33fe79fbb5b68149d77b283a26e34
+version=1.1.7
+build=12
+platform=macos
+url=https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.7/perccent-wallet-v1.1.7-macos-setup.zip
+bundleId=perccent-wallet
+teamId=SFCBP95595
+signing=Developer ID Application
+notarized=true
+notarizationId=2c7cd2d8-f851-46bb-9aba-a28bbe6acd83
+packageFormat=zip
