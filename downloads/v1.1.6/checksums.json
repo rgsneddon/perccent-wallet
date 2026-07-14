@@ -1,23 +1,31 @@
-{
-  "version": "1.1.6",
-  "packages": [
-    {
-      "file": "perccent-wallet-v1.1.6-ios-setup.ipa",
-      "sha256": "1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5",
-      "sha512": "803e80465b01ee00e92ee36c111733778904850e111e8bb0f49c09677527a0a6310e14333cfc8b0676cd4529de25ef93fc5dd80cdec1c787f80d074598125ddf",
-      "sizeBytes": 8653370,
-      "platform": "ios",
-      "version": "1.1.6",
-      "build": "11"
-    },
-    {
-      "file": "perccent-wallet-v1.1.6-macos-setup.zip",
-      "sha256": "a0f61d73528d90866e37e6e7ce06705f8be9417de7f5135691c58fec3311d495",
-      "sha512": "4b0009107b7a4e24caa424c2162fffd9c6a434034b10eec8bebc94087fa076e08f0827fbf24611c5951ae3418e15aac4244dee914b5d6ff42024a7bd8cd7f69e",
-      "sizeBytes": 20608440,
-      "platform": "macos",
-      "version": "1.1.6",
-      "build": "11"
-    }
-  ]
+﻿{
+    "minimumAlgorithm":  "SHA256",
+    "generatedAt":  "2026-07-14T10:55:47.1823705Z",
+    "packages":  [
+                     {
+                         "file":  "perccent-wallet-v1.1.6-android-setup.apk",
+                         "bytes":  74313793,
+                         "sha256":  "d4b4ce13794517d5db05017bfb39c5fac8fe23eab96030ac06b7c6c57d81466a",
+                         "sha512":  "f388598955ecd8cd143d8cf42a575271d45190e568616efeb20f3f4032157ab8d49858b3183a841a644ae95a421a8cf525386c51ad05cc6be9c03c6bbe49c530",
+                         "url":  "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-android-setup.apk"
+                     },
+                     {
+                         "file":  "perccent-wallet-v1.1.6-ios-setup.ipa",
+                         "bytes":  8653370,
+                         "sha256":  "1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5",
+                         "sha512":  "803e80465b01ee00e92ee36c111733778904850e111e8bb0f49c09677527a0a6310e14333cfc8b0676cd4529de25ef93fc5dd80cdec1c787f80d074598125ddf",
+                         "url":  "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-ios-setup.ipa"
+                     },
+                     {
+                         "file":  "perccent-wallet-v1.1.6-windows-x64-setup.exe",
+                         "bytes":  12163441,
+                         "sha256":  "5458e1338a3d07caa461c5939e3d69837ed3f3694b390ef285751032ad8fb41c",
+                         "sha512":  "948cc7e5b5d99fcd869b1e9d0ec1198f74769aa12db23cae6f4cce42649fac721e162d67fb986f331509dfbc500422dc8a1b6f6d458aad426310a37aa64f0cd3",
+                         "url":  "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-windows-x64-setup.exe"
+                     }
+                 ],
+    "algorithms":  [
+                       "SHA256",
+                       "SHA512"
+                   ]
 }

@@ -1,4 +1,4 @@
-1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5  perccent-wallet-v1.1.6-ios-setup.ipa
+﻿1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5  perccent-wallet-v1.1.6-ios-setup.ipa
 algorithm=SHA256
 algorithm_secondary=SHA512
 sha512=803e80465b01ee00e92ee36c111733778904850e111e8bb0f49c09677527a0a6310e14333cfc8b0676cd4529de25ef93fc5dd80cdec1c787f80d074598125ddf
@@ -7,6 +7,3 @@ build=11
 platform=ios
 url=https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-ios-setup.ipa
 bundleId=com.perccent.perccentWallet
-teamId=SFCBP95595
-signing=Apple Development
-exportMethod=development-codesign-package
