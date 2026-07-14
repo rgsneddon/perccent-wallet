@@ -1,0 +1,11 @@
+a0f61d73528d90866e37e6e7ce06705f8be9417de7f5135691c58fec3311d495  perccent-wallet-v1.1.6-macos-setup.zip
+algorithm=SHA256
+algorithm_secondary=SHA512
+sha512=4b0009107b7a4e24caa424c2162fffd9c6a434034b10eec8bebc94087fa076e08f0827fbf24611c5951ae3418e15aac4244dee914b5d6ff42024a7bd8cd7f69e
+version=1.1.6
+build=11
+platform=macos
+url=https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip
+bundleId=com.perccent.perccentWallet
+signing=Apple Development
+packageFormat=zip-app
