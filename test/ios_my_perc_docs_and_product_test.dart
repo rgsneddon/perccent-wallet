@@ -42,7 +42,7 @@ void main() {
     expect(readme, contains('MY PERC'));
     expect(readme, contains('iOS'));
     expect(readme, contains('flutter build ios'));
-    expect(readme, contains('com.perccent.perccentWallet'));
+    expect(readme, contains('perccent-wallet'));
     expect(readme, contains('ios-setup.ipa'));
     expect(readme, contains('RELEASE_NOTES.md'));
 
@@ -109,7 +109,7 @@ void main() {
     expect(_repoFile('ios/Podfile.lock').existsSync(), isTrue);
     final pbx =
         _repoFile('ios/Runner.xcodeproj/project.pbxproj').readAsStringSync();
-    expect(pbx, contains('PRODUCT_BUNDLE_IDENTIFIER = com.perccent.perccentWallet;'));
+    expect(pbx, contains('PRODUCT_BUNDLE_IDENTIFIER = perccent-wallet;'));
   });
 
   test('simulator Runner.app product is non-trivial when present', () {

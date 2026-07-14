@@ -1,6 +1,6 @@
 # MY PERC iOS signing inputs
 
-Bundle ID: `com.perccent.perccentWallet` (see `Runner.xcodeproj`).
+Bundle ID: `perccent-wallet` (see `Runner.xcodeproj`). Matches App ID on team `SFCBP95595`.
 
 ## Required Apple inputs
 
@@ -9,7 +9,7 @@ Bundle ID: `com.perccent.perccentWallet` (see `Runner.xcodeproj`).
 | Apple Developer Program membership | Distribution / ad-hoc IPA export |
 | Team ID (`DEVELOPMENT_TEAM`) | Xcode project + `ExportOptions.plist` |
 | Distribution certificate | Release IPA signing |
-| Provisioning profile for `com.perccent.perccentWallet` | `flutter build ipa` export |
+| Provisioning profile for `perccent-wallet` | `flutter build ipa` export |
 
 Set Team ID locally:
 

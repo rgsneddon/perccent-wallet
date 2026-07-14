@@ -2,7 +2,7 @@
 
 **MY PERC** is the standalone Flutter wallet for the Perccent (PERC) ledger on chain `evolve-chronoflux-principia-chain-1`. Use it without the Evolve analysis app — same dark UI styling and full wallet feature set inherited from [Evolve](https://github.com/rgsneddon/evolve).
 
-Package name: `perccent_wallet` · Bundle ID: `com.perccent.perccentWallet` (iOS / macOS)
+Package name: `perccent_wallet` · Bundle ID: `perccent-wallet` (iOS / macOS)
 
 **Latest release:** v1.1.6 (build 11) — [Downloads](https://rgsneddon.github.io/perccent-wallet/downloads/) · [Releases](https://github.com/rgsneddon/perccent-wallet/releases) · [Release notes](RELEASE_NOTES.md)
 
@@ -82,7 +82,7 @@ flutter build ipa --release --export-options-plist=ios/ExportOptions.plist
 #   pwsh ./scripts/build_ios_installer.ps1
 ```
 
-Bundle ID: `com.perccent.perccentWallet`. Camera and Face ID usage strings are set in `ios/Runner/Info.plist` for QR scan and optional biometric unlock. On iOS, users may opt in to Face ID / Touch ID vault enrollment after login; credentials stay on-device in the Keychain (`flutter_secure_storage`).
+Bundle ID: `perccent-wallet`. Camera and Face ID usage strings are set in `ios/Runner/Info.plist` for QR scan and optional biometric unlock. On iOS, users may opt in to Face ID / Touch ID vault enrollment after login; credentials stay on-device in the Keychain (`flutter_secure_storage`).
 
 ### Build release
 
@@ -172,7 +172,7 @@ Point the wallet at your seed by editing `assets/config/perc_network.json` befor
 
 MY PERC (Perccent Wallet) release installers are **checked regularly for safe use** before publish:
 
-- **Malware scan** — `perccent-wallet-v*-windows-x64-setup.exe`, `perccent-wallet-v*-android-setup.apk`, and signed `perccent-wallet-v*-ios-setup.ipa` (when produced) under `build/downloads/v<version>/` are scanned with Windows Defender (when available) plus APK/PE/IPA integrity checks (expected Android package id `com.perccent.perccent_wallet`; iOS bundle id `com.perccent.perccentWallet`).
+- **Malware scan** — `perccent-wallet-v*-windows-x64-setup.exe`, `perccent-wallet-v*-android-setup.apk`, and signed `perccent-wallet-v*-ios-setup.ipa` (when produced) under `build/downloads/v<version>/` are scanned with Windows Defender (when available) plus APK/PE/IPA integrity checks (expected Android package id `com.perccent.perccent_wallet`; iOS bundle id `perccent-wallet`).
 - **Dependency audit** — `flutter pub audit` and `npm audit --audit-level=high` in `perc_chain/` run before each release; documented exceptions live in [SECURITY.md](SECURITY.md).
 - **Integrity** — SHA-256 and SHA-512 checksum sidecars ship with every release asset on [GitHub Releases](https://github.com/rgsneddon/perccent-wallet/releases). Verify the `.sha256` file **before installing**.
 

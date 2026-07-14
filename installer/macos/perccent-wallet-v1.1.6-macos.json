@@ -3,17 +3,18 @@
   "version": "1.1.6",
   "build": "11",
   "platform": "macos",
-  "bundleId": "com.perccent.perccentWallet",
+  "bundleId": "perccent-wallet",
   "productName": "MY PERC",
   "appName": "MY PERC.app",
+  "teamId": "SFCBP95595",
   "signingIdentity": "Apple Development: Russell Sneddon (U37S5938B4)",
   "packageFormat": "zip",
   "status": "signed_published",
-  "sizeBytes": 20608440,
+  "sizeBytes": 20685099,
   "sizeMb": 19.7,
-  "sha256": "a0f61d73528d90866e37e6e7ce06705f8be9417de7f5135691c58fec3311d495",
-  "sha512": "4b0009107b7a4e24caa424c2162fffd9c6a434034b10eec8bebc94087fa076e08f0827fbf24611c5951ae3418e15aac4244dee914b5d6ff42024a7bd8cd7f69e",
+  "sha256": "d0cbd2028e2b862af8d4073fdd01b2e89c60ba4f7a7fa418373daee1f751c1b3",
+  "sha512": "c0c6d00d31d51695f961c66d76b8091f4e345a5647988444a910c6630e15366aab261875c2de0b80119d02be5882ce7e6e2b2f657400e8dbdd7797d20a0cee9b",
   "url": "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip",
   "pagesUrl": "https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.6/perccent-wallet-v1.1.6-macos-setup.zip",
-  "notes": "Release macOS app zip built with flutter build macos --release; development-signed when possible. Unzip and open MY PERC.app (Gatekeeper may require right-click Open for non-notarized builds)."
+  "notes": "Rebuilt for App ID/Bundle ID perccent-wallet on team SFCBP95595. Universal MY PERC.app, Apple Development\u2013signed. Unzip and open; Gatekeeper may require right-click Open for non-notarized builds."
 }

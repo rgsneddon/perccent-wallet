@@ -11,12 +11,12 @@ void main() {
     expect(html, contains('perccent-wallet-v1.1.6-ios-setup.ipa'));
     expect(
       html,
-      contains('1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5'),
+      contains('5953c92a0429b45fd54dab7ef1be14d80e0d5349a49d1bb9803b964576270b28'),
     );
     final meta =
         File('installer/ios/perccent-wallet-v1.1.6-ios.json').readAsStringSync();
-    expect(meta, contains('1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5'));
-    expect(meta, contains('"sizeBytes": 8653370'));
+    expect(meta, contains('5953c92a0429b45fd54dab7ef1be14d80e0d5349a49d1bb9803b964576270b28'));
+    expect(meta, contains('"sizeBytes": 8666586'));
   });
 
   test('README hosts MY PERC iOS on perccent-wallet not Evolve installer', () {

@@ -59,6 +59,6 @@ void main() {
     final notes = _repoFile('RELEASE_NOTES.md').readAsStringSync();
     expect(notes, contains('v1.1.6'));
     expect(notes, contains('ios-setup.ipa'));
-    expect(notes, contains('1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5'));
+    expect(notes, contains('5953c92a0429b45fd54dab7ef1be14d80e0d5349a49d1bb9803b964576270b28'));
   });
 }

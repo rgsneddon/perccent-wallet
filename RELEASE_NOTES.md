@@ -7,16 +7,17 @@ Product name: **MY PERC** (`perccent_wallet`).
 ### Highlights
 
 - **Signed iOS IPA published:** `perccent-wallet-v1.1.6-ios-setup.ipa` (~8.3 MB)
-  - Bundle ID: `com.perccent.perccentWallet`
+  - Bundle ID: `perccent-wallet` (App ID on team `SFCBP95595`)
   - Team: `SFCBP95595`
   - Identity: Apple Development (Russell Sneddon)
-  - SHA-256: `1844aa2923a71ae51b7564ca978820c31537834b3789c144c0fa93b23dc241f5`
+  - SHA-256: `5953c92a0429b45fd54dab7ef1be14d80e0d5349a49d1bb9803b964576270b28`
 - **macOS app published:** `perccent-wallet-v1.1.6-macos-setup.zip` (~19.7 MB)
   - Contains `MY PERC.app` (universal arm64 + x86_64)
-  - Bundle ID: `com.perccent.perccentWallet`
+  - Bundle ID: `perccent-wallet`
   - Team: `SFCBP95595` (Apple Development–signed)
-  - SHA-256: `a0f61d73528d90866e37e6e7ce06705f8be9417de7f5135691c58fec3311d495`
+  - SHA-256: `d0cbd2028e2b862af8d4073fdd01b2e89c60ba4f7a7fa418373daee1f751c1b3`
   - Install: unzip, open `MY PERC.app` (Gatekeeper may require right-click → Open if not notarized)
+- **App ID / Bundle ID migration:** iOS + macOS rebuilt and re-published under Bundle ID `perccent-wallet` (matches App ID on team `SFCBP95595`). Previous `com.perccent.perccentWallet` binaries replaced on the same v1.1.6 tag.
 - **Downloads page** lists v1.1.6 with real iOS + macOS size/SHA-256 (not placeholders).
 - **Signing project settings** committed: `DEVELOPMENT_TEAM=SFCBP95595` in Xcode project + `ExportOptions.plist`.
 - **Windows and Android rebuilt** on the unified **v1.1.6** tag: `perccent-wallet-v1.1.6-windows-x64-setup.exe` and `perccent-wallet-v1.1.6-android-setup.apk`.
@@ -67,6 +68,6 @@ Product name: **MY PERC** (`perccent_wallet`).
 
 ### Highlights
 
-- **iOS is a supported build target** for MY PERC. The `ios/` Xcode project, CocoaPods `Podfile`, and packaging scripts produce a real simulator app (`build/ios/iphonesimulator/Runner.app`, bundle id `com.perccent.perccentWallet`).
+- **iOS is a supported build target** for MY PERC. The `ios/` Xcode project, CocoaPods `Podfile`, and packaging scripts produce a real simulator app (`build/ios/iphonesimulator/Runner.app`, bundle id `perccent-wallet`).
 - **Build path documented** in [README.md](README.md).
 - **Privacy policy** and **LICENSE** updated for MY PERC multi-platform distribution (including iOS). Biometric vault enrollment later extended to **Android and iOS** (see current README / PRIVACY_POLICY).

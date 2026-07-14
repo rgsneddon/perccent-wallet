@@ -46,7 +46,7 @@ void main() {
   });
 
   test('iOS project audit: bundle ID, permissions, signing placeholders', () async {
-    const expectedBundleId = 'com.perccent.perccentWallet';
+    const expectedBundleId = 'perccent-wallet';
     final pbxproj =
         _repoFile('ios/Runner.xcodeproj/project.pbxproj').readAsStringSync();
     expect(pbxproj, contains('PRODUCT_BUNDLE_IDENTIFIER = $expectedBundleId;'));

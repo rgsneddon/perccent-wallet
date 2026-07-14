@@ -61,7 +61,7 @@ $signed = Write-PackageChecksumSidecar `
     -Build $Build `
     -Platform 'ios' `
     -Url $releaseUrl `
-    -ExtraMetadata @('bundleId=com.perccent.perccentWallet')
+    -ExtraMetadata @('bundleId=perccent-wallet')
 
 $installerMetaDir = Join-Path $Root 'installer\ios'
 New-Item -ItemType Directory -Path $installerMetaDir -Force | Out-Null
@@ -71,7 +71,7 @@ $manifestPath = Join-Path $installerMetaDir "$ProductPrefix-v$Version-ios.json"
     version = $Version
     build = $Build
     platform = 'ios'
-    bundleId = 'com.perccent.perccentWallet'
+    bundleId = 'perccent-wallet'
     sizeBytes = (Get-Item $publishedPath).Length
     sizeMb = $sizeMb
     sha256 = $signed.Sha256
