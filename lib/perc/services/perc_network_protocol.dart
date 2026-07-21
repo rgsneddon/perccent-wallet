@@ -51,11 +51,12 @@ class PercNetworkStatus {
 
   factory PercNetworkStatus.fromJson(Map<String, dynamic> json) =>
       PercNetworkStatus(
-        evolutionaryChainId: json['evolutionaryChainId'] as String,
-        blockHeight: json['blockHeight'] as int? ?? 0,
-        tipHash: json['tipHash'] as String? ?? '',
-        revision: json['revision'] as int? ?? 0,
-        networkGenesisRevision: json['networkGenesisRevision'] as int? ?? 1,
+        evolutionaryChainId: (json['evolutionaryChainId'] as String?) ??
+            PercChainConstants.evolutionaryChainId,
+        blockHeight: _asInt(json['blockHeight']),
+        tipHash: (json['tipHash'] as String?) ?? '',
+        revision: _asInt(json['revision']),
+        networkGenesisRevision: _asInt(json['networkGenesisRevision'], 1),
         sessionUsername: json['sessionUsername'] as String?,
         publicAlias: json['publicAlias'] as String?,
         endpoint: json['endpoint'] as String?,
@@ -63,10 +64,20 @@ class PercNetworkStatus {
         updatedAt: _parseUpdatedAt(json['updatedAt']),
       );
 
+  static int _asInt(dynamic raw, [int fallback = 0]) {
+    if (raw is int) return raw;
+    if (raw is num) return raw.toInt();
+    if (raw is String) return int.tryParse(raw) ?? fallback;
+    return fallback;
+  }
+
   static DateTime? _parseUpdatedAt(dynamic raw) {
     if (raw == null) return null;
     if (raw is int) {
       return DateTime.fromMillisecondsSinceEpoch(raw, isUtc: true);
+    }
+    if (raw is num) {
+      return DateTime.fromMillisecondsSinceEpoch(raw.toInt(), isUtc: true);
     }
     if (raw is String) {
       return DateTime.tryParse(raw)?.toUtc();

@@ -30,13 +30,17 @@ class PercNetworkCoordinator extends ChangeNotifier {
         _rendezvous = rendezvous ?? const PercNetworkRendezvous(),
         _serverOverride = server;
 
-  final PercNetworkClient _client;
-  final PercNetworkRendezvous _rendezvous;
+  PercNetworkClient _client;
+  PercNetworkRendezvous _rendezvous;
   final PercFlyClient _flyClient = const PercFlyClient();
   PercNodeServer? _serverOverride;
   PercNodeServer? _server;
   bool _deepSyncRunning = false;
   int _networkGeneration = 0;
+
+  /// True after a successful seed `/perc/status` within the current sync burst.
+  /// Prevents a later transient null probe from clearing [isConnectedToSeed].
+  bool _seedReachableThisSync = false;
 
   PercNodeServer get _serverOrCreate =>
       _serverOverride ?? (_server ??= createPercNodeServer());
@@ -82,6 +86,9 @@ class PercNetworkCoordinator extends ChangeNotifier {
     instance._networkGeneration++;
     disableLiveNodesForTests = true;
     sessionStartThrowsForTest = false;
+    instance._client = const PercNetworkClient();
+    instance._rendezvous = const PercNetworkRendezvous();
+    instance._seedReachableThisSync = false;
     instance._senderPeerCache.clear();
     instance.settlementPeerTargets.clear();
     instance.clearTestSeedLedger();
@@ -89,6 +96,18 @@ class PercNetworkCoordinator extends ChangeNotifier {
     instance.onPendingRegistrationRecoveryReady = null;
     PercNetworkRendezvous.resetForTest();
     instance._detach();
+  }
+
+  /// Install a fake/injectable HTTP client for seed connectivity tests.
+  @visibleForTesting
+  void installNetworkClientForTest(PercNetworkClient client) {
+    _client = client;
+  }
+
+  /// Install a fake rendezvous (same mock host stack as [installNetworkClientForTest]).
+  @visibleForTesting
+  void installRendezvousForTest(PercNetworkRendezvous rendezvous) {
+    _rendezvous = rendezvous;
   }
 
   @visibleForTesting
@@ -437,6 +456,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
     _activeUsername = username;
 
     if (!disableLiveNodesForTests) {
+      _beginSeedSyncBurst();
       await _connectToSeedNode(hub, deep: false);
     }
 
@@ -624,6 +644,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
       );
     }
 
+    _beginSeedSyncBurst();
     _syncState = PercNetworkSyncState.syncing;
     notifyListeners();
 
@@ -763,7 +784,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
 
     final base = await _rendezvous.baseUrl();
     if (base == null) {
-      _seedConnected = false;
+      _markSeedUnreachableFromProbe();
       return (reachable: false, ledger: null, status: fallbackStatus);
     }
 
@@ -775,7 +796,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
 
     var seedStatus = await _client.fetchStatus(base);
     if (seedStatus == null) {
-      _seedConnected = false;
+      _markSeedUnreachableFromProbe();
       return (reachable: false, ledger: null, status: fallbackStatus);
     }
 
@@ -789,7 +810,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
       _statusWithImportedSeedTip(seedStatus, hub),
       online: true,
     );
-    _seedConnected = true;
+    _markSeedReachableFromProbe();
     _networkBlockHeight = _importedSeedTarget(hub)?.height ??
         _flyClient.networkHeightAfterProbe(
           local: hub.ledger,
@@ -815,7 +836,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
       _statusWithImportedSeedTip(seedStatus, hub),
       online: true,
     );
-    _seedConnected = true;
+    _markSeedReachableFromProbe();
 
     final localHeight = PercChainTip.height(hub.ledger);
     final remoteHeight = PercChainTip.height(remote);
@@ -849,6 +870,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
     final hub = _hub;
     if (hub == null) return;
 
+    _beginSeedSyncBurst();
     _syncState = PercNetworkSyncState.syncing;
     notifyListeners();
 
@@ -862,6 +884,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
         endpoint: 'http://test-seed/perc',
       );
       _applySeedLedgerToHub(hub, seed, status);
+      _markSeedReachableFromProbe();
     }
     hub.ledger.refreshPendingInboundTransfers();
     await deepSyncToNetworkHeight();
@@ -897,11 +920,31 @@ class PercNetworkCoordinator extends ChangeNotifier {
     notifyListeners();
   }
 
+  void _beginSeedSyncBurst() {
+    _seedReachableThisSync = false;
+  }
+
+  void _markSeedReachableFromProbe() {
+    _seedReachableThisSync = true;
+    _seedConnected = true;
+  }
+
+  /// Marks seed offline only when no successful status probe occurred this burst.
+  void _markSeedUnreachableFromProbe() {
+    if (_seedReachableThisSync) {
+      // A later transient null must not undo a successful /perc/status this sync.
+      _seedConnected = true;
+      return;
+    }
+    _seedConnected = false;
+  }
+
   /// Seed HTTP may fail transiently while ledger merge still advances — avoid stale offline.
   void _reconcileSeedConnectivityAfterSync(PercLedgerHub hub) {
     final localHeight = PercChainTip.height(hub.ledger);
-    if (_syncState == PercNetworkSyncState.synced ||
-        localHeight >= _networkBlockHeight) {
+    if (_seedReachableThisSync ||
+        _syncState == PercNetworkSyncState.synced ||
+        localHeight >= _networkBlockHeight && _networkBlockHeight > 0) {
       _seedConnected = true;
     }
   }
@@ -1888,7 +1931,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
     if (disableLiveNodesForTests) return;
     final base = await _rendezvous.baseUrl();
     if (base == null) {
-      _seedConnected = false;
+      _markSeedUnreachableFromProbe();
       return;
     }
 
@@ -1900,7 +1943,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
 
     var seedStatus = await _client.fetchStatus(base);
     if (seedStatus == null) {
-      _seedConnected = false;
+      _markSeedUnreachableFromProbe();
       return;
     }
 
@@ -1914,7 +1957,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
       _statusWithImportedSeedTip(seedStatus, hub),
       online: true,
     );
-    _seedConnected = true;
+    _markSeedReachableFromProbe();
     _networkBlockHeight = _importedSeedTarget(hub)?.height ??
         _flyClient.networkHeightAfterProbe(
           local: hub.ledger,
@@ -1952,7 +1995,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
     if (seedEndpoint == null || seedEndpoint.isEmpty) return const [];
     final status = await _client.fetchStatus(seedEndpoint);
     if (status == null) return const [];
-    _seedConnected = true;
+    _markSeedReachableFromProbe();
     final hub = _hub;
     final corrected = hub != null
         ? _statusWithImportedSeedTip(status, hub)

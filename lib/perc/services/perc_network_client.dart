@@ -17,14 +17,22 @@ class PercNetworkClient {
   static const _statusPath = '/perc/status';
   static const _ledgerPath = '/perc/ledger';
 
+  /// Probes seed/rendezvous reachability. Uses a cold-start-tolerant timeout and
+  /// retry budget so free-tier hosts are not reported as offline while waking.
   Future<PercNetworkStatus?> fetchStatus(String endpoint) async {
     final uri = _resolve(endpoint, _statusPath);
     if (uri == null) return null;
     try {
-      final response = await _getWithRetry(uri);
+      final response = await _getWithRetry(
+        uri,
+        attempts: PercChainConstants.seedStatusRetryAttempts,
+        timeout: PercChainConstants.seedStatusRequestTimeout,
+        backoffBaseMs: 500,
+      );
       if (response?.statusCode != 200) return null;
-      final json = jsonDecode(response!.body) as Map<String, dynamic>;
-      return PercNetworkStatus.fromJson(json);
+      final decoded = jsonDecode(response!.body);
+      if (decoded is! Map) return null;
+      return PercNetworkStatus.fromJson(Map<String, dynamic>.from(decoded));
     } catch (_) {
       return null;
     }
@@ -67,16 +75,22 @@ class PercNetworkClient {
     return false;
   }
 
-  Future<http.Response?> _getWithRetry(Uri uri, {int attempts = 3}) async {
+  Future<http.Response?> _getWithRetry(
+    Uri uri, {
+    int attempts = 3,
+    Duration? timeout,
+    int backoffBaseMs = 250,
+  }) async {
+    final requestTimeout = timeout ?? PercChainConstants.networkRequestTimeout;
     for (var i = 0; i < attempts; i++) {
       try {
-        final response = await _http
-            .get(uri)
-            .timeout(PercChainConstants.networkRequestTimeout);
+        final response = await _http.get(uri).timeout(requestTimeout);
         if (response.statusCode == 200) return response;
       } catch (_) {}
       if (i < attempts - 1) {
-        await Future<void>.delayed(Duration(milliseconds: 250 * (i + 1)));
+        await Future<void>.delayed(
+          Duration(milliseconds: backoffBaseMs * (i + 1)),
+        );
       }
     }
     return null;
@@ -85,7 +99,8 @@ class PercNetworkClient {
   Uri? _resolve(String endpoint, String path) {
     final trimmed = endpoint.trim();
     if (trimmed.isEmpty) return null;
-    final base = trimmed.endsWith('/') ? trimmed.substring(0, trimmed.length - 1) : trimmed;
+    final base =
+        trimmed.endsWith('/') ? trimmed.substring(0, trimmed.length - 1) : trimmed;
     return Uri.tryParse('$base$path');
   }
 }

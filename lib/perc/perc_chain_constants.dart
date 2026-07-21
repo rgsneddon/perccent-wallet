@@ -66,6 +66,13 @@ class PercChainConstants {
   /// Peer status / ledger gossip timeout.
   static const Duration networkRequestTimeout = Duration(seconds: 8);
 
+  /// Seed `/perc/status` probe — long enough for free-tier host cold starts (Render).
+  /// Used only for reachability checks that gate [wallet_sync_seed_offline].
+  static const Duration seedStatusRequestTimeout = Duration(seconds: 45);
+
+  /// Extra attempts for seed status after the first failure (cold wake).
+  static const int seedStatusRetryAttempts = 4;
+
   /// Active wallets poll the seed rendezvous this often for inbound transfers.
   static const Duration walletSeedPollInterval = Duration(seconds: 3);
 
