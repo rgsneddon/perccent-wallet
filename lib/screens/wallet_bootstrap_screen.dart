@@ -13,9 +13,20 @@ import 'wallet_shell_screen.dart';
 
 /// Splash, wallet boot, then sign-in before the standalone shell.
 class WalletBootstrapScreen extends StatefulWidget {
-  const WalletBootstrapScreen({super.key, required this.walletProvider});
+  const WalletBootstrapScreen({
+    super.key,
+    required this.walletProvider,
+    this.showShellBottomBar = true,
+    this.shellTabIndex,
+  });
 
   final PercWalletProvider walletProvider;
+
+  /// When false, [WalletShellScreen] hides its nested bottom bar (Suite embed).
+  final bool showShellBottomBar;
+
+  /// Optional forced shell tab when embedded in Suite.
+  final int? shellTabIndex;
 
   @override
   State<WalletBootstrapScreen> createState() => _WalletBootstrapScreenState();
@@ -61,8 +72,12 @@ class _WalletBootstrapScreenState extends State<WalletBootstrapScreen> {
   @override
   Widget build(BuildContext context) {
     if (_ready) {
-      return const RegistrationSeedSetupDialogHost(
-        child: WalletShellScreen(openRegistrationOnLaunch: false),
+      return RegistrationSeedSetupDialogHost(
+        child: WalletShellScreen(
+          openRegistrationOnLaunch: false,
+          showBottomBar: widget.showShellBottomBar,
+          tabIndex: widget.shellTabIndex,
+        ),
       );
     }
 

@@ -14,10 +14,24 @@ import '../perc/screens/wallet_screen.dart';
 import '../providers/locale_provider.dart';
 
 /// Wallet-only shell — Wallet, Security, and Credit tabs (no Evolve analysis).
+///
+/// When [showBottomBar] is false (Suite embed), only the body for [tabIndex]
+/// is shown — the Suite main bar owns navigation.
 class WalletShellScreen extends StatefulWidget {
-  const WalletShellScreen({super.key, this.openRegistrationOnLaunch = false});
+  const WalletShellScreen({
+    super.key,
+    this.openRegistrationOnLaunch = false,
+    this.showBottomBar = true,
+    this.tabIndex,
+  });
 
   final bool openRegistrationOnLaunch;
+
+  /// When false, hide nested bottom [NavigationBar] (Suite hosts destinations).
+  final bool showBottomBar;
+
+  /// When non-null, force this tab body (0=Wallet, 1=Security, 2=Credit).
+  final int? tabIndex;
 
   @override
   State<WalletShellScreen> createState() => _WalletShellScreenState();
@@ -121,7 +135,8 @@ class _WalletShellScreenState extends State<WalletShellScreen>
       ),
     ];
 
-    final navIndex = _index.clamp(0, destinations.length - 1);
+    final navIndex =
+        (widget.tabIndex ?? _index).clamp(0, destinations.length - 1);
     final showWallet = _walletTabVisited || navIndex == 0;
     if (navIndex == 0 && !_walletTabVisited) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -129,15 +144,25 @@ class _WalletShellScreenState extends State<WalletShellScreen>
       });
     }
 
+    final body = IndexedStack(
+      index: navIndex,
+      children: [
+        showWallet ? const WalletScreen() : const SizedBox.shrink(),
+        const SecurityScreen(),
+        const CreditScreen(),
+      ],
+    );
+
+    if (!widget.showBottomBar) {
+      // Suite main bar owns destinations — no nested child bar.
+      return Scaffold(
+        key: const Key('wallet_shell_embed_no_bottom_bar'),
+        body: body,
+      );
+    }
+
     return Scaffold(
-      body: IndexedStack(
-        index: navIndex,
-        children: [
-          showWallet ? const WalletScreen() : const SizedBox.shrink(),
-          const SecurityScreen(),
-          const CreditScreen(),
-        ],
-      ),
+      body: body,
       bottomNavigationBar: NavigationBar(
         selectedIndex: navIndex,
         onDestinationSelected: (i) => setState(() => _index = i),
