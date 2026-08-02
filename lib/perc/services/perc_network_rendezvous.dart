@@ -31,10 +31,15 @@ class PercNetworkRendezvous {
   @visibleForTesting
   static final Map<String, List<InboundRelayHint>> testHintsByRecipient = {};
 
+  /// Test inject for seed-recovery publish/fetch (works without rendezvous URL).
+  @visibleForTesting
+  static final Map<String, String> testSeedRecoveries = {};
+
   @visibleForTesting
   static void resetForTest() {
     testRelayByUsername.clear();
     testHintsByRecipient.clear();
+    testSeedRecoveries.clear();
   }
 
   http.Client get _http => _client ?? http.Client();
@@ -247,22 +252,30 @@ class PercNetworkRendezvous {
   Future<void> publishSeedRecoveryEnvelope({
     required String fingerprint,
     required String envelopeB64,
+    String? metaBlobB64,
   }) async {
+    testSeedRecoveries[fingerprint] = envelopeB64;
     final base = await baseUrl();
     if (base == null) return;
     final uri = Uri.parse('$base/perc/rendezvous/seed-recovery');
-    await _putWithRetry(
-      uri,
-      jsonEncode({
-        'fingerprint': fingerprint,
-        'envelope': envelopeB64,
-      }),
-    );
+    final body = <String, dynamic>{
+      'fingerprint': fingerprint,
+      'envelope': envelopeB64,
+    };
+    if (metaBlobB64 != null && metaBlobB64.isNotEmpty) {
+      body['meta'] = metaBlobB64;
+    }
+    try {
+      await _putWithRetry(uri, jsonEncode(body))
+          .timeout(const Duration(seconds: 3));
+    } catch (_) {}
   }
 
   Future<String?> fetchSeedRecoveryEnvelope({
     required String fingerprint,
   }) async {
+    final staged = testSeedRecoveries[fingerprint];
+    if (staged != null && staged.isNotEmpty) return staged;
     final base = await baseUrl();
     if (base == null) return null;
     final uri = Uri.parse(

@@ -19,6 +19,7 @@ import 'perc_node_server_factory.dart';
 import 'perc_auth.dart';
 import 'perc_fly_client.dart';
 import 'perc_public_endpoint.dart';
+import 'perc_seed_recovery_transport.dart';
 
 /// Aligns every wallet to the same block height over the internet.
 class PercNetworkCoordinator extends ChangeNotifier {
@@ -1192,8 +1193,11 @@ class PercNetworkCoordinator extends ChangeNotifier {
   }
 
   /// Publishes encrypted seed recovery envelopes for the signed-in wallet.
+  ///
+  /// Never clobbers Suite sealed meta: merges with any existing remote/test
+  /// composite via [buildSeedRecoveryNetworkPayload]. Always stages the merged
+  /// payload so hub re-publish cannot drop KEYGEN meta.
   Future<void> publishSeedRecoveryEnvelopes() async {
-    if (disableLiveNodesForTests) return;
     final hub = _hub;
     final session = hub?.ledger.sessionUsername;
     if (hub == null || session == null) return;
@@ -1206,9 +1210,16 @@ class PercNetworkCoordinator extends ChangeNotifier {
         envelope.isEmpty) {
       return;
     }
+    final existing = PercNetworkRendezvous.testSeedRecoveries[fingerprint];
+    final payload = buildSeedRecoveryNetworkPayload(
+      ledgerEnvelopeB64: envelope,
+      existingRemoteB64: existing,
+    );
+    PercNetworkRendezvous.testSeedRecoveries[fingerprint] = payload;
+    if (disableLiveNodesForTests) return;
     await _rendezvous.publishSeedRecoveryEnvelope(
       fingerprint: fingerprint,
-      envelopeB64: envelope,
+      envelopeB64: payload,
     );
   }
 

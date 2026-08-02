@@ -200,11 +200,16 @@ const server = http.createServer(async (req, res) => {
     const data = await readBody(req);
     const fingerprint = data.fingerprint?.trim();
     const envelope = data.envelope?.trim();
+    const meta =
+      typeof data.meta === 'string' && data.meta.trim()
+        ? data.meta.trim()
+        : undefined;
     if (!fingerprint || !envelope) {
       return json(res, 400, { error: 'fingerprint and envelope required' });
     }
     seedRecoveries.set(fingerprint, {
       envelope,
+      ...(meta ? { meta } : {}),
       updatedAt: Date.now(),
     });
     return json(res, 200, { ok: true });
@@ -222,6 +227,7 @@ const server = http.createServer(async (req, res) => {
     return json(res, 200, {
       fingerprint,
       envelope: entry.envelope,
+      ...(entry.meta ? { meta: entry.meta } : {}),
       updatedAt: entry.updatedAt ?? null,
     });
   }
