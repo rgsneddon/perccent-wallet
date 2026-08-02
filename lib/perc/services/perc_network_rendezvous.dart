@@ -31,14 +31,25 @@ class PercNetworkRendezvous {
   @visibleForTesting
   static final Map<String, List<InboundRelayHint>> testHintsByRecipient = {};
 
-  /// Test inject for seed-recovery publish/fetch (works without rendezvous URL).
+  /// Process-local stage for seed-recovery (cleared on app restart sim).
   @visibleForTesting
   static final Map<String, String> testSeedRecoveries = {};
+
+  /// Durable remote inject (survives process-stage clear / app restart sim).
+  @visibleForTesting
+  static final Map<String, String> testDurableRemoteSeedRecoveries = {};
 
   @visibleForTesting
   static void resetForTest() {
     testRelayByUsername.clear();
     testHintsByRecipient.clear();
+    testSeedRecoveries.clear();
+    testDurableRemoteSeedRecoveries.clear();
+  }
+
+  /// Drop process-local stage only (simulates app restart; durable remote remains).
+  @visibleForTesting
+  static void clearProcessStageForTest() {
     testSeedRecoveries.clear();
   }
 
@@ -255,6 +266,7 @@ class PercNetworkRendezvous {
     String? metaBlobB64,
   }) async {
     testSeedRecoveries[fingerprint] = envelopeB64;
+    testDurableRemoteSeedRecoveries[fingerprint] = envelopeB64;
     final base = await baseUrl();
     if (base == null) return;
     final uri = Uri.parse('$base/perc/rendezvous/seed-recovery');
@@ -276,6 +288,8 @@ class PercNetworkRendezvous {
   }) async {
     final staged = testSeedRecoveries[fingerprint];
     if (staged != null && staged.isNotEmpty) return staged;
+    final durable = testDurableRemoteSeedRecoveries[fingerprint];
+    if (durable != null && durable.isNotEmpty) return durable;
     final base = await baseUrl();
     if (base == null) return null;
     final uri = Uri.parse(
