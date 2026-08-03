@@ -266,7 +266,7 @@ class _WalletLoadingScreenState extends State<WalletLoadingScreen>
   }
 
   Widget _authSection(PercWalletProvider wallet, AppLocalizations strings) {
-    if (wallet.hasAppAccess) {
+    if (wallet.hasAppAccess || wallet.suppressSecondaryAuthWall) {
       return _walletLoadingSection(strings);
     }
 
