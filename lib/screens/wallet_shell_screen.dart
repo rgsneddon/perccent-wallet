@@ -13,7 +13,7 @@ import '../perc/screens/security_screen.dart';
 import '../perc/screens/wallet_screen.dart';
 import '../providers/locale_provider.dart';
 
-/// Wallet-only shell — Wallet, Security, and Credit tabs (no Evolve analysis).
+/// Wallet-only shell — Wallet, Backup, and Credit tabs (no Evolve analysis).
 ///
 /// When [showBottomBar] is false (Suite embed), only the body for [tabIndex]
 /// is shown — the Suite main bar owns navigation.
@@ -30,7 +30,7 @@ class WalletShellScreen extends StatefulWidget {
   /// When false, hide nested bottom [NavigationBar] (Suite hosts destinations).
   final bool showBottomBar;
 
-  /// When non-null, force this tab body (0=Wallet, 1=Security, 2=Credit).
+  /// When non-null, force this tab body (0=Wallet, 1=Backup, 2=Credit).
   final int? tabIndex;
 
   @override
@@ -124,9 +124,9 @@ class _WalletShellScreenState extends State<WalletShellScreen>
         label: 'Wallet',
       ),
       NavigationDestination(
-        icon: Icon(Icons.security_outlined),
-        selectedIcon: Icon(Icons.security),
-        label: 'Security',
+        icon: Icon(Icons.backup_outlined),
+        selectedIcon: Icon(Icons.settings_backup_restore),
+        label: 'Backup',
       ),
       NavigationDestination(
         icon: Icon(Icons.info_outline),
