@@ -1528,6 +1528,71 @@ class PercLedger {
         );
       }
     }
+
+    // Public seed may obfuscate with a different privacy salt — default alias
+    // lookup misses the funded treasury and scenario faucet returns treasuryEmpty.
+    rematerializeTreasuryFromEmissionTargets();
+  }
+
+  /// When [evolve_treasury] is missing/empty after public ledger import, recover
+  /// the funded system treasury by following `treasuryEmission` destinations.
+  void rematerializeTreasuryFromEmissionTargets() {
+    final treasuryKey = PercChainConstants.treasuryUsername;
+    final existing = accounts[treasuryKey];
+    if (existing != null && existing.balance.isPositive) {
+      return;
+    }
+
+    final emissionTotals = <String, int>{};
+    for (final block in blocks) {
+      for (final tx in block.transactions) {
+        if (tx.kind != PercTxKind.treasuryEmission) continue;
+        final to = tx.toUsername?.trim();
+        if (to == null || to.isEmpty) continue;
+        if (to == treasuryKey) continue;
+        emissionTotals[to] = (emissionTotals[to] ?? 0) + tx.amount.microUnits;
+      }
+    }
+    if (emissionTotals.isEmpty) return;
+
+    String? best;
+    var bestScore = -1;
+    for (final entry in emissionTotals.entries) {
+      final acc = accounts[entry.key];
+      if (acc == null) continue;
+      final score = acc.balance.microUnits;
+      if (score > bestScore) {
+        bestScore = score;
+        best = entry.key;
+      }
+    }
+    best ??= emissionTotals.entries
+        .reduce((a, b) => a.value >= b.value ? a : b)
+        .key;
+
+    if (best == treasuryKey || !accounts.containsKey(best)) return;
+
+    final acc = accounts.remove(best)!;
+    if (existing == null) {
+      accounts[treasuryKey] = PercAccount(
+        username: treasuryKey,
+        passwordHash: acc.passwordHash,
+        salt: acc.salt,
+        address: acc.address,
+        passwordSet: acc.passwordSet,
+        balance: acc.balance,
+        lastFaucetDrawAt: acc.lastFaucetDrawAt,
+        cumulativeStakingEarned: acc.cumulativeStakingEarned,
+        scenarioBlockHeight: acc.scenarioBlockHeight,
+        transactions: List<PercTransaction>.from(acc.transactions),
+      );
+    } else {
+      existing.balance = existing.balance + acc.balance;
+      existing.cumulativeStakingEarned =
+          existing.cumulativeStakingEarned + acc.cumulativeStakingEarned;
+      existing.transactions.insertAll(0, acc.transactions);
+    }
+    _rewriteUsernameReferences(best, treasuryKey);
   }
 
   /// Merges legacy treasury keys (e.g. rgsneddon) into evolve_treasury after renames.
