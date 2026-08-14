@@ -21,20 +21,20 @@ File _repoFile(String relativePath) {
 }
 
 void main() {
-  test('pubspec and version.json are 1.1.7+12 with Apple platform fields', () {
+  test('pubspec and version.json are 1.1.8+13 with Apple platform fields', () {
     final pubspec = _repoFile('pubspec.yaml').readAsStringSync();
-    expect(pubspec, contains('version: 1.1.7+12'));
+    expect(pubspec, contains('version: 1.1.8+13'));
     final vj = jsonDecode(_repoFile('version.json').readAsStringSync())
         as Map<String, dynamic>;
-    expect(vj['version'], '1.1.7');
-    expect(vj['build_number'].toString(), '12');
+    expect(vj['version'], '1.1.8');
+    expect(vj['build_number'].toString(), '13');
     final platforms = vj['platforms'] as Map<String, dynamic>;
     final ios = platforms['ios'] as Map<String, dynamic>;
     final macos = platforms['macos'] as Map<String, dynamic>;
     expect(ios['version'], '1.1.7');
     expect(ios['build_number'].toString(), '12');
-    expect(macos['version'], '1.1.7');
-    expect(macos['build_number'].toString(), '12');
+    expect(macos['version'], '1.1.8');
+    expect(macos['build_number'].toString(), '13');
   });
 
   test('downloads page advertises real v1.1.7 iOS IPA with matching sha256', () {

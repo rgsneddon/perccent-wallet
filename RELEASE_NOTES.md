@@ -1,5 +1,14 @@
 # MY PERC — Release notes
 
+## v1.1.8 (build 13) — macOS explorer tip sync (14 August 2026)
+
+- **macOS app:** `perccent-wallet-v1.1.8-macos-setup.zip` (~19.7 MB)
+  - Contains `MY PERC.app` (universal), version `1.1.8` build `13`
+  - Sandbox now includes `network.client` so the wallet can fetch Helsinki `/perc/ledger`
+  - Parses tip blocks that omit `treasuryEmitted` / tx `amount` (those used to abort adopt at height 94)
+  - SHA-256: `95f214ad3a52e6f04fe819a034736998c15570574d0b0ac318b2b94b9a253a03`
+- **Install:** unzip and open `MY PERC.app` from [Releases](https://github.com/rgsneddon/perccent-wallet/releases/tag/v1.1.8).
+
 ## v1.1.7 (build 12) — Apple platforms bump (iOS + macOS) (14 July 2026)
 
 Product name: **MY PERC** (`perccent_wallet`).

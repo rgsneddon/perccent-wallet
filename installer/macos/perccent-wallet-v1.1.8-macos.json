@@ -1,0 +1,22 @@
+{
+  "name": "perccent-wallet-v1.1.8-macos-setup.zip",
+  "version": "1.1.8",
+  "build": "13",
+  "platform": "macos",
+  "bundleId": "perccent-wallet",
+  "productName": "MY PERC",
+  "appName": "MY PERC.app",
+  "teamId": "SFCBP95595",
+  "signingIdentity": "Developer ID Application: Russell Sneddon (SFCBP95595)",
+  "packageFormat": "zip",
+  "notarized": true,
+  "notarizationId": "513e2b14-a5ad-495d-8c21-ab8588ec2711",
+  "status": "signed_notarized_published",
+  "sizeBytes": 20672171,
+  "sizeMb": 19.7,
+  "sha256": "95f214ad3a52e6f04fe819a034736998c15570574d0b0ac318b2b94b9a253a03",
+  "sha512": "37f5b8c0def45b6cb596f6e07bcd774ecb15444d0e2f02a1b3f30be8c205694e56ab58fd9c986ced0391be6e59f0291fcc107df2cc81a08b02dbf8f11024d605",
+  "url": "https://github.com/rgsneddon/perccent-wallet/releases/download/v1.1.8/perccent-wallet-v1.1.8-macos-setup.zip",
+  "pagesUrl": "https://rgsneddon.github.io/perccent-wallet/downloads/v1.1.8/perccent-wallet-v1.1.8-macos-setup.zip",
+  "notes": "v1.1.8 Developer ID signed + notarized. Syncs to explorer/pool tip (network.client + tolerant ledger parse)."
+}

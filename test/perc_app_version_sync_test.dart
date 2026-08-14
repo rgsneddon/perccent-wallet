@@ -27,7 +27,7 @@ void main() {
     final release = (json['version'] as String).trim();
     final build = int.tryParse('${json['build_number']}') ?? 0;
     expect('$release+$build', PercAppVersion.current);
-    expect(release, '1.1.7');
+    expect(release, '1.1.8');
   });
 
   test('AppUpdateChecker reports no update when remote matches current', () async {

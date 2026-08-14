@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('version is 1.1.7 and downloads host real iOS IPA metadata', () {
     final pubspec = File('pubspec.yaml').readAsStringSync();
-    expect(pubspec, contains('version: 1.1.7+12'));
+    expect(pubspec, contains('version: 1.1.8+13'));
     final html = File('downloads/index.html').readAsStringSync();
     expect(html, contains('v1.1.7'));
     expect(html, contains('perccent-wallet-v1.1.7-ios-setup.ipa'));

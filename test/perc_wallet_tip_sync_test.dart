@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:perccent_wallet/perc/models/perc_amount.dart';
 import 'package:perccent_wallet/perc/models/perc_block.dart';
@@ -60,6 +63,76 @@ void main() {
     );
     expect(after, PercChainTip.height(seed));
     expect(PercChainTip.height(local), PercChainTip.height(seed));
+  });
+
+  test('macOS Release entitlements allow outbound seed/explorer HTTP', () {
+    final ents = File('macos/Runner/Release.entitlements').readAsStringSync();
+    expect(ents, contains('com.apple.security.app-sandbox'));
+    expect(ents, contains('com.apple.security.network.client'));
+  });
+
+  test('adoptTallerTip lifts a real shorter local ledger to a live seed export',
+      () async {
+    final localPath = Platform.environment['PERC_LOCAL_LEDGER'] ??
+        '${Platform.environment['HOME']}/Library/Containers/perccent-wallet/'
+            'Data/Library/Application Support/perccent-wallet/'
+            'perc_evolve-chronoflux-principia-chain-1_ledger.json';
+    final localFile = File(localPath);
+    PercLedger local;
+    if (localFile.existsSync()) {
+      local = PercLedger.fromJson(
+        jsonDecode(localFile.readAsStringSync()) as Map<String, dynamic>,
+      );
+    } else {
+      local = _ledgerWithBlocks(4, label: 'fixture-short');
+    }
+    final client = HttpClient();
+    late PercLedger seed;
+    const urls = [
+      'https://evolve.restoreprivacy.online/perc/ledger',
+      'https://135.181.152.10.sslip.io/perc/ledger',
+    ];
+    try {
+      Object? lastErr;
+      HttpClientResponse? res;
+      String? body;
+      for (final url in urls) {
+        try {
+          final req = await client.getUrl(Uri.parse(url));
+          final attempt =
+              await req.close().timeout(const Duration(seconds: 30));
+          if (attempt.statusCode == 200) {
+            res = attempt;
+            body = await attempt.transform(utf8.decoder).join();
+            break;
+          }
+          lastErr = 'GET $url -> ${attempt.statusCode}';
+        } catch (e) {
+          lastErr = e;
+        }
+      }
+      expect(res?.statusCode, 200, reason: '$lastErr');
+      seed = PercLedger.fromJson(jsonDecode(body!) as Map<String, dynamic>);
+    } finally {
+      client.close(force: true);
+    }
+    final seedH = PercChainTip.height(seed);
+    expect(seedH, seed.blocks.length);
+    expect(seedH, greaterThan(0));
+    if (PercChainTip.height(local) >= seedH) {
+      return;
+    }
+    final after = PercChainTip.adoptTallerTip(
+      local,
+      seed,
+      expectedTipHash: PercChainTip.hash(seed),
+    );
+    expect(after, seedH);
+    expect(PercChainTip.height(local), seedH);
+    final out = Platform.environment['PERC_ADOPT_OUT'];
+    if (out != null && out.isNotEmpty) {
+      File(out).writeAsStringSync(jsonEncode(local.toJson()));
+    }
   });
 
   test('forceSync + syncToNetworkHeight adopt test seed when local is behind',
