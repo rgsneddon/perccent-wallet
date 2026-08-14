@@ -1,0 +1,14 @@
+{
+  "version": "1.1.8",
+  "packages": [
+    {
+      "file": "perccent-wallet-v1.1.8-macos-setup.zip",
+      "sha256": "95f214ad3a52e6f04fe819a034736998c15570574d0b0ac318b2b94b9a253a03",
+      "sha512": "37f5b8c0def45b6cb596f6e07bcd774ecb15444d0e2f02a1b3f30be8c205694e56ab58fd9c986ced0391be6e59f0291fcc107df2cc81a08b02dbf8f11024d605",
+      "sizeBytes": 20672171,
+      "platform": "macos",
+      "version": "1.1.8",
+      "build": "13"
+    }
+  ]
+}
