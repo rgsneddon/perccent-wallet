@@ -99,6 +99,16 @@ class PercNetworkCoordinator extends ChangeNotifier {
     instance._detach();
   }
 
+  /// Inject the shipped HTTP client/rendezvous so tests drive the real path.
+  @visibleForTesting
+  void useHttpStackForTest({
+    PercNetworkClient? client,
+    PercNetworkRendezvous? rendezvous,
+  }) {
+    if (client != null) _client = client;
+    if (rendezvous != null) _rendezvous = rendezvous;
+  }
+
   /// Install a fake/injectable HTTP client for seed connectivity tests.
   @visibleForTesting
   void installNetworkClientForTest(PercNetworkClient client) {
@@ -1065,9 +1075,14 @@ class PercNetworkCoordinator extends ChangeNotifier {
 
     if (!quick && targetHeight > PercChainTip.height(hub.ledger)) {
       var imported = false;
-      if (importEndpoint != null &&
-          PercPublicEndpoint.isInternetEndpoint(importEndpoint)) {
-        final remote = await _client.fetchLedger(importEndpoint);
+      final chainHop = PercPublicEndpoint.preferredChainFetchEndpoint(
+        rendezvousUrl: await _rendezvous.baseUrl(),
+        advertised: [
+          if (importEndpoint != null) importEndpoint,
+        ],
+      );
+      if (chainHop != null) {
+        final remote = await _client.fetchLedger(chainHop);
         if (remote != null) {
           hub.importPeerLedger(remote, expectedTipHash: targetTip);
           imported = true;
@@ -1160,10 +1175,8 @@ class PercNetworkCoordinator extends ChangeNotifier {
         .map((n) => n.endpoint!)
         .where((e) => e != localEndpoint)
         .toSet();
-    final internetTargets =
-        gossipTargets.where(PercPublicEndpoint.isInternetEndpoint).toList();
     final targets =
-        internetTargets.isNotEmpty ? internetTargets : gossipTargets.toList();
+        PercPublicEndpoint.chainFetchEndpoints(gossipTargets);
 
     for (final endpoint in targets.take(8)) {
       if (!_isNetworkGenerationCurrent(generation)) return;
@@ -1236,7 +1249,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
     final endpoint = node?.endpoint;
     if (endpoint != null &&
         endpoint.isNotEmpty &&
-        PercPublicEndpoint.isInternetEndpoint(endpoint)) {
+        PercPublicEndpoint.isChainFetchEndpoint(endpoint)) {
       final remote = await _client.fetchLedger(endpoint);
       if (remote != null) return remote;
     }
@@ -1985,7 +1998,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
       }
 
       final endpoint = status.endpoint;
-      if (endpoint != null && PercPublicEndpoint.isInternetEndpoint(endpoint)) {
+      if (endpoint != null && PercPublicEndpoint.isChainFetchEndpoint(endpoint)) {
         final remote = await _client.fetchLedger(endpoint);
         if (remote != null) {
           _mergeRemote(remote);
@@ -2068,6 +2081,9 @@ class PercNetworkCoordinator extends ChangeNotifier {
     final seedEndpoint = ledger.networkNodes[PercChainConstants.seedUsername]
         ?.endpoint;
     if (seedEndpoint == null || seedEndpoint.isEmpty) return const [];
+    if (!PercPublicEndpoint.isChainFetchEndpoint(seedEndpoint)) {
+      return const [];
+    }
     final status = await _client.fetchStatus(seedEndpoint);
     if (status == null) return const [];
     _markSeedReachableFromProbe();
@@ -2134,10 +2150,7 @@ class PercNetworkCoordinator extends ChangeNotifier {
       }
     }
 
-    final internetEndpoints =
-        endpoints.where(PercPublicEndpoint.isInternetEndpoint).toList();
-    final toProbe =
-        internetEndpoints.isNotEmpty ? internetEndpoints : endpoints.toList();
+    final toProbe = PercPublicEndpoint.chainFetchEndpoints(endpoints);
 
     for (final endpoint in toProbe) {
       if (seen.contains(endpoint)) continue;
@@ -2157,11 +2170,20 @@ class PercNetworkCoordinator extends ChangeNotifier {
     if (hub == null) return 0;
     var maxHeight = PercChainTip.height(hub.ledger);
     for (final node in hub.ledger.networkNodes.values) {
+      if (_ignoreAdvertisedHeight(node.endpoint, node.username)) continue;
       if (node.blockHeight > maxHeight) maxHeight = node.blockHeight;
     }
     for (final status in peerStatuses ?? const <PercNetworkStatus>[]) {
+      if (_ignoreAdvertisedHeight(status.endpoint, status.sessionUsername)) {
+        continue;
+      }
       if (status.blockHeight > maxHeight) maxHeight = status.blockHeight;
     }
     return maxHeight;
+  }
+
+  bool _ignoreAdvertisedHeight(String? endpoint, String? username) {
+    if (username == PercChainConstants.seedUsername) return false;
+    return PercPublicEndpoint.isUnreachableCleartextPublicNode(endpoint);
   }
 }

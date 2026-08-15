@@ -46,3 +46,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Local notarized macOS zips (rebuild on Darwin)
+installer/macos/*.zip
